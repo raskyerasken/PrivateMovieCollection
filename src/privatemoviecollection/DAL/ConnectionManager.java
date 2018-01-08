@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package privatemoviecollection.GUI;
+package privatemoviecollection.DAL;
 
 /**
  *
  * @author mr.Andersen
  */
-public class PrivateMovieCollectionModel 
+public class ConnectionManager 
 {
     
 }

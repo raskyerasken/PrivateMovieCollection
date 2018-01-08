@@ -17,7 +17,7 @@ import javafx.scene.control.Label;
  *
  * @author mr.Andersen
  */
-public class PrivateMovieCollectionController implements Initializable 
+public class Controller implements Initializable 
 {
     
     private Label label;
