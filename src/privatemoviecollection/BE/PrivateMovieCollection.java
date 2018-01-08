@@ -22,29 +22,27 @@ public class PrivateMovieCollection
         this.title = title;
     }
 
-        private String id;
+    private int id;
 
-    
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-  
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
     
-    
-        private String rating;
+        private int rating;
 
-    public String getRating() {
+    public int getRating() {
         return rating;
     }
 
-    public void setRating(String rating) {
+    public void setRating(int rating) {
         this.rating = rating;
     }
+
 
         private String lastview;
 
