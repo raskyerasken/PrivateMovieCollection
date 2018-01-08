@@ -132,7 +132,35 @@ public class PrivateMovieCollectionDAL
         }    
     }
 
-    
+    public void update(PrivateMovieCollection PrivateMovieCollection) throws SQLServerException, SQLException {
+        try (Connection con = cm.getConnection()) {
+            String sql 
+                    = "UPDATE Movie SET "
+                    + "id=?, name=?, Rating=?, filelink=?, lastview=?) "
+                    + "WHERE id=?";
+            
+            
+            PreparedStatement pstmt 
+                    = con.prepareStatement(sql);
+            pstmt.setString(1, PrivateMovieCollection.getTitle());
+            pstmt.setInt(2, PrivateMovieCollection.getId());
+            pstmt.setInt(3, PrivateMovieCollection.getRating());
+            pstmt.setString(4, PrivateMovieCollection.getFilelink());
+            pstmt.setString(5, PrivateMovieCollection.getLastview());
+            
+            int affected = pstmt.executeUpdate();
+            if (affected<1)
+                throw new SQLException("Movie list could not be updated");
+            
+            
+        }
+        
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(PrivateMovieCollectionDAL.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+    }
     
     
    }
