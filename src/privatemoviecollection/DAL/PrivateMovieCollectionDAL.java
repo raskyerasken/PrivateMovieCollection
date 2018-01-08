@@ -5,11 +5,18 @@
  */
 package privatemoviecollection.DAL;
 
+import java.util.ArrayList;
+import privatemoviecollection.BE.PrivateMovieCollection;
+
 /**
  *
  * @author mr.Andersen
  */
 public class PrivateMovieCollectionDAL 
 {
+    
+    public ArrayList<PrivateMovieCollection> movie = new ArrayList<>();
+    
+    
     
 }
