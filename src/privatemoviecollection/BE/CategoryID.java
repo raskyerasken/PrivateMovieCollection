@@ -9,7 +9,7 @@ package privatemoviecollection.BE;
  *
  * @author mr.Andersen
  */
-public class CategoryID {
-    
+public class CategoryID 
+{  
     
 }

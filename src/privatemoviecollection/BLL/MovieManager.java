@@ -1,14 +1,38 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package privatemoviecollection.BLL;
+import javafx.scene.media.MediaPlayer;
+import privatemoviecollection.BE.PrivateMovieCollection;
 
 /**
  *
  * @author mr.Andersen
  */
-public class MovieManager {
+public class MovieManager 
+{
+    private PrivateMovieCollection movie;
+    private MediaPlayer player;
     
+    public void playMovie(PrivateMovieCollection movie, boolean overwrite)
+    {
+        //allows for playing & pausing movies
+    }
+    
+    public PrivateMovieCollection getCurrentlyPlayingMovie()
+    {
+        return this.movie;
+    }
+    
+    public javafx.util.Duration getMovieLength()
+    {
+        return player.getTotalDuration();
+    }
+    
+    public javafx.util.Duration getMovieTimeElapsed()
+    {
+        return player.getCurrentTime();
+    }
+    
+    public MediaPlayer getMediaPlayer()
+    {
+        return player;
+    }
 }
