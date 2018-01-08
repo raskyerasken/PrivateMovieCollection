@@ -5,11 +5,72 @@
  */
 package privatemoviecollection.BLL;
 
+import java.util.List;
+import privatemoviecollection.BE.CatMovieBE;
+import privatemoviecollection.BE.CategoryID;
+import privatemoviecollection.BE.PrivateMovieCollection;
+import privatemoviecollection.DAL.PrivateMovieCollectionDAL;
+
 /**
  *
  * @author mr.Andersen
  */
 public class BLLManager 
 {
+    PrivateMovieCollectionDAL pmcdal = new PrivateMovieCollectionDAL();
     
+    public List<PrivateMovieCollectionDAL> getAllCategories(String pList)
+    {
+        return pmcdal.getAllCategories(pList);
+    }
+    
+    public void add(PrivateMovieCollection allMovies)
+    {
+        pmcdal.add(allMovies);
+    }
+    
+    public List<PrivateMovieCollection> getAllMovies()
+    {
+        return pmcdal.getAllMovies();
+    }
+    
+    public void remove(PrivateMovieCollection selectPrivateMovieCollection)
+    {
+        pmcdal.remove(selectPrivateMovieCollection);
+    }
+    
+    public void add(CategoryID categoryid)
+    {
+        pmcdal.add(categoryid);
+    }
+    
+    public List<CategoryID> getAllCategories()
+    {
+        return pmcdal.getAllCategories();
+    }
+    
+    public void remove(CategoryID categoryidMovies)
+    {
+        pmcdal.removeCategoryID(categoryMovies);
+    }
+    
+    public void addMoviesToPlayer(CatMovieBE ID)
+    {
+        pmcdal.addMoviesToPlayer(ID);
+    }
+    
+    public void removeMoviesPlaylist(CatMovieBE movieList)
+    {
+        pmcdal.removeMoviesPlaylist(movieList);
+    }
+    
+    public List<CatMovieBE> getSelectedMovieList(int movieListID)
+    {
+        return pmcdal.getSelectedMovieList(movieListID);
+    }
+    
+    public void update(PrivateMovieCollection privateMovieCollection)
+    {
+        pmcdal.update(privateMovieCollection);
+    }
 }
