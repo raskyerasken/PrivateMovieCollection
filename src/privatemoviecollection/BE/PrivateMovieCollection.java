@@ -56,5 +56,14 @@ public class PrivateMovieCollection
         this.lastview = lastview;
     }
 
-    
+        private String filelink;
+
+    public String getFilelink() {
+        return filelink;
+    }
+
+    public void setFilelink(String filelink) {
+        this.filelink = filelink;
+    }
+
 }
