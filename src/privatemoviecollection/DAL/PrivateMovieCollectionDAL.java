@@ -7,7 +7,6 @@ package privatemoviecollection.DAL;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,7 +38,7 @@ public class PrivateMovieCollectionDAL
                     PrivateMovieCollection s = new PrivateMovieCollection();
                     s.setTitle(rs.getString("Name"));
                     s.setId(rs.getInt("id"));
-                    s.setLastview(rs.getDate("LastView"));
+                    s.setLastview(rs.getString("LastView"));
                     s.setRating(rs.getInt("Rating"));
                     s.setFilelink(rs.getString("Filelink"));
                     
@@ -99,7 +98,7 @@ public class PrivateMovieCollectionDAL
             pstmt.setInt(2, allMovies.getId());
             pstmt.setInt(3, allMovies.getRating());
             pstmt.setString(4, allMovies.getFilelink());
-            pstmt.setDate(5, (Date) allMovies.getLastview());
+            pstmt.setString(5, allMovies.getLastview());
             
             
             int affected = pstmt.executeUpdate();
@@ -146,7 +145,7 @@ public class PrivateMovieCollectionDAL
             pstmt.setInt(2, PrivateMovieCollection.getId());
             pstmt.setInt(3, PrivateMovieCollection.getRating());
             pstmt.setString(4, PrivateMovieCollection.getFilelink());
-            pstmt.setDate(5, (Date) PrivateMovieCollection.getLastview());
+            pstmt.setString(5, PrivateMovieCollection.getLastview());
             
             int affected = pstmt.executeUpdate();
             if (affected<1)
