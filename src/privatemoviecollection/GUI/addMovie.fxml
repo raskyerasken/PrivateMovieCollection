@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="AnchorPane" prefHeight="338.0" prefWidth="337.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="privatemoviecollection.GUI.PrivateMovieCollectionController">
@@ -11,12 +12,15 @@
       <Button fx:id="saveBtn" layoutX="46.0" layoutY="298.0" mnemonicParsing="false" text="Save" />
       <Button fx:id="cancelBtn" layoutX="232.0" layoutY="298.0" mnemonicParsing="false" text="Cancel" />
       <TextField fx:id="movieTitle" layoutX="118.0" layoutY="41.0" prefHeight="27.0" prefWidth="137.0" promptText="Movie title" />
-      <RadioButton fx:id="ratingSix" layoutX="238.0" layoutY="112.0" mnemonicParsing="false" />
-      <RadioButton fx:id="ratingOne" layoutX="119.0" layoutY="112.0" mnemonicParsing="false" />
-      <RadioButton fx:id="ratingTwo" layoutX="143.0" layoutY="112.0" mnemonicParsing="false" />
-      <RadioButton fx:id="ratingThree" layoutX="167.0" layoutY="112.0" mnemonicParsing="false" />
-      <RadioButton fx:id="ratingFour" layoutX="190.0" layoutY="112.0" mnemonicParsing="false" />
-      <RadioButton fx:id="ratingFive" layoutX="214.0" layoutY="112.0" mnemonicParsing="false" />
+      <RadioButton fx:id="ratingSix" layoutX="238.0" layoutY="112.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="rating" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="ratingOne" layoutX="119.0" layoutY="112.0" mnemonicParsing="false" toggleGroup="$rating" />
+      <RadioButton fx:id="ratingTwo" layoutX="143.0" layoutY="112.0" mnemonicParsing="false" toggleGroup="$rating" />
+      <RadioButton fx:id="ratingThree" layoutX="167.0" layoutY="112.0" mnemonicParsing="false" toggleGroup="$rating" />
+      <RadioButton fx:id="ratingFour" layoutX="190.0" layoutY="112.0" mnemonicParsing="false" toggleGroup="$rating" />
+      <RadioButton fx:id="ratingFive" layoutX="214.0" layoutY="112.0" mnemonicParsing="false" toggleGroup="$rating" />
       <Label layoutX="29.0" layoutY="104.0" text="Select Rating" />
       <Label layoutX="148.0" layoutY="94.0" text="2" />
       <Label layoutX="172.0" layoutY="94.0" text="3" />
