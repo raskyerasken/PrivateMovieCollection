@@ -5,7 +5,6 @@
  */
 package privatemoviecollection.GUI;
 
-import static com.sun.xml.internal.ws.streaming.XMLStreamReaderUtil.close;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -77,9 +76,11 @@ public class AddMovieController implements Initializable {
     }    
 
     @FXML
-    private void saveBtn(ActionEvent event) {
+    private void saveBtn(ActionEvent event) 
+    {
         if (URLAdressSong == null || movieTitle==null  )
         {
+            
         }
     }
 
