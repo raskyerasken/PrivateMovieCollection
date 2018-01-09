@@ -21,10 +21,7 @@ import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import javax.swing.JFileChooser;
-<<<<<<< HEAD
 import privatemoviecollection.BE.CategoryID;
-=======
->>>>>>> b74ee3eb11332442c783dc4eb7eade3e1a37b2a9
 import privatemoviecollection.BE.PrivateMovieCollection;
 
 /**
@@ -70,7 +67,6 @@ public class AddMovieController implements Initializable {
     private RadioButton selectedAnimation;
     @FXML
     private RadioButton selectedWestern;
-<<<<<<< HEAD
     private PrivateMovieCollection movieRate;
     private CategoryID genreMovie;
    String URLAdressSong;
@@ -78,13 +74,10 @@ public class AddMovieController implements Initializable {
     private ToggleGroup movieRating;
     @FXML
     private ToggleGroup movieGenre;
-=======
     @FXML
     private ToggleGroup rating;
-    String URLAdressSong;
     PrivateMovieCollection pmc;
     
->>>>>>> b74ee3eb11332442c783dc4eb7eade3e1a37b2a9
     /**
      * Initializes the controller class.
      */
