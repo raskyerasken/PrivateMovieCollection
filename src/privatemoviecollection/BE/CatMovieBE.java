@@ -5,6 +5,9 @@
  */
 package privatemoviecollection.BE;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+
 /**
  *
  * @author kasper
@@ -12,37 +15,36 @@ package privatemoviecollection.BE;
 public class CatMovieBE {
     
     
-        private String catId;
-
-    public String getCatId() {
-        return catId;
-    }
-
-    public void setCatId(String catId) {
-        this.catId = catId;
-    }
-
+  private final IntegerProperty IDCategory= new SimpleIntegerProperty();
+    private final IntegerProperty IDMovie= new SimpleIntegerProperty();
     
-        private String CategoryId;
-
-    public String getCategoryId() {
-        return CategoryId;
+    public int getIDCategory()
+    {
+        return IDCategory.get();
     }
-
-    public void setCategoryId(String CategoryId) {
-        this.CategoryId = CategoryId;
-    }
-
     
-    
-        private String movieId;
-
-    public String getMovieId() {
-        return movieId;
+    public void setIDPlaylist(int IDCategory)
+    {
+        this.IDCategory.set(IDCategory);
     }
-
-    public void setMovieId(String movieId) {
-        this.movieId = movieId;
+    
+    public IntegerProperty IDCategoryProperty()
+    {
+        return IDCategory;
+    }
+        public int getIDMovie()
+    {
+        return IDMovie.get();
+    }
+    
+    public void setIDSong(int IDMovie)
+    {
+        this.IDMovie.set(IDMovie);
+    }
+    
+    public IntegerProperty IDMovieProperty()
+    {
+        return IDMovie;
     }
 
 }
