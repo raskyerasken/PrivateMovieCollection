@@ -56,5 +56,6 @@
       <TextField layoutX="495.0" layoutY="46.0" promptText="Search for movies here" />
       <Button layoutX="671.0" layoutY="46.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="64.0" style="-fx-background-radius: 30;" text="Search" />
       <Button layoutX="331.0" layoutY="46.0" mnemonicParsing="false" style="-fx-background-radius: 30;" text="Play Movie" />
+      <Button fx:id="addMovieBtn" layoutX="23.0" layoutY="46.0" mnemonicParsing="false" text="Add movie" />
    </children>
 </AnchorPane>
