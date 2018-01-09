@@ -7,7 +7,11 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<<<<<<< HEAD:src/privatemoviecollection/GUI/addMovie.fxml
+<AnchorPane id="AnchorPane" prefHeight="338.0" prefWidth="337.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="privatemoviecollection.GUI.Controller">
+=======
 <AnchorPane id="AnchorPane" prefHeight="338.0" prefWidth="337.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="privatemoviecollection.GUI.AddMovieController">
+>>>>>>> 3eb22510c0a5b6291353ffd459445b8d559fa491:build/classes/privatemoviecollection/GUI/addMovie.fxml
    <children>
       <Button layoutX="46.0" layoutY="298.0" mnemonicParsing="false" onAction="#saveBtn" text="Save" />
       <Button layoutX="232.0" layoutY="298.0" mnemonicParsing="false" onAction="#cancelBtn" text="Cancel" />
