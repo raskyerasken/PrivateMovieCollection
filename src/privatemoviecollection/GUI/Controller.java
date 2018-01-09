@@ -25,25 +25,15 @@ public class Controller implements Initializable
 {    
     @FXML
     private ComboBox<String> selectGenre;
-    private ObservableList<String> allListBox;
-    private ListView<String> listBox;
-    
-//    ObservableList<String> selectGenre = 
-//    FXCollections.observableArrayList(
-//        "1",
-//        "2",
-//        "3"
-//    );
-//ComboBox comboBox = new ComboBox(selectGenre);  
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        allListBox = FXCollections.observableArrayList();
-        //listBox.setItems(allListBox);
         selectGenre.getItems().removeAll(selectGenre.getItems());
-        selectGenre.getItems().addAll("Triangle", "Circle","Rectangle");
-        //selectGenre.getSelectionModel().select("Triangle");
+        selectGenre.getItems().addAll("Action", "Adventure",
+                "Sci-Fi", "Horror", "Comedy", "Drama",
+                "Thriller", "War", "Western", "Film-noir"
+        );
     }    
     
 }
