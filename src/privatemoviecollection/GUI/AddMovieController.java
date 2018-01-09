@@ -6,11 +6,15 @@
 package privatemoviecollection.GUI;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -70,10 +74,16 @@ public class AddMovieController implements Initializable {
 
     @FXML
     private void saveBtn(ActionEvent event) {
+        if (URLAdressSong == null || movieTitle==null  )
+        {
+        }
     }
 
     @FXML
     private void cancelBtn(ActionEvent event) {
+      
+            Platform.exit();
+       
     }
 
     @FXML
