@@ -25,7 +25,7 @@ public class BLLManager
         return pmcdal.getAllMovies(pList);
     }
     
-    public void add(PrivateMovieCollection allMovies)
+    public void add(PrivateMovieCollection allMovies) throws SQLException
     {
         pmcdal.add(allMovies);
     }
@@ -34,43 +34,43 @@ public class BLLManager
 //    {
 //        return pmcdal.getAllMovies();
 //    }
+//    
+//    public void remove(PrivateMovieCollection selectPrivateMovieCollection)
+//    {
+//        pmcdal.remove(selectPrivateMovieCollection);
+//    }
+//    
+//    public void add(CategoryID categoryid)
+//    {
+//        pmcdal.add(categoryid);
+//    }
+//    
+//    public List<CategoryID> getAllByGenre()
+//    {
+//        return pmcdal.getAllByGenre();
+//    }
+//    
+//    public void remove(CategoryID categoryidMovies)
+//    {
+//        pmcdal.removeCategoryID(categoryMovies);
+//    }
+//    
+//    public void addMoviesToPlayer(CatMovieBE ID)
+//    {
+//        pmcdal.addMoviesToPlayer(ID);
+//    }
+//    
+//    public void removeMoviesPlaylist(CatMovieBE movieList)
+//    {
+//        pmcdal.removeMoviesPlaylist(movieList);
+//    }
+//    
+//    public List<CatMovieBE> getSelectedMovieList(int movieListID)
+//    {
+//        return pmcdal.getSelectedMovieList(movieListID);
+//    }
     
-    public void remove(PrivateMovieCollection selectPrivateMovieCollection)
-    {
-        pmcdal.remove(selectPrivateMovieCollection);
-    }
-    
-    public void add(CategoryID categoryid)
-    {
-        pmcdal.add(categoryid);
-    }
-    
-    public List<CategoryID> getAllByGenre()
-    {
-        return pmcdal.getAllByGenre();
-    }
-    
-    public void remove(CategoryID categoryidMovies)
-    {
-        pmcdal.removeCategoryID(categoryMovies);
-    }
-    
-    public void addMoviesToPlayer(CatMovieBE ID)
-    {
-        pmcdal.addMoviesToPlayer(ID);
-    }
-    
-    public void removeMoviesPlaylist(CatMovieBE movieList)
-    {
-        pmcdal.removeMoviesPlaylist(movieList);
-    }
-    
-    public List<CatMovieBE> getSelectedMovieList(int movieListID)
-    {
-        return pmcdal.getSelectedMovieList(movieListID);
-    }
-    
-    public void update(PrivateMovieCollection privateMovieCollection)
+    public void update(PrivateMovieCollection privateMovieCollection) throws SQLException
     {
         pmcdal.update(privateMovieCollection);
     }
