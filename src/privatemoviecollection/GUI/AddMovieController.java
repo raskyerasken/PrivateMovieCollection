@@ -20,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import javax.swing.JFileChooser;
+import privatemoviecollection.BE.PrivateMovieCollection;
 
 /**
  * FXML Controller class
@@ -66,7 +67,9 @@ public class AddMovieController implements Initializable {
     private RadioButton selectedWestern;
     @FXML
     private ToggleGroup rating;
-   String URLAdressSong;
+    String URLAdressSong;
+    PrivateMovieCollection pmc;
+    
     /**
      * Initializes the controller class.
      */
@@ -78,6 +81,15 @@ public class AddMovieController implements Initializable {
     @FXML
     private void saveBtn(ActionEvent event) 
     {
+        pmc.setTitle(movieTitle.getText());
+        pmc.setRating(Integer.parseInt(ratingOne.getText()));
+        pmc.setRating(Integer.parseInt(ratingTwo.getText()));
+        pmc.setRating(Integer.parseInt(ratingThree.getText()));
+        pmc.setRating(Integer.parseInt(ratingFour.getText()));
+        pmc.setRating(Integer.parseInt(ratingFive.getText()));
+        Stage stage = (Stage) cancel.getScene().getWindow();
+        stage.close();
+        
         if (URLAdressSong == null || movieTitle==null  )
         {
             

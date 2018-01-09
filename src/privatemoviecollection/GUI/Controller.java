@@ -28,6 +28,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -53,7 +54,13 @@ public class Controller implements Initializable
                                     "Western", "Horror", "Animation", "Thriller",
                                     "War");
     }
-
+    
+    @FXML
+    private void addMoviesToList(MouseEvent event)
+    {
+        
+    }
+    
     @FXML
     private void playMovie(ActionEvent event) throws IOException 
     {
