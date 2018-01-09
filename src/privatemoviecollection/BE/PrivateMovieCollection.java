@@ -5,63 +5,87 @@
  */
 package privatemoviecollection.BE;
 
+import java.util.Date;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  *
  * @author mr.Andersen
  */
 public class PrivateMovieCollection 
 {
- 
-        private String title;
+  private final IntegerProperty id = new SimpleIntegerProperty();
+    private final StringProperty title =  new SimpleStringProperty();
+    private final IntegerProperty rating= new SimpleIntegerProperty();
+    Date lastview;
+     private final StringProperty filelink =  new SimpleStringProperty();
+    public int getId()
+    {
+        return id.get();
+    }
+    
+    public void setId(int id)
+    {
+
+        this.id.set(id);
+    }
+    
+    public IntegerProperty idProperty()
+    {
+        return id;
+    }
+       
 
     public String getTitle() {
-        return title;
+        return title.get();
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.title.set(title);
     }
-
-    private int id;
-
-    public int getId() {
-        return id;
+     public StringProperty titleProperty()
+    {
+        return title;
     }
-
-    public void setId(int id) {
-        this.id = id;
+   public int getRating()
+    {
+        return rating.get();
     }
-
     
-        private int rating;
+    public void setRating(int rating)
+    {
 
-    public int getRating() {
+        this.id.set(rating);
+    }
+    
+    public IntegerProperty ratingProperty()
+    {
         return rating;
     }
 
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
-
-        private String lastview;
-
-    public String getLastview() {
+    public Date getLastview() {
         return lastview;
     }
 
-    public void setLastview(String lastview) {
+    public void setLastview(Date lastview) {
         this.lastview = lastview;
     }
 
-        private String filelink;
+    
 
     public String getFilelink() {
-        return filelink;
+        return filelink.get();
     }
 
     public void setFilelink(String filelink) {
-        this.filelink = filelink;
+        this.filelink.set(filelink);
+    }
+     public StringProperty filelinkProperty()
+    {
+        return filelink;
     }
 
 }
