@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="338.0" prefWidth="337.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="privatemoviecollection.GUI.PrivateMovieCollectionController">
+<AnchorPane id="AnchorPane" prefHeight="338.0" prefWidth="337.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="privatemoviecollection.GUI.AddMovieController">
    <children>
       <Button fx:id="saveBtn" layoutX="46.0" layoutY="298.0" mnemonicParsing="false" text="Save" />
       <Button fx:id="cancelBtn" layoutX="232.0" layoutY="298.0" mnemonicParsing="false" text="Cancel" />
