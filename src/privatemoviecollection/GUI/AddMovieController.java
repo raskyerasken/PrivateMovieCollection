@@ -5,6 +5,7 @@
  */
 package privatemoviecollection.GUI;
 
+import static com.sun.xml.internal.ws.streaming.XMLStreamReaderUtil.close;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -14,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
 import javax.swing.JFileChooser;
 
 /**
@@ -22,7 +24,9 @@ import javax.swing.JFileChooser;
  * @author kasper
  */
 public class AddMovieController implements Initializable {
-
+    
+    @FXML
+    private Button cancel;
     @FXML
     private TextField movieTitle;
     @FXML
@@ -73,20 +77,28 @@ public class AddMovieController implements Initializable {
     }
 
     @FXML
-    private void cancelBtn(ActionEvent event) {
+    private void cancelBtn(ActionEvent event) 
+    {
+        Stage stage = (Stage) cancel.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
-    private void btnSelectMovie(ActionEvent event) {
+    private void btnSelectMovie(ActionEvent event) 
+    {
         JFileChooser chooser = new JFileChooser();
         chooser.setCurrentDirectory(new java.io.File("."));
         chooser.setDialogTitle("choosertitle");
-        if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
- 
-  System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
-} else {
-  System.out.println("No Selection ");
-}
+        
+        if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) 
+        { 
+            System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
+        } 
+        else 
+        {
+            System.out.println("No Selection ");
+        }
+        
         URLAdressSong=""+chooser.getSelectedFile();
         System.out.println(URLAdressSong);
     }

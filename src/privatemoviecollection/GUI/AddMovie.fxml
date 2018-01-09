@@ -10,7 +10,7 @@
 <AnchorPane id="AnchorPane" prefHeight="338.0" prefWidth="337.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="privatemoviecollection.GUI.AddMovieController">
    <children>
       <Button layoutX="46.0" layoutY="298.0" mnemonicParsing="false" onAction="#saveBtn" text="Save" />
-      <Button layoutX="232.0" layoutY="298.0" mnemonicParsing="false" onAction="#cancelBtn" text="Cancel" />
+      <Button fx:id="cancel" layoutX="232.0" layoutY="298.0" mnemonicParsing="false" onAction="#cancelBtn" text="Cancel" />
       <TextField fx:id="movieTitle" layoutX="118.0" layoutY="41.0" prefHeight="27.0" prefWidth="137.0" promptText="Movie title" />
       <RadioButton fx:id="ratingSix" layoutX="238.0" layoutY="112.0" mnemonicParsing="false">
          <toggleGroup>

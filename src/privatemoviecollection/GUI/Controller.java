@@ -91,5 +91,34 @@ public class Controller implements Initializable
             Platform.exit();
         } 
     }
+    
+    @FXML
+    private void handleAbout(ActionEvent event) {  //sets the "About Us"
+             String contentText = "\t Hello, and welcome to our MyTunes."
+                +"\n\t In the file menu you can find:\n"
+                +"\t * How to create a new song\n"
+                +"\t * How to create a new playlist\n"
+                +"\t * How to close the program \n"
+                +"\n\t In the edit menu you can find:\n"
+                +"\t * How to edit a song\n"
+                +"\t * How to edit a playlist\n"
+                +"\t * How to delete a song\n"
+                +"\t * How to delete a playlist\n"
+                +"\n\t We are a four students that created this program.\n"
+                +"\t If you have any problems at all,\n"
+                +"\t you are very welcome to stream into a wall \n"
+                +"\t since there will be roughly zero support from us \n"
+                +"\t unless you throw money at the screen. \n"
+                +"\t Proudly presented by De Raske: \n"
+                +"\t Jacob, Kristófer  & Kasper Raskafar\n";
+                
+        Alert about = new Alert(Alert.AlertType.INFORMATION);
+        about.setTitle("About us and PrivateMovieCollection");
+        about.setHeaderText(null);
+        about.setContentText(contentText);
+        about.getDialogPane().setPrefWidth(480);
+        about.resizableProperty().set(true);
+        about.showAndWait();
+    }
 
 }
