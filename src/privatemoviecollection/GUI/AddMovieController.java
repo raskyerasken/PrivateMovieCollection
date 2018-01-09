@@ -13,6 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
+import javax.swing.JFileChooser;
 
 /**
  * FXML Controller class
@@ -21,10 +23,6 @@ import javafx.scene.control.TextField;
  */
 public class AddMovieController implements Initializable {
 
-    @FXML
-    private Button saveBtn;
-    @FXML
-    private Button cancelBtn;
     @FXML
     private TextField movieTitle;
     @FXML
@@ -59,7 +57,9 @@ public class AddMovieController implements Initializable {
     private RadioButton selectedAnimation;
     @FXML
     private RadioButton selectedWestern;
-
+    @FXML
+    private ToggleGroup rating;
+   String URLAdressSong;
     /**
      * Initializes the controller class.
      */
@@ -67,6 +67,29 @@ public class AddMovieController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void saveBtn(ActionEvent event) {
+    }
+
+    @FXML
+    private void cancelBtn(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnSelectMovie(ActionEvent event) {
+        JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new java.io.File("."));
+        chooser.setDialogTitle("choosertitle");
+        if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+ 
+  System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
+} else {
+  System.out.println("No Selection ");
+}
+        URLAdressSong=""+chooser.getSelectedFile();
+        System.out.println(URLAdressSong);
+    }
 
     
 }
