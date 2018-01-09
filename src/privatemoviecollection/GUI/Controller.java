@@ -28,15 +28,22 @@ public class Controller implements Initializable
     private ObservableList<String> allListBox;
     private ListView<String> listBox;
     
+//    ObservableList<String> selectGenre = 
+//    FXCollections.observableArrayList(
+//        "1",
+//        "2",
+//        "3"
+//    );
+//ComboBox comboBox = new ComboBox(selectGenre);  
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        //allListBox = FXCollections.observableArrayList();
+        allListBox = FXCollections.observableArrayList();
         //listBox.setItems(allListBox);
         selectGenre.getItems().removeAll(selectGenre.getItems());
         selectGenre.getItems().addAll("Triangle", "Circle","Rectangle");
-        selectGenre.getSelectionModel().select("Triangle");
+        //selectGenre.getSelectionModel().select("Triangle");
     }    
     
 }
