@@ -28,6 +28,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -39,21 +40,10 @@ public class Controller implements Initializable
 {    
     @FXML
     private ComboBox<String> selectGenre;
-    private ObservableList<String> allListBox;
-    private ListView<String> listBox;
     private Stage primaryStage;
-    @FXML
     private Button addMovieBtn;
-    
-    
-//    ObservableList<String> selectGenre = 
-//    FXCollections.observableArrayList(
-//        "1",
-//        "2",
-//        "3"
-//    );
-//ComboBox comboBox = new ComboBox(selectGenre);  
-
+    @FXML
+    private GridPane movieList;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
@@ -62,7 +52,6 @@ public class Controller implements Initializable
         selectGenre.getItems().addAll("Action", "Drama","Crime", "Sci-Fi", "Crime", 
                                     "Western", "Horror", "Animation", "Thriller",
                                     "War");
-        //selectGenre.getSelectionModel().select("Triangle");
     }
 
     @FXML
@@ -149,9 +138,9 @@ public class Controller implements Initializable
     
     @FXML
     private void handleAbout(ActionEvent event) {  //sets the "About Us"
-             String contentText = "\t Hello, and welcome to our MyTunes."
+             String contentText = "\t Hello, and welcome to our PrivateMovieCollection."
                 +"\n\t In the file menu you can find:\n"
-                +"\t * How to create a new song\n"
+                +"\t * How to add a new movie\n"
                 +"\t * How to create a new playlist\n"
                 +"\t * How to close the program \n"
                 +"\n\t In the edit menu you can find:\n"
