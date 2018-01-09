@@ -37,7 +37,7 @@ public class Controller implements Initializable
         allListBox = FXCollections.observableArrayList();
         //listBox.setItems(allListBox);
         selectGenre.getItems().removeAll(selectGenre.getItems());
-        selectGenre.getItems().addAll("Triangle", "Circle","Rectangle");
+        selectGenre.getItems().addAll("Action", "Drama","Crime", "Sci-Fi");
         //selectGenre.getSelectionModel().select("Triangle");
     }
 
@@ -46,7 +46,7 @@ public class Controller implements Initializable
     {
         File file = new File("");
         Desktop desktop = Desktop.getDesktop();
-        file = new File("C:\\Users\\mr.Andersen\\Downloads\\Knightfall.S01E01.720p.HDTV.x264-AVS\\knightfall");
+        file = new File("C:\\Users\\mr.Andersen\\Downloads\\Knightfall.S01E03.720p.HDTV.x264-KILLERS\\Knightfall.S01E03.720p.HDTV.x264-KILLERS");
         desktop.open(file);
     }
     

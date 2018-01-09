@@ -19,7 +19,7 @@ import javafx.scene.control.TextField;
  *
  * @author kasper
  */
-public class PrivateMovieCollectionController implements Initializable {
+public class AddMovieController implements Initializable {
 
     @FXML
     private Button saveBtn;
