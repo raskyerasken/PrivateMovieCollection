@@ -20,7 +20,7 @@
             <items>
               <MenuItem mnemonicParsing="false" text="Add" />
                   <MenuItem mnemonicParsing="false" text="Remove" />
-                  <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem mnemonicParsing="false" onAction="#closeProgram" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
