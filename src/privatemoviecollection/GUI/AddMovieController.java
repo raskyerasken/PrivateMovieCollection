@@ -19,8 +19,12 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
 import javax.swing.JFileChooser;
+<<<<<<< HEAD
 import privatemoviecollection.BE.CategoryID;
+=======
+>>>>>>> b74ee3eb11332442c783dc4eb7eade3e1a37b2a9
 import privatemoviecollection.BE.PrivateMovieCollection;
 
 /**
@@ -29,7 +33,9 @@ import privatemoviecollection.BE.PrivateMovieCollection;
  * @author kasper
  */
 public class AddMovieController implements Initializable {
-
+    
+    @FXML
+    private Button cancel;
     @FXML
     private TextField movieTitle;
     @FXML
@@ -64,6 +70,7 @@ public class AddMovieController implements Initializable {
     private RadioButton selectedAnimation;
     @FXML
     private RadioButton selectedWestern;
+<<<<<<< HEAD
     private PrivateMovieCollection movieRate;
     private CategoryID genreMovie;
    String URLAdressSong;
@@ -71,6 +78,13 @@ public class AddMovieController implements Initializable {
     private ToggleGroup movieRating;
     @FXML
     private ToggleGroup movieGenre;
+=======
+    @FXML
+    private ToggleGroup rating;
+    String URLAdressSong;
+    PrivateMovieCollection pmc;
+    
+>>>>>>> b74ee3eb11332442c783dc4eb7eade3e1a37b2a9
     /**
      * Initializes the controller class.
      */
@@ -80,30 +94,46 @@ public class AddMovieController implements Initializable {
     }    
 
     @FXML
-    private void saveBtn(ActionEvent event) {
+    private void saveBtn(ActionEvent event) 
+    {
+        pmc.setTitle(movieTitle.getText());
+        pmc.setRating(Integer.parseInt(ratingOne.getText()));
+        pmc.setRating(Integer.parseInt(ratingTwo.getText()));
+        pmc.setRating(Integer.parseInt(ratingThree.getText()));
+        pmc.setRating(Integer.parseInt(ratingFour.getText()));
+        pmc.setRating(Integer.parseInt(ratingFive.getText()));
+        Stage stage = (Stage) cancel.getScene().getWindow();
+        stage.close();
+        
         if (URLAdressSong == null || movieTitle==null  )
         {
+            
         }
     }
 
     @FXML
-    private void cancelBtn(ActionEvent event) {
-      
-            Platform.exit();
-       
+    private void cancelBtn(ActionEvent event) 
+    {
+        Stage stage = (Stage) cancel.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
-    private void btnSelectMovie(ActionEvent event) {
+    private void btnSelectMovie(ActionEvent event) 
+    {
         JFileChooser chooser = new JFileChooser();
         chooser.setCurrentDirectory(new java.io.File("."));
         chooser.setDialogTitle("choosertitle");
-        if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
- 
-  System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
-} else {
-  System.out.println("No Selection ");
-}
+        
+        if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) 
+        { 
+            System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
+        } 
+        else 
+        {
+            System.out.println("No Selection ");
+        }
+        
         URLAdressSong=""+chooser.getSelectedFile();
         System.out.println(URLAdressSong);
     }
