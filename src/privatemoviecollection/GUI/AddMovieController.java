@@ -17,9 +17,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import javax.swing.JFileChooser;
+import privatemoviecollection.BE.CategoryID;
 import privatemoviecollection.BE.PrivateMovieCollection;
 
 /**
@@ -65,9 +67,15 @@ public class AddMovieController implements Initializable {
     private RadioButton selectedAnimation;
     @FXML
     private RadioButton selectedWestern;
+    private PrivateMovieCollection movieRate;
+    private CategoryID genreMovie;
+   String URLAdressSong;
+    @FXML
+    private ToggleGroup movieRating;
+    @FXML
+    private ToggleGroup movieGenre;
     @FXML
     private ToggleGroup rating;
-    String URLAdressSong;
     PrivateMovieCollection pmc;
     
     /**
@@ -123,5 +131,94 @@ public class AddMovieController implements Initializable {
         System.out.println(URLAdressSong);
     }
 
+    
+    
+  
+    private void saveRating()
+    {
+        String title = movieTitle.getText();
+        Toggle rating = movieRating.getSelectedToggle();
+
+        if (rating.equals(ratingOne))
+                {
+                    movieRate.setRating(1);  
+                }
+        if (rating.equals(ratingTwo))
+                {
+                    movieRate.setRating(2);  
+                }
+        if (rating.equals(ratingThree))
+                {
+                    movieRate.setRating(3);
+                }
+        if (rating.equals(ratingFour))
+                {
+                    movieRate.setRating(4);
+                }
+        if (rating.equals(ratingFive))
+                {
+                    movieRate.setRating(5);
+                }
+        if (rating.equals(ratingSix))
+                {
+                    movieRate.setRating(6);
+                }
+        
+        
+        Toggle genre = movieGenre.getSelectedToggle();
+        
+        
+        //Checks which genres have been selected
+        if (genre.equals(selectedDrama))
+        {
+            genreMovie.setCategory("Drama");
+        }
+        
+        if (genre.equals(selectedHorror))
+        {
+            genreMovie.setCategory("Horror");
+        }
+        
+        if (genre.equals(selectedAction))
+        {
+            genreMovie.setCategory("Action");
+        }
+        if (genre.equals(selectedCrime))
+        {
+            genreMovie.setCategory("Crime");
+        }
+        if (genre.equals(selectedComedy))
+        {
+            genreMovie.setCategory("Comedy");
+        }
+        if (genre.equals(selectedWar))
+        {
+            genreMovie.setCategory("War");
+        }
+        if (genre.equals(selectedThriller))
+        {
+            genreMovie.setCategory("Thriller");
+        }
+        if (genre.equals(selectedNoir))
+        {
+            genreMovie.setCategory("Noir");
+        }
+        if (genre.equals(selectedAnimation))
+        {
+            genreMovie.setCategory("Animation");
+        }
+        if (genre.equals(selectedWestern))
+        {
+            genreMovie.setCategory("Western");
+        }
+        
+        
+        movieRate.setTitle(title);
+                                                               
+      
+        
+    }
+    
+   
     
 }
