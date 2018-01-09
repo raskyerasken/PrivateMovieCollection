@@ -16,13 +16,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 
 /**
  *
@@ -52,21 +56,40 @@ public class Controller implements Initializable
         desktop.open(file);
     }
     
-        //allows the user to close the program, and does a pop-up making sure the user actually wants to
+    void newAddMovieView() throws IOException
+    {
+        Stage newStage = new Stage();
+
+        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("AddMovie.fxml"));
+        Parent root = fxLoader.load();
+        AddMovieController controller= fxLoader.getController();
+        
+         
+        Scene scene = new Scene(root);
+        newStage.setScene(scene);
+        newStage.show();
+    }
+    
+    @FXML
+    private void addMovie(ActionEvent event) throws IOException 
+    {
+        newAddMovieView();
+    }    
+    
+    //allows the user to close the program, and does a pop-up making sure the user actually wants to
     @FXML
     private void closeProgram(ActionEvent event) 
     {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");
         alert.setHeaderText(null);
-        alert.setContentText("Are you sure you want to exit this awesome mp3 player?");
+        alert.setContentText("Are you sure you want to exit this awesome Program?");
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK)
         {
             Platform.exit();
         } 
-    } 
-    
-    
+    }
+
 }
