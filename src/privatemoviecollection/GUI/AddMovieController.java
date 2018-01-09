@@ -74,9 +74,9 @@ public class AddMovieController implements Initializable {
     private ToggleGroup movieRating;
     @FXML
     private ToggleGroup movieGenre;
-    @FXML
-    private ToggleGroup rating;
     PrivateMovieCollection pmc;
+    @FXML
+    private Button selectMovie;
     
     /**
      * Initializes the controller class.
@@ -129,6 +129,8 @@ public class AddMovieController implements Initializable {
         
         URLAdressSong=""+chooser.getSelectedFile();
         System.out.println(URLAdressSong);
+        Stage stage = (Stage) selectMovie.getScene().getWindow();
+        stage.toFront();
     }
 
     
@@ -164,11 +166,7 @@ public class AddMovieController implements Initializable {
                     movieRate.setRating(6);
                 }
         
-        
         Toggle genre = movieGenre.getSelectedToggle();
-        
-        
-        //Checks which genres have been selected
         if (genre.equals(selectedDrama))
         {
             genreMovie.setCategory("Drama");
@@ -212,11 +210,7 @@ public class AddMovieController implements Initializable {
             genreMovie.setCategory("Western");
         }
         
-        
         movieRate.setTitle(title);
-                                                               
-      
-        
     }
     
    

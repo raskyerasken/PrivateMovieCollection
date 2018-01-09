@@ -53,6 +53,6 @@
       <RadioButton fx:id="selectedAnimation" layoutX="136.0" layoutY="265.0" mnemonicParsing="false" toggleGroup="$movieGenre" />
       <RadioButton fx:id="selectedWestern" layoutX="197.0" layoutY="265.0" mnemonicParsing="false" toggleGroup="$movieGenre" />
       <Label layoutX="128.0" layoutY="143.0" text="Select genres" />
-      <Button layoutX="115.0" layoutY="298.0" mnemonicParsing="false" onAction="#btnSelectMovie" text="Select Movie" />
+      <Button fx:id="selectMovie" layoutX="115.0" layoutY="298.0" mnemonicParsing="false" onAction="#btnSelectMovie" text="Select Movie" />
    </children>
 </AnchorPane>
