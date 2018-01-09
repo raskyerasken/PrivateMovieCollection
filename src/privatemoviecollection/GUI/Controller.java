@@ -5,6 +5,9 @@
  */
 package privatemoviecollection.GUI;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -28,14 +31,6 @@ public class Controller implements Initializable
     private ObservableList<String> allListBox;
     private ListView<String> listBox;
     
-//    ObservableList<String> selectGenre = 
-//    FXCollections.observableArrayList(
-//        "1",
-//        "2",
-//        "3"
-//    );
-//ComboBox comboBox = new ComboBox(selectGenre);  
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
@@ -44,6 +39,15 @@ public class Controller implements Initializable
         selectGenre.getItems().removeAll(selectGenre.getItems());
         selectGenre.getItems().addAll("Triangle", "Circle","Rectangle");
         //selectGenre.getSelectionModel().select("Triangle");
-    }    
+    }
+
+    @FXML
+    private void playMovie(ActionEvent event) throws IOException 
+    {
+        File file = new File("");
+        Desktop desktop = Desktop.getDesktop();
+        file = new File("C:\\Users\\mr.Andersen\\Downloads\\Knightfall.S01E01.720p.HDTV.x264-AVS\\knightfall");
+        desktop.open(file);
+    }
     
 }
