@@ -7,11 +7,15 @@ package privatemoviecollection.GUI;
 
 import static com.sun.xml.internal.ws.streaming.XMLStreamReaderUtil.close;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -74,13 +78,23 @@ public class AddMovieController implements Initializable {
 
     @FXML
     private void saveBtn(ActionEvent event) {
+        if (URLAdressSong == null || movieTitle==null  )
+        {
+        }
     }
 
     @FXML
+<<<<<<< HEAD
     private void cancelBtn(ActionEvent event) 
     {
         Stage stage = (Stage) cancel.getScene().getWindow();
         stage.close();
+=======
+    private void cancelBtn(ActionEvent event) {
+      
+            Platform.exit();
+       
+>>>>>>> a459f23d5b3f037326f91d0f3884725e99fae11d
     }
 
     @FXML
