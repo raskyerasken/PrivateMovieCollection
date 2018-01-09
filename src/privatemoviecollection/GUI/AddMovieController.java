@@ -84,17 +84,10 @@ public class AddMovieController implements Initializable {
     }
 
     @FXML
-<<<<<<< HEAD
     private void cancelBtn(ActionEvent event) 
     {
         Stage stage = (Stage) cancel.getScene().getWindow();
         stage.close();
-=======
-    private void cancelBtn(ActionEvent event) {
-      
-            Platform.exit();
-       
->>>>>>> a459f23d5b3f037326f91d0f3884725e99fae11d
     }
 
     @FXML
