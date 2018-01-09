@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import privatemoviecollection.BE.PrivateMovieCollection;
@@ -23,11 +24,12 @@ import privatemoviecollection.BE.PrivateMovieCollection;
  */
 public class PrivateMovieCollectionDAL 
 {
-   private ConnectionManager cm = new ConnectionManager();
+    private ConnectionManager cm = new ConnectionManager();
     
-    public ArrayList<PrivateMovieCollection> getAllMovies(String search) throws SQLServerException, SQLException
+    public List<PrivateMovieCollection> getAllMovies()
     {
-        ArrayList<PrivateMovieCollection> allMovies = new ArrayList<>();
+        List<PrivateMovieCollection> allMovies 
+                = new ArrayList<>();
         
         try (Connection con = cm.getConnection())
         {

@@ -5,11 +5,28 @@
  */
 package privatemoviecollection.GUI;
 
+import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import privatemoviecollection.BE.PrivateMovieCollection;
+import privatemoviecollection.BLL.BLLManager;
+
 /**
  *
  * @author mr.Andersen
  */
 public class Model 
 {
+    private BLLManager bllManager = new BLLManager();
     
+    private ObservableList<PrivateMovieCollection> movieList
+            = FXCollections.observableArrayList();
+    
+    List<PrivateMovieCollection> getAllMovies()
+    {
+        movieList.clear();
+//        movieList.addAll(bllManager.getAllMovies());
+        
+        return movieList;
+    }
 }
