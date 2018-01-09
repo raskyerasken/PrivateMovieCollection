@@ -19,7 +19,7 @@ public class CategoryID
 {   
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty category=  new SimpleStringProperty();
- 
+    
 
     public String getCategory()
     {
