@@ -20,10 +20,6 @@ public class BLLManager
 {
     PrivateMovieCollectionDAL pmcdal = new PrivateMovieCollectionDAL();
     
-    public List<PrivateMovieCollection> getAllMovies(String pList) throws SQLException 
-    {
-        return pmcdal.getAllMovies(pList);
-    }
     
     public void add(PrivateMovieCollection allMovies) throws SQLException
     {
@@ -34,15 +30,15 @@ public class BLLManager
 //    {
 //        return pmcdal.getAllMovies();
 //    }
-//    
-//    public void remove(PrivateMovieCollection selectPrivateMovieCollection)
+    
+    public void remove(PrivateMovieCollection selectPrivateMovieCollection) throws SQLException
+    {
+        pmcdal.remove(selectPrivateMovieCollection);
+    }
+    
+//    public void add(CategoryID allMovies) 
 //    {
-//        pmcdal.remove(selectPrivateMovieCollection);
-//    }
-//    
-//    public void add(CategoryID categoryid)
-//    {
-//        pmcdal.add(categoryid);
+//        pmcdal.addCategoryID(allMovies);
 //    }
 //    
 //    public List<CategoryID> getAllByGenre()
