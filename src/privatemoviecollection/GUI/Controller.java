@@ -5,11 +5,8 @@
  */
 package privatemoviecollection.GUI;
 
-<<<<<<< HEAD
-=======
 import java.awt.Desktop;
 import java.io.File;
->>>>>>> 3eb22510c0a5b6291353ffd459445b8d559fa491
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -29,12 +26,9 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-<<<<<<< HEAD
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
-=======
->>>>>>> 3eb22510c0a5b6291353ffd459445b8d559fa491
 import javafx.stage.Stage;
 
 /**
@@ -45,7 +39,6 @@ public class Controller implements Initializable
 {    
     @FXML
     private ComboBox<String> selectGenre;
-<<<<<<< HEAD
     private ObservableList<String> allListBox;
     private ListView<String> listBox;
     private Stage primaryStage;
@@ -60,8 +53,7 @@ public class Controller implements Initializable
 //        "3"
 //    );
 //ComboBox comboBox = new ComboBox(selectGenre);  
-=======
->>>>>>> 3eb22510c0a5b6291353ffd459445b8d559fa491
+
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
@@ -102,7 +94,6 @@ public class Controller implements Initializable
         newAddMovieView();
     }    
     
-<<<<<<< HEAD
     
     private void loadStage(String viewName) throws IOException
     {
@@ -140,7 +131,6 @@ public class Controller implements Initializable
 
         alert.showAndWait();
     }
-=======
     //allows the user to close the program, and does a pop-up making sure the user actually wants to
     @FXML
     private void closeProgram(ActionEvent event) 
@@ -157,5 +147,4 @@ public class Controller implements Initializable
         } 
     }
 
->>>>>>> 3eb22510c0a5b6291353ffd459445b8d559fa491
 }
