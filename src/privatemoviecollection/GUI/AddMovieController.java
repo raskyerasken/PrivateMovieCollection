@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
@@ -51,38 +52,33 @@ public class AddMovieController implements Initializable {
     private RadioButton ratingFour;
     @FXML
     private RadioButton ratingFive;
-    @FXML
     private RadioButton selectedDrama;
-    @FXML
     private RadioButton selectedHorror;
-    @FXML
     private RadioButton selectedAction;
-    @FXML
     private RadioButton selectedCrime;
-    @FXML
     private RadioButton selectedComedy;
-    @FXML
     private RadioButton selectedWar;
-    @FXML
     private RadioButton selectedThriller;
-    @FXML
     private RadioButton selectedNoir;
-    @FXML
     private RadioButton selectedAnimation;
-    @FXML
     private RadioButton selectedWestern;
     
     private CategoryID genreMovie = new CategoryID();
    String URLAdressSong;
     @FXML
     private ToggleGroup movieRating;
-    @FXML
     private ToggleGroup movieGenre;
    
     @FXML
     private Button selectMovie;
      PrivateMovieCollection movie=new PrivateMovieCollection();
      BLLManager BLL= new BLLManager();
+    @FXML
+    private ComboBox<?> selectGenre1;
+    @FXML
+    private ComboBox<?> selectGenre2;
+    @FXML
+    private ComboBox<?> selectGenre3;
     /**
      * Initializes the controller class.
      */
