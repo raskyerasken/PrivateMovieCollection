@@ -9,6 +9,8 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import static java.util.Collections.list;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -30,9 +32,11 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import privatemoviecollection.BE.PrivateMovieCollection;
+import privatemoviecollection.BLL.BLLManager;
 
 /**
  *
@@ -45,7 +49,8 @@ public class Controller implements Initializable
     private Stage primaryStage;
     private Button addMovieBtn;
     @FXML
-    private GridPane movieList;
+    private GridPane gridpane;
+    BLLManager BLL=new BLLManager();
    
     @Override
     public void initialize(URL url, ResourceBundle rb) 
@@ -56,11 +61,6 @@ public class Controller implements Initializable
                                     "War");
     }
     
-    @FXML
-    private void addMoviesToList(MouseEvent event)
-    {
-        
-    }
     
     @FXML
     private void playMovie(ActionEvent event) throws IOException 
@@ -169,6 +169,25 @@ public class Controller implements Initializable
         about.getDialogPane().setPrefWidth(480);
         about.resizableProperty().set(true);
         about.showAndWait();
+    }
+int a,b =0;
+    @FXML
+    private void trybtn(ActionEvent event) {
+      List allMovie=  BLL.getAllMovie();
+        System.out.println(allMovie);
+         TextField tf1 = new TextField();
+         /*
+        tf1.setText("hey0");
+        gridpane.add(tf1,a,b);
+       a++;
+       if (a==4)
+       {
+       b++;
+       a=0;
+    RowConstraints row = new RowConstraints(100);
+    gridpane.getRowConstraints().add(row);
+       }
+        System.out.println(a+"="+b);*/
     }
 
 }

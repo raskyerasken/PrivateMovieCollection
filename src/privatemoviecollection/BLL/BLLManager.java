@@ -70,4 +70,8 @@ public class BLLManager
     {
         pmcdal.update(privateMovieCollection);
     }
+
+    public List getAllMovie() {
+     return pmcdal.getAllMovies();
+    }
 }
