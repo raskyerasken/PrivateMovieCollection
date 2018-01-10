@@ -45,6 +45,8 @@ public class addCategoryController {
     private void cancelBtn(ActionEvent event) {
     }
 
+   
+    
     @FXML
     private void addGenre(ActionEvent event) throws SQLException {
         category.setCategory(txtAddGenre.getText());

@@ -102,11 +102,21 @@ public class Controller implements Initializable
         newStage.show();
     }
     
-    @FXML
-    private void addMovie(ActionEvent event) throws IOException 
+    void newAddGenreView() throws IOException
     {
-        newAddMovieView();
-    }    
+        Stage newStage = new Stage();
+
+        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("addCategory.fxml"));
+        Parent root = fxLoader.load();
+        AddMovieController controller= fxLoader.getController();
+        controller.setModel(model);
+         
+        Scene scene = new Scene(root);
+        newStage.setScene(scene);
+        newStage.show();
+    }
+    
+    
     
     
     private void loadStage(String viewName) throws IOException
@@ -124,17 +134,7 @@ public class Controller implements Initializable
         newStage.show();
     }
     
-     private void addMovie()
-    {
-        try
-        {
-            loadStage("addMovie.fxml");
-        }
-        catch (IOException ex)
-        {
-            showErrorDialog("I/O Exception", "DATASTREAM FAILED!", "The requested view could not be loaded.");
-        }
-    }
+    
      
      private void showErrorDialog(String title, String header, String message)
     {
@@ -187,28 +187,29 @@ public class Controller implements Initializable
         about.resizableProperty().set(true);
         about.showAndWait();
     }
-int a,b =0;
-    @FXML
-    private void trybtn(ActionEvent event) {
-      List allMovie=  BLL.getAllMovie();
-        System.out.println(allMovie);
-         TextField tf1 = new TextField();
-         /*
-        tf1.setText("hey0");
-        gridpane.add(tf1,a,b);
-       a++;
-       if (a==4)
-       {
-       b++;
-       a=0;
-    RowConstraints row = new RowConstraints(100);
-    gridpane.getRowConstraints().add(row);
-       }
-        System.out.println(a+"="+b);*/
-    }
+    
 
     @FXML
     private void getSelectedPlaylist(MouseEvent event) {
     }
 
-}
+    @FXML
+    private void addGenre(ActionEvent event) throws IOException {
+        newAddGenreView();
+    }
+
+    @FXML
+    private void addMovie(ActionEvent event) throws IOException 
+    {
+        newAddMovieView();
+    }    
+    
+    
+    
+    
+    
+    
+    
+    }
+
+
