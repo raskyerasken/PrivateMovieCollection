@@ -36,12 +36,19 @@ public class Model
    void add (PrivateMovieCollection movie) throws SQLException
     {   
         bllManager.add(movie);
-       movieList.add(movie);
+        movieList.add(movie);
     }
 
-    void addGenre(CategoryID category) throws SQLException {
-    bllManager.addGenre(category);
-            }
+    void addGenre(CategoryID category) throws SQLException 
+    {
+        bllManager.addGenre(category);
+    }
+    
+    public void removeMovie(PrivateMovieCollection movie) throws SQLException
+    {
+        bllManager.remove(movie);
+        movieList.remove(movie);
+    }
 
     ObservableList<CategoryID> allGenre() {
         
