@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import privatemoviecollection.BE.CategoryID;
 import privatemoviecollection.BE.PrivateMovieCollection;
 import privatemoviecollection.BLL.BLLManager;
 
@@ -37,4 +38,8 @@ public class Model
         bllManager.add(movie);
        movieList.add(movie);
     }
+
+    void addGenre(CategoryID category) throws SQLException {
+    bllManager.addGenre(category);
+            }
 }

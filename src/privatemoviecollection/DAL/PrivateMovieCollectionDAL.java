@@ -173,8 +173,8 @@ public class PrivateMovieCollectionDAL
         {
           
             String sql
-                    = "INSERT INTO Movie"
-                    + "(genre) "
+                    = "INSERT INTO Category"
+                    + "(name) "
                     + "VALUES(?)";
             
             PreparedStatement pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
