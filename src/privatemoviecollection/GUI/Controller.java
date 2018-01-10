@@ -29,7 +29,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
@@ -50,15 +53,29 @@ public class Controller implements Initializable
     private Button addMovieBtn;
     BLLManager BLL=new BLLManager();
     @FXML
-    private ListView<?> movieListView;
-   
+    private TableView<PrivateMovieCollection> movieListView;
+    @FXML
+    private TableColumn<PrivateMovieCollection, String> TItle;
+    @FXML
+    private TableColumn<PrivateMovieCollection, Integer> rating;
+    @FXML
+    private TableColumn<PrivateMovieCollection, String> filelink;
+   Model model= new Model();
     @Override
-    public void initialize(URL url, ResourceBundle rb) 
+    public
+ void initialize(URL url, ResourceBundle rb) 
     {
         selectGenre.getItems().removeAll(selectGenre.getItems());
         selectGenre.getItems().addAll("Action", "Drama","Crime", "Sci-Fi", "Crime", 
                                     "Western", "Horror", "Animation", "Thriller",
                                     "War");
+          TItle.setCellValueFactory(
+            new PropertyValueFactory("title"));
+           rating.setCellValueFactory(
+            new PropertyValueFactory("rating"));
+            filelink.setCellValueFactory(
+            new PropertyValueFactory("filelink"));
+            movieListView.setItems((ObservableList<PrivateMovieCollection>)model.getAllMovies() );
     }
     
     
@@ -188,6 +205,10 @@ int a,b =0;
     gridpane.getRowConstraints().add(row);
        }
         System.out.println(a+"="+b);*/
+    }
+
+    @FXML
+    private void getSelectedPlaylist(MouseEvent event) {
     }
 
 }

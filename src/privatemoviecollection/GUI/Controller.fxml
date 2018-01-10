@@ -2,10 +2,11 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
@@ -39,6 +40,12 @@
       <Button layoutX="23.0" layoutY="46.0" mnemonicParsing="false" onAction="#addMovie" text="Add movie" />
       <Button layoutX="331.0" layoutY="46.0" mnemonicParsing="false" onAction="#playMovie" style="-fx-background-radius: 30;" text="Play Movie" />
       <Button layoutX="261.0" layoutY="47.0" mnemonicParsing="false" onAction="#trybtn" text="Button" />
-      <ListView fx:id="movieListView" layoutX="30.0" layoutY="100.0" prefHeight="531.0" prefWidth="616.0" />
+      <TableView fx:id="movieListView" layoutX="22.0" layoutY="94.0" onMouseClicked="#getSelectedPlaylist" prefHeight="538.0" prefWidth="699.0">
+         <columns>
+            <TableColumn fx:id="TItle" prefWidth="210.0" text="Title" />
+            <TableColumn fx:id="rating" minWidth="0.0" prefWidth="221.0" text="Rating" />
+            <TableColumn fx:id="filelink" prefWidth="267.0" text="Filelink" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>

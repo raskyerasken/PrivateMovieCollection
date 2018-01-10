@@ -74,4 +74,8 @@ public class BLLManager
     public List getAllMovie() {
      return pmcdal.getAllMovies();
     }
+
+    public List<PrivateMovieCollection> getAllMovies() {
+    return pmcdal.getAllMovies();
+    }
 }

@@ -5,12 +5,10 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 
 <AnchorPane id="AnchorPane" prefHeight="636.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="privatemoviecollection.GUI.Controller">
    <children>
@@ -35,29 +33,19 @@
           </Menu>
         </menus>
       </MenuBar>
-      <GridPane fx:id="gridpane" layoutX="23.0" layoutY="100.0" prefHeight="531.0" prefWidth="701.0">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-      </GridPane>
-      <ScrollBar layoutX="6.0" layoutY="100.0" orientation="VERTICAL" prefHeight="531.0" prefWidth="17.0" />
-      <ComboBox fx:id="selectGenre" layoutX="99.0" layoutY="46.0" prefWidth="150.0" promptText="Select Genre" />
+      <ComboBox fx:id="selectGenre" layoutX="111.0" layoutY="47.0" prefWidth="150.0" promptText="Select Genre" />
       <TextField layoutX="495.0" layoutY="46.0" promptText="Search for movies here" />
       <Button layoutX="671.0" layoutY="46.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="64.0" style="-fx-background-radius: 30;" text="Search" />
       <Button layoutX="331.0" layoutY="46.0" mnemonicParsing="false" style="-fx-background-radius: 30;" text="Play Movie" />
       <Button layoutX="23.0" layoutY="46.0" mnemonicParsing="false" onAction="#addMovie" text="Add movie" />
       <Button layoutX="331.0" layoutY="46.0" mnemonicParsing="false" onAction="#playMovie" style="-fx-background-radius: 30;" text="Play Movie" />
       <Button layoutX="261.0" layoutY="47.0" mnemonicParsing="false" onAction="#trybtn" text="Button" />
+      <TableView fx:id="movieListView" layoutX="22.0" layoutY="94.0" onMouseClicked="#getSelectedPlaylist" prefHeight="538.0" prefWidth="699.0">
+         <columns>
+            <TableColumn fx:id="TItle" prefWidth="210.0" text="Title" />
+            <TableColumn fx:id="rating" minWidth="0.0" prefWidth="221.0" text="Rating" />
+            <TableColumn fx:id="filelink" prefWidth="267.0" text="Filelink" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>

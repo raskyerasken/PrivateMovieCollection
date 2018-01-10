@@ -25,7 +25,7 @@ public class Model
     List<PrivateMovieCollection> getAllMovies()
     {
         movieList.clear();
-//        movieList.addAll(bllManager.getAllMovies());
+        movieList.addAll(bllManager.getAllMovies());
         
         return movieList;
     }
