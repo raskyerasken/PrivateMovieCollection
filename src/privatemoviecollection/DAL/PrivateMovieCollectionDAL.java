@@ -62,7 +62,7 @@ public class PrivateMovieCollectionDAL
     }
     
     //hello
-    public ArrayList<PrivateMovieCollection> getAllByGenre(String search) throws SQLException, SQLServerException
+    public List<PrivateMovieCollection> getAllByGenre(String search) throws SQLException, SQLServerException
     {
         ArrayList<PrivateMovieCollection> allGenres = new ArrayList<>();
         

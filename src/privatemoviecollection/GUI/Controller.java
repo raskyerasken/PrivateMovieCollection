@@ -61,6 +61,10 @@ public class Controller implements Initializable
     @FXML
     private TableColumn<PrivateMovieCollection, String> filelink;
    Model model= new Model();
+    @FXML
+    private TextField txtSearch;
+    @FXML
+    private Button searchBtn;
     @Override
     public
  void initialize(URL url, ResourceBundle rb) 
@@ -203,6 +207,10 @@ public class Controller implements Initializable
     {
         newAddMovieView();
     }    
+
+    @FXML
+    private void searchMovie(ActionEvent event) {
+    }
     
     
     
