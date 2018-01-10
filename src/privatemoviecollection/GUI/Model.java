@@ -42,4 +42,10 @@ public class Model
     void addGenre(CategoryID category) throws SQLException {
     bllManager.addGenre(category);
             }
+
+    ObservableList<CategoryID> allGenre() {
+        
+        return bllManager.allGenre();
+        
+    }
 }

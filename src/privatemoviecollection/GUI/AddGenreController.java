@@ -5,21 +5,27 @@
  */
 package privatemoviecollection.GUI;
 
+import java.net.URL;
 import java.sql.SQLException;
-import java.util.Locale;
+import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import privatemoviecollection.BE.CategoryID;
+import privatemoviecollection.BE.PrivateMovieCollection;
 import privatemoviecollection.BLL.BLLManager;
 
 /**
+ * FXML Controller class
  *
- * @author kasper
+ * @author jacob
  */
-public class addCategoryController {
+public class AddGenreController implements Initializable {
 
     @FXML
     private Button saveGenre;
@@ -32,13 +38,25 @@ public class addCategoryController {
     @FXML
     private Button removeGenre;
     @FXML
-    private ListView<?> genreListView;
+    private ListView<String> genreListView;
     
+ private ObservableList<String> genrelist
+            = FXCollections.observableArrayList();
+ 
     BLLManager Bll = new BLLManager();
     CategoryID category = new  CategoryID();
     private Model model;
-    
-    @FXML
+    /**
+     * Initializes the controller class.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+      
+        
+    }    
+
+     @FXML
     private void saveBtn(ActionEvent event) {
     }
 
@@ -49,19 +67,24 @@ public class addCategoryController {
     @FXML
     private void removeGenre(ActionEvent event) throws SQLException {
         
-        Bll.removeGenre((CategoryID) genreListView.getSelectionModel().getSelectedItem());
+       Bll.removeGenre( genreListView.getSelectionModel().getSelectedItem());
     }
     
     @FXML
     private void addGenre(ActionEvent event) throws SQLException {
         category.setCategory(txtAddGenre.getText());
+        
         model.addGenre(category);
     }
 
     void setModel(Model model) {
         this.model=model;
+        genreListView.getItems().clear();
+       //genreListView.setItems(model.allGenre());
+        for (CategoryID categoryID : model.allGenre()) {
+           genrelist.add(categoryID.getCategory());
+         }
+        genreListView.setItems(genrelist);
     }
     
-    
 }
-

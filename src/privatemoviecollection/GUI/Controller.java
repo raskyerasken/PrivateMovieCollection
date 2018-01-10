@@ -106,9 +106,9 @@ public class Controller implements Initializable
     {
         Stage newStage = new Stage();
 
-        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("addCategory.fxml"));
+        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("addGenre.fxml"));
         Parent root = fxLoader.load();
-       addCategoryController controller= fxLoader.getController();
+        AddGenreController controller= fxLoader.getController();
         controller.setModel(model);
          
         Scene scene = new Scene(root);

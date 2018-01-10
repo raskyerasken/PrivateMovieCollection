@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import privatemoviecollection.BE.CategoryID;
 import privatemoviecollection.BE.PrivateMovieCollection;
 
@@ -197,13 +199,13 @@ public class PrivateMovieCollectionDAL
     }   
         
     }     
-    public void removeGenre(CategoryID genre) throws SQLServerException, SQLException
+    public void removeGenre(String genre) throws SQLServerException, SQLException
     {
         try (Connection con = cm.getConnection()) {
-            String sql = "DELETE FROM category WHERE name)=";
+            String sql = "DELETE FROM Category WHERE name)=";
             
             PreparedStatement pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, genre.getCategory());
+            pstmt.setString(1, genre);
             pstmt.execute();
             
         }
@@ -213,6 +215,33 @@ public class PrivateMovieCollectionDAL
             
         }    
     }  
+
+    public ObservableList<CategoryID> allGenre() {
+         ObservableList<CategoryID> Genre 
+            = FXCollections.observableArrayList();
+  
+        
+        try (Connection con = cm.getConnection())
+            
+        { PreparedStatement stmt
+                    = con.prepareStatement("SELECT * FROM Category");
+            ResultSet rs = stmt.executeQuery();
+                while (rs.next())
+                {
+                    CategoryID s = new CategoryID();
+                    s.setCategory(rs.getString("name"));
+                    s.setId(rs.getInt("id"));
+                    Genre.add(s);
+                    }
+                   }
+        
+        catch (SQLException ex)
+        {
+            Logger.getLogger(PrivateMovieCollectionDAL.class.getName()).log(
+            Level.SEVERE, null, ex);
+        }
+        return (ObservableList<CategoryID>) Genre;
+    }
     
     
     

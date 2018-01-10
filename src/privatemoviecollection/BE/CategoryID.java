@@ -30,6 +30,11 @@ public class CategoryID
     {
         this.category.set(category);
     }
+
+    @Override
+    public String toString() {
+        return "CategoryID{" + "id=" + id + ", category=" + category + '}';
+    }
     
     public StringProperty categoryProperty()
     {

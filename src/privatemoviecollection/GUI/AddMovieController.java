@@ -93,6 +93,7 @@ public class AddMovieController implements Initializable {
             
             movie.setFilelink(URLAdressSong);
             movie.setTitle(movieTitle.getText());
+           
             model.add(movie);
             Stage stage = (Stage) cancel.getScene().getWindow();
             
