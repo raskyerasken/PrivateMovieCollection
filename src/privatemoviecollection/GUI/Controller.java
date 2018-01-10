@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.net.URL;
 import static java.util.Collections.list;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -38,6 +39,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import privatemoviecollection.BE.CategoryID;
 import privatemoviecollection.BE.PrivateMovieCollection;
 import privatemoviecollection.BLL.BLLManager;
 
@@ -55,21 +57,24 @@ public class Controller implements Initializable
     @FXML
     private TableView<PrivateMovieCollection> movieListView;
     @FXML
-    private TableColumn<PrivateMovieCollection, String> TItle;
+    private TableColumn<PrivateMovieCollection, String> Title;
     @FXML
     private TableColumn<PrivateMovieCollection, Integer> rating;
     @FXML
     private TableColumn<PrivateMovieCollection, String> filelink;
     Model model= new Model();
     
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
         selectGenre.getItems().removeAll(selectGenre.getItems());
-        selectGenre.getItems().addAll("Action", "Drama","Crime", "Sci-Fi", "Crime", 
-            "Western", "Horror", "Animation", 
-            "Thriller", "War");
-        TItle.setCellValueFactory(
+        for (CategoryID  id : model.allGenre()) {
+            selectGenre.getItems().add(id.getCategory());
+        }
+        
+       
+        Title.setCellValueFactory(
         new PropertyValueFactory("title"));
         rating.setCellValueFactory(
         new PropertyValueFactory("rating"));
@@ -103,7 +108,7 @@ public class Controller implements Initializable
     void newAddGenreView() throws IOException
     {
         Stage newStage = new Stage();
-        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("AddGenre.fxml"));
+        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("addGenre.fxml"));
         Parent root = fxLoader.load();
         AddGenreController controller= fxLoader.getController();
         controller.setModel(model);
