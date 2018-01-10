@@ -73,33 +73,47 @@ public class AddMovieController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }   
+    
+    //allows us to create error messages
+    private void showErrorDialog(String title, String header, String message)
+    {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
     @FXML
     private void saveBtn(ActionEvent event) throws SQLException 
     {
-       
-       
-     
-        
         if (URLAdressSong == null || movieTitle==null )
         {
-            int rate = Integer.parseInt(movieRating.getText());
-            System.out.println(rate);
+
         }
         else
         { 
-            saveRating();
+            int rate = Integer.parseInt(movieRating.getText());
+            if (rate >= 11)
+            {
+                showErrorDialog("Please input rating from 1 - 10 only",
+                        null, " You can only input rating from 1 to 10");
+            }
+            else
+                movie.setRating(rate);
             
+            saveRating();
             movie.setFilelink(URLAdressSong);
             movie.setTitle(movieTitle.getText());
+<<<<<<< HEAD
            
             model.add(movie);
+=======
+            model.add(movie);           
+>>>>>>> f13ce5e37dc841d23fb68855bbb331fb45356743
             Stage stage = (Stage) cancel.getScene().getWindow();
-            
-        stage.close();
-            
-        
+            stage.close();
         }
     }
 
@@ -132,9 +146,6 @@ public class AddMovieController implements Initializable {
         stage.toFront();
     }
 
-    
-    
-  
     private void saveRating()
     {
         String title = movieTitle.getText();
