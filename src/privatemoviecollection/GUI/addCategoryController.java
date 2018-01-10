@@ -45,7 +45,11 @@ public class addCategoryController {
     private void cancelBtn(ActionEvent event) {
     }
 
-   
+    @FXML
+    private void removeGenre(ActionEvent event) throws SQLException {
+        
+        Bll.removeGenre((CategoryID) genreListView.getSelectionModel().getSelectedItem());
+    }
     
     @FXML
     private void addGenre(ActionEvent event) throws SQLException {
@@ -54,5 +58,5 @@ public class addCategoryController {
     }
     
     
-    
 }
+
