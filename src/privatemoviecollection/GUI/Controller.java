@@ -58,11 +58,8 @@ public class Controller implements Initializable
     @FXML
     private TableView<PrivateMovieCollection> movieListView;
     @FXML
-<<<<<<< HEAD
     private TableColumn<PrivateMovieCollection, String> Title;
     @FXML
-=======
->>>>>>> 20ac994b79b0ce3648b3b450ca44030dc6244ca2
     private TableColumn<PrivateMovieCollection, Integer> rating;
     @FXML
     private TableColumn<PrivateMovieCollection, String> filelink;
@@ -71,25 +68,18 @@ public class Controller implements Initializable
     private TextField txtSearch;
     @FXML
     private Button searchBtn;
-    @FXML
-    private TableColumn<PrivateMovieCollection, String> Title;
-    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
         selectGenre.getItems().removeAll(selectGenre.getItems());
-<<<<<<< HEAD
         for (CategoryID  id : model.allGenre()) {
             selectGenre.getItems().add(id.getCategory());
         }
         
-       
-=======
         selectGenre.getItems().addAll("Action", "Drama","Crime", "Sci-Fi", "Crime", 
             "Western", "Horror", "Animation", 
             "Thriller", "War");
->>>>>>> 20ac994b79b0ce3648b3b450ca44030dc6244ca2
         Title.setCellValueFactory(
         new PropertyValueFactory("title"));
         rating.setCellValueFactory(

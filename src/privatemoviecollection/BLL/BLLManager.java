@@ -75,19 +75,21 @@ public class BLLManager
         pmcdal.update(privateMovieCollection);
     }
 
-    public List getAllMovie() {
-     return pmcdal.getAllMovies();
+    public List getAllMovie() 
+    {
+        return pmcdal.getAllMovies();
     }
 
-    public List<PrivateMovieCollection> getAllMovies() {
-    return pmcdal.getAllMovies();
+    public List<PrivateMovieCollection> getAllMovies() 
+    {
+        return pmcdal.getAllMovies();
     }
     
-    public List<PrivateMovieCollection> getAllByGenre()
-    {
-        return pmcdal.getAllByGenre();
-        
-    }
+//    public List<PrivateMovieCollection> getAllByGenre()
+//    {
+//        return pmcdal.getAllByGenre();
+//        
+//    }
 
     public void addGenre(CategoryID genre) throws SQLException
     {
