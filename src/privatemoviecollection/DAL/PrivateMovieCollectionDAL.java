@@ -215,22 +215,9 @@ public class PrivateMovieCollectionDAL
             
         }    
     }  
- public void remove(PrivateMovieCollection selectedPrivateMovieCollection) throws SQLServerException, SQLException
+
+    public ObservableList<CategoryID> allGenre() 
     {
-        try (Connection con = cm.getConnection()) {
-            String sql = "DELETE FROM Movie WHERE name)=";
-            
-            PreparedStatement pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, selectedPrivateMovieCollection.getTitle());
-            pstmt.execute();
-            
-        }
-        catch (SQLException ex) {
-            Logger.getLogger(PrivateMovieCollectionDAL.class.getName()).log(Level.SEVERE, null, ex);
-            
-            
-        }    
-    public ObservableList<CategoryID> allGenre() {
          ObservableList<CategoryID> Genre 
             = FXCollections.observableArrayList();
   

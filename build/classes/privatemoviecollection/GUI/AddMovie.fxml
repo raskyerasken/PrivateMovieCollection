@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="338.0" prefWidth="337.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="privatemoviecollection.GUI.AddMovieController">
+   <children>
+      <Button layoutX="106.0" layoutY="298.0" mnemonicParsing="false" onAction="#saveBtn" text="Save" />
+      <Button fx:id="cancel" layoutX="192.0" layoutY="298.0" mnemonicParsing="false" onAction="#cancelBtn" text="Cancel" />
+      <TextField fx:id="movieTitle" layoutX="150.0" layoutY="63.0" prefHeight="27.0" prefWidth="137.0" promptText="Movie title" />
+      <Label layoutX="29.0" layoutY="104.0" text="Select Rating" />
+      <Label layoutX="29.0" layoutY="68.0" text="Write title" />
+      <Label layoutX="100.0" layoutY="144.0" text="Select one or more genres" />
+      <Button fx:id="selectMovie" layoutX="150.0" layoutY="23.0" mnemonicParsing="false" onAction="#btnSelectMovie" text="Select Movie" />
+      <ComboBox fx:id="selectGenre1" layoutX="106.0" layoutY="169.0" prefWidth="150.0" />
+      <ComboBox fx:id="selectGenre2" layoutX="106.0" layoutY="211.0" prefWidth="150.0" />
+      <ComboBox fx:id="selectGenre3" layoutX="106.0" layoutY="253.0" prefWidth="150.0" />
+      <Label layoutX="29.0" layoutY="28.0" text="Select the movie" />
+      <TextField fx:id="movieRating" layoutX="150.0" layoutY="99.0" prefHeight="31.0" prefWidth="137.0" promptText="Set rating 1 - 10" />
+   </children>
+</AnchorPane>
