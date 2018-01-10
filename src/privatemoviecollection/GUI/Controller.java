@@ -133,6 +133,7 @@ public class Controller implements Initializable
             showErrorDialog("Nothing Selected", null, "Cannot delete nothing");
         }
         else
+            
             model.removeMovie(selectedMovie);
     }
     
