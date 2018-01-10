@@ -105,7 +105,7 @@ public class PrivateMovieCollectionDAL
             
         int affected = pstmt.executeUpdate();
             if (affected<1){
-                    throw new SQLException("Song could not be added");}
+                    throw new SQLException("Movie could not be added");}
             
             
               ResultSet rs = pstmt.getGeneratedKeys();
@@ -166,7 +166,37 @@ public class PrivateMovieCollectionDAL
         }
     }
     
-    
+    public void addGenre (PrivateMovieCollection allMovies) throws SQLServerException, SQLException 
+    {  System.out.println(allMovies);
+        try (Connection con = cm.getConnection())
+        {
+          
+            String sql
+                    = "INSERT INTO Movie"
+                    + "(genre) "
+                    + "VALUES(?)";
+            
+            PreparedStatement pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            pstmt.setString(1, allMovies.getTitle());
+            pstmt.setInt(2, allMovies.getRating());
+            pstmt.setString(3, allMovies.getFilelink());
+           
+            
+        int affected = pstmt.executeUpdate();
+            if (affected<1){
+                    throw new SQLException("Genre could not be added");}
+            
+            
+              ResultSet rs = pstmt.getGeneratedKeys();
+            if (rs.next()) {
+                allMovies.setId(rs.getInt(1));
+           }
+                 }
+    catch (SQLException ex) {
+        Logger.getLogger(PrivateMovieCollectionDAL.class.getName()).log(Level.SEVERE, null, ex);
+    }     
+         }
+      
    }
     
 
