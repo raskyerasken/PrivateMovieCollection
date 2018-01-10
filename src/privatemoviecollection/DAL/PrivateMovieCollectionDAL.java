@@ -127,7 +127,7 @@ public class PrivateMovieCollectionDAL
         {
             String sql = "DELETE FROM Movie WHERE name)=";
             PreparedStatement pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, selectedPrivateMovieCollection.getTitle());
+            pstmt.setString(2, selectedPrivateMovieCollection.getTitle());
             pstmt.execute();
         }
         catch (SQLException ex) 
