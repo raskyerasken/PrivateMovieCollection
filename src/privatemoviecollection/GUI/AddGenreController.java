@@ -67,7 +67,8 @@ public class AddGenreController implements Initializable {
     @FXML
     private void removeGenre(ActionEvent event) throws SQLException {
         
-       Bll.removeGenre( genreListView.getSelectionModel().getSelectedItem());
+       model.removeGenre( genreListView.getSelectionModel().getSelectedItem().trim());
+       setGenre();
     }
     
     @FXML
@@ -75,16 +76,20 @@ public class AddGenreController implements Initializable {
         category.setCategory(txtAddGenre.getText());
         
         model.addGenre(category);
+        setGenre();
+    }
+    void setGenre()
+    {
+    genreListView.getItems().clear();
+       for (CategoryID categoryID : model.allGenre()) {
+           genrelist.add(categoryID.getCategory());
+         }
+        genreListView.setItems(genrelist);
     }
 
     void setModel(Model model) {
         this.model=model;
-        genreListView.getItems().clear();
-       //genreListView.setItems(model.allGenre());
-        for (CategoryID categoryID : model.allGenre()) {
-           genrelist.add(categoryID.getCategory());
-         }
-        genreListView.setItems(genrelist);
+      setGenre();
     }
     
 }

@@ -9,6 +9,7 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import static java.util.Collections.list;
 import java.util.List;
 import java.util.Optional;
@@ -55,31 +56,35 @@ public class Controller implements Initializable
     @FXML
     private TableView<PrivateMovieCollection> movieListView;
     @FXML
-    private TableColumn<PrivateMovieCollection, String> TItle;
-    @FXML
     private TableColumn<PrivateMovieCollection, Integer> rating;
     @FXML
     private TableColumn<PrivateMovieCollection, String> filelink;
+<<<<<<< HEAD
    Model model= new Model();
     @FXML
     private TextField txtSearch;
     @FXML
     private Button searchBtn;
+=======
+    Model model= new Model();
+    @FXML
+    private TableColumn<PrivateMovieCollection, String> Title;
+    
+>>>>>>> be5416a5d73e3c1e95b92393c63abc5df8951a74
     @Override
-    public
- void initialize(URL url, ResourceBundle rb) 
+    public void initialize(URL url, ResourceBundle rb) 
     {
         selectGenre.getItems().removeAll(selectGenre.getItems());
         selectGenre.getItems().addAll("Action", "Drama","Crime", "Sci-Fi", "Crime", 
-                                    "Western", "Horror", "Animation", "Thriller",
-                                    "War");
-          TItle.setCellValueFactory(
-            new PropertyValueFactory("title"));
-           rating.setCellValueFactory(
-            new PropertyValueFactory("rating"));
-            filelink.setCellValueFactory(
-            new PropertyValueFactory("filelink"));
-            movieListView.setItems((ObservableList<PrivateMovieCollection>)model.getAllMovies() );
+            "Western", "Horror", "Animation", 
+            "Thriller", "War");
+        Title.setCellValueFactory(
+        new PropertyValueFactory("title"));
+        rating.setCellValueFactory(
+        new PropertyValueFactory("rating"));
+        filelink.setCellValueFactory(
+        new PropertyValueFactory("filelink"));
+        movieListView.setItems((ObservableList<PrivateMovieCollection>)model.getAllMovies() );
     }
     
     
@@ -95,12 +100,10 @@ public class Controller implements Initializable
     void newAddMovieView() throws IOException
     {
         Stage newStage = new Stage();
-
         FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("AddMovie.fxml"));
         Parent root = fxLoader.load();
         AddMovieController controller= fxLoader.getController();
         controller.setModel(model);
-         
         Scene scene = new Scene(root);
         newStage.setScene(scene);
         newStage.show();
@@ -109,18 +112,27 @@ public class Controller implements Initializable
     void newAddGenreView() throws IOException
     {
         Stage newStage = new Stage();
-
-        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("addGenre.fxml"));
+        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("AddGenre.fxml"));
         Parent root = fxLoader.load();
         AddGenreController controller= fxLoader.getController();
         controller.setModel(model);
-         
         Scene scene = new Scene(root);
         newStage.setScene(scene);
         newStage.show();
     }
     
-    
+    @FXML
+    private void removeMovie(ActionEvent event) throws SQLException
+    {
+        PrivateMovieCollection selectedMovie = movieListView.getSelectionModel()
+                .getSelectedItem();
+        if (selectedMovie == null)
+        {
+            showErrorDialog("Nothing Selected", null, "Cannot delete nothing");
+        }
+        else
+            model.removeMovie(selectedMovie);
+    }
     
     
     private void loadStage(String viewName) throws IOException
@@ -134,7 +146,6 @@ public class Controller implements Initializable
 
         newStage.initModality(Modality.WINDOW_MODAL);
         newStage.initOwner(primaryStage);
-
         newStage.show();
     }
     
@@ -194,7 +205,9 @@ public class Controller implements Initializable
     
 
     @FXML
-    private void getSelectedPlaylist(MouseEvent event) {
+    private void getSelectedPlaylist(MouseEvent event) 
+    {
+        
     }
 
     @FXML
@@ -207,6 +220,7 @@ public class Controller implements Initializable
     {
         newAddMovieView();
     }    
+<<<<<<< HEAD
 
     @FXML
     private void searchMovie(ActionEvent event) {
@@ -219,5 +233,8 @@ public class Controller implements Initializable
     
     
     }
+=======
+}
+>>>>>>> be5416a5d73e3c1e95b92393c63abc5df8951a74
 
 

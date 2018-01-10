@@ -23,6 +23,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javax.swing.JFileChooser;
 import privatemoviecollection.BE.CategoryID;
@@ -71,8 +72,9 @@ public class AddMovieController implements Initializable {
 
     
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    public void initialize(URL url, ResourceBundle rb) 
+    {
+        
     }   
     
     //allows us to create error messages
@@ -84,7 +86,8 @@ public class AddMovieController implements Initializable {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
+    
+    //Saves our shit to another shit
     @FXML
     private void saveBtn(ActionEvent event) throws SQLException 
     {
@@ -106,8 +109,6 @@ public class AddMovieController implements Initializable {
             saveRating();
             movie.setFilelink(URLAdressSong);
             movie.setTitle(movieTitle.getText());
-           
-            model.add(movie);
             model.add(movie);
             Stage stage = (Stage) cancel.getScene().getWindow();
             stage.close();
@@ -146,7 +147,6 @@ public class AddMovieController implements Initializable {
     private void saveRating()
     {
         String title = movieTitle.getText();
-
         System.out.println(genreMovie.getCategory());
     }
 

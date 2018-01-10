@@ -33,7 +33,7 @@ public class CategoryID
 
     @Override
     public String toString() {
-        return "CategoryID{" + "id=" + id + ", category=" + category + '}';
+        return ""  + category +"";
     }
     
     public StringProperty categoryProperty()
