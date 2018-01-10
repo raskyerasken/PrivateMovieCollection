@@ -24,7 +24,6 @@ public class PrivateMovieCollection
     private final StringProperty filelink =  new SimpleStringProperty();
     private final IntegerProperty rating= new SimpleIntegerProperty();
     Date lastview;
-    List<PrivateMovieCollection> allMovies = new ArrayList();
     
     public int getId()
     {
@@ -93,7 +92,7 @@ public class PrivateMovieCollection
 
     @Override
     public String toString() {
-        return "PrivateMovieCollection{" + "id=" + id + ", title=" + title + ", filelink=" + filelink + ", rating=" + rating + ", lastview=" + lastview + ", allMovies=" + allMovies + '}';
+        return "PrivateMovieCollection{" + "id=" + id + ", title=" + title + ", filelink=" + filelink + ", rating=" + rating + ", lastview=" + lastview + ", allMovies=" +  '}';
     }
     
     public StringProperty filelinkProperty()

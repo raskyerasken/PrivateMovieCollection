@@ -6,6 +6,7 @@
 package privatemoviecollection.BLL;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import privatemoviecollection.BE.CatMovieBE;
 import privatemoviecollection.BE.CategoryID;
@@ -19,7 +20,8 @@ import privatemoviecollection.DAL.PrivateMovieCollectionDAL;
 public class BLLManager 
 {
     PrivateMovieCollectionDAL pmcdal = new PrivateMovieCollectionDAL();
-    
+    List<PrivateMovieCollection> allGenres = new ArrayList();
+
     
     public void add(PrivateMovieCollection allMovies) throws SQLException
     {
@@ -77,5 +79,12 @@ public class BLLManager
 
     public List<PrivateMovieCollection> getAllMovies() {
     return pmcdal.getAllMovies();
+    }
+    
+
+    public void addGenre(String genre) throws SQLException
+    {
+       pmcdal.addGenre((PrivateMovieCollection) allGenres);
+        
     }
 }

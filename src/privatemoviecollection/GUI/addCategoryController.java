@@ -5,11 +5,13 @@
  */
 package privatemoviecollection.GUI;
 
+import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import privatemoviecollection.BLL.BLLManager;
 
 /**
  *
@@ -29,7 +31,10 @@ public class addCategoryController {
     private Button removeGenre;
     @FXML
     private ListView<?> genreListView;
+    
+    BLLManager Bll = new BLLManager();
 
+    
     @FXML
     private void saveBtn(ActionEvent event) {
     }
@@ -37,5 +42,13 @@ public class addCategoryController {
     @FXML
     private void cancelBtn(ActionEvent event) {
     }
+
+    @FXML
+    private void addGenre(ActionEvent event) throws SQLException {
+        
+        Bll.addGenre(txtAddGenre.getText());
+    }
+    
+    
     
 }
