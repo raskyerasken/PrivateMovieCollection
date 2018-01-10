@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import privatemoviecollection.BE.CategoryID;
 import privatemoviecollection.BE.PrivateMovieCollection;
 
 /**
@@ -166,8 +167,8 @@ public class PrivateMovieCollectionDAL
         }
     }
     
-    public void  addGenre (PrivateMovieCollection allGenres) throws SQLServerException, SQLException 
-    {  System.out.println(allGenres);
+    public void  addGenre (CategoryID genre) throws SQLServerException, SQLException 
+    { 
         try (Connection con = cm.getConnection())
         {
           
@@ -177,9 +178,8 @@ public class PrivateMovieCollectionDAL
                     + "VALUES(?)";
             
             PreparedStatement pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            pstmt.setString(1, allGenres.getTitle());
-            pstmt.setInt(2, allGenres.getRating());
-            pstmt.setString(3, allGenres.getFilelink());
+            pstmt.setString(1, genre.getCategory());
+            
            
             
         int affected = pstmt.executeUpdate();
@@ -189,7 +189,7 @@ public class PrivateMovieCollectionDAL
             
               ResultSet rs = pstmt.getGeneratedKeys();
             if (rs.next()) {
-                allGenres.setId(rs.getInt(1));
+                genre.setId(rs.getInt(1));
            }
                  }
     catch (SQLException ex) {
