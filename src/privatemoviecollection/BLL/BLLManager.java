@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.ObservableList;
+import static jdk.nashorn.internal.objects.NativeString.search;
 import privatemoviecollection.BE.CatMovieBE;
 import privatemoviecollection.BE.CategoryID;
 import privatemoviecollection.BE.PrivateMovieCollection;
@@ -82,6 +83,11 @@ public class BLLManager
     return pmcdal.getAllMovies();
     }
     
+    public List<PrivateMovieCollection> getAllByGenre()
+    {
+        return pmcdal.getAllByGenre();
+        
+    }
 
     public void addGenre(CategoryID genre) throws SQLException
     {

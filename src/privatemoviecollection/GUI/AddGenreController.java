@@ -89,7 +89,7 @@ public class AddGenreController implements Initializable {
 
     void setModel(Model model) {
         this.model=model;
-      setGenre();
+     setGenre();
     }
     
 }
