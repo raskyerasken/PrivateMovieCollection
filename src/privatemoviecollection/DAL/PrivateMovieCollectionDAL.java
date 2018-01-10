@@ -201,13 +201,13 @@ public class PrivateMovieCollectionDAL
     }     
     public void removeGenre(String genre) throws SQLServerException, SQLException
     {
+        System.out.println(genre);
         try (Connection con = cm.getConnection()) {
-            String sql = "DELETE FROM Category WHERE name)=";
-            
+            String sql = "DELETE FROM Category "
+                    + "WHERE name LIKE ?" ;
             PreparedStatement pstmt = con.prepareStatement(sql);
             pstmt.setString(1, genre);
             pstmt.execute();
-            
         }
         catch (SQLException ex) {
             Logger.getLogger(PrivateMovieCollectionDAL.class.getName()).log(Level.SEVERE, null, ex);

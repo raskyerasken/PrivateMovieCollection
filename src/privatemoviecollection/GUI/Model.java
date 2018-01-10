@@ -48,4 +48,10 @@ public class Model
         return bllManager.allGenre();
         
     }
+
+   
+
+    void removeGenre(String selectedItem) throws SQLException {
+    bllManager.removeGenre(selectedItem);
+    }
 }
