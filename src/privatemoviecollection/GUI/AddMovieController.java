@@ -40,18 +40,6 @@ public class AddMovieController implements Initializable {
     private Button cancel;
     @FXML
     private TextField movieTitle;
-    @FXML
-    private RadioButton ratingSix;
-    @FXML
-    private RadioButton ratingOne;
-    @FXML
-    private RadioButton ratingTwo;
-    @FXML
-    private RadioButton ratingThree;
-    @FXML
-    private RadioButton ratingFour;
-    @FXML
-    private RadioButton ratingFive;
     private RadioButton selectedDrama;
     private RadioButton selectedHorror;
     private RadioButton selectedAction;
@@ -64,15 +52,15 @@ public class AddMovieController implements Initializable {
     private RadioButton selectedWestern;
     
     private CategoryID genreMovie = new CategoryID();
-   String URLAdressSong;
+    String URLAdressSong;
     @FXML
-    private ToggleGroup movieRating;
+    private TextField movieRating;
     private ToggleGroup movieGenre;
    
     @FXML
     private Button selectMovie;
-     PrivateMovieCollection movie=new PrivateMovieCollection();
-     BLLManager BLL= new BLLManager();
+    PrivateMovieCollection movie=new PrivateMovieCollection();
+    BLLManager BLL= new BLLManager();
     @FXML
     private ComboBox<?> selectGenre1;
     @FXML
@@ -80,9 +68,8 @@ public class AddMovieController implements Initializable {
     @FXML
     private ComboBox<?> selectGenre3;
     private Model model;
-    /**
-     * Initializes the controller class.
-     */
+
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -97,7 +84,8 @@ public class AddMovieController implements Initializable {
         
         if (URLAdressSong == null || movieTitle==null )
         {
-            
+            int rate = Integer.parseInt(movieRating.getText());
+            System.out.println(rate);
         }
         else
         { 
@@ -107,6 +95,7 @@ public class AddMovieController implements Initializable {
             movie.setTitle(movieTitle.getText());
             model.add(movie);
             Stage stage = (Stage) cancel.getScene().getWindow();
+            
         stage.close();
             
         
@@ -148,84 +137,13 @@ public class AddMovieController implements Initializable {
     private void saveRating()
     {
         String title = movieTitle.getText();
-        Toggle rating = movieRating.getSelectedToggle();
-     
-        if (rating.equals(ratingOne))
-                {
-                    movie.setRating(1);  
-                }
-          if (rating.equals(ratingTwo))
-                {
-                    movie.setRating(2);  
-                }
-         if (rating.equals(ratingThree))
-                {
-                    movie.setRating(3);
-                }
-        if (rating.equals(ratingFour))
-                {
-                    movie.setRating(4);
-                }
-        if (rating.equals(ratingFive))
-                {
-                    movie.setRating(5);
-                }
-        if (rating.equals(ratingSix))
-                {
-                    movie.setRating(6);
-                }
-        
-//        Toggle genre = movieGenre.getSelectedToggle();
-//        if (genre.equals(selectedDrama))
-//        {
-//            genreMovie.setCategory("Drama");
-//        }
-//        
-//        if (genre.equals(selectedHorror))
-//        {
-//            genreMovie.setCategory("Horror");
-//        }
-//        
-//        if (genre.equals(selectedAction))
-//        {
-//            genreMovie.setCategory("Action");
-//        }
-//        if (genre.equals(selectedCrime))
-//        {
-//            genreMovie.setCategory("Crime");
-//        }
-//        if (genre.equals(selectedComedy))
-//        {
-//            genreMovie.setCategory("Comedy");
-//        }
-//        if (genre.equals(selectedWar))
-//        {
-//            genreMovie.setCategory("War");
-//        }
-//        if (genre.equals(selectedThriller))
-//        {
-//            genreMovie.setCategory("Thriller");
-//        }
-//        if (genre.equals(selectedNoir))
-//        {
-//            genreMovie.setCategory("Noir");
-//        }
-//        if (genre.equals(selectedAnimation))
-//        {
-//            genreMovie.setCategory("Animation");
-//        }
-//        if (genre.equals(selectedWestern))
-//        {
-//            genreMovie.setCategory("Western");
-//        }
+
         System.out.println(genreMovie.getCategory());
-     
     }
 
-    void setModel(Model model) {
-    this.model=model;
+    void setModel(Model model) 
+    {
+        this.model=model;
     }
-    
-   
     
 }

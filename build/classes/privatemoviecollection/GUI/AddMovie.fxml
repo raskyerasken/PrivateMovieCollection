@@ -3,32 +3,15 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="AnchorPane" prefHeight="338.0" prefWidth="337.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="privatemoviecollection.GUI.AddMovieController">
    <children>
-      <Button layoutX="46.0" layoutY="298.0" mnemonicParsing="false" onAction="#saveBtn" text="Save" />
-      <Button fx:id="cancel" layoutX="232.0" layoutY="298.0" mnemonicParsing="false" onAction="#cancelBtn" text="Cancel" />
-      <TextField fx:id="movieTitle" layoutX="113.0" layoutY="63.0" prefHeight="27.0" prefWidth="137.0" promptText="Movie title" />
-      <RadioButton fx:id="ratingSix" layoutX="238.0" layoutY="112.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="movieRating" />
-         </toggleGroup></RadioButton>
-      <RadioButton fx:id="ratingOne" layoutX="119.0" layoutY="112.0" mnemonicParsing="false" toggleGroup="$movieRating" />
-      <RadioButton fx:id="ratingTwo" layoutX="143.0" layoutY="112.0" mnemonicParsing="false" toggleGroup="$movieRating" />
-      <RadioButton fx:id="ratingThree" layoutX="167.0" layoutY="112.0" mnemonicParsing="false" toggleGroup="$movieRating" />
-      <RadioButton fx:id="ratingFour" layoutX="190.0" layoutY="112.0" mnemonicParsing="false" toggleGroup="$movieRating" />
-      <RadioButton fx:id="ratingFive" layoutX="214.0" layoutY="112.0" mnemonicParsing="false" toggleGroup="$movieRating" />
+      <Button layoutX="106.0" layoutY="298.0" mnemonicParsing="false" onAction="#saveBtn" text="Save" />
+      <Button fx:id="cancel" layoutX="192.0" layoutY="298.0" mnemonicParsing="false" onAction="#cancelBtn" text="Cancel" />
+      <TextField fx:id="movieTitle" layoutX="150.0" layoutY="63.0" prefHeight="27.0" prefWidth="137.0" promptText="Movie title" />
       <Label layoutX="29.0" layoutY="104.0" text="Select Rating" />
-      <Label layoutX="148.0" layoutY="94.0" text="2" />
-      <Label layoutX="172.0" layoutY="94.0" text="3" />
-      <Label layoutX="194.0" layoutY="94.0" text="4" />
-      <Label layoutX="219.0" layoutY="94.0" text="5" />
-      <Label layoutX="242.0" layoutY="94.0" text="6" />
-      <Label layoutX="126.0" layoutY="94.0" text="1" />
       <Label layoutX="29.0" layoutY="68.0" text="Write title" />
       <Label layoutX="100.0" layoutY="144.0" text="Select one or more genres" />
       <Button fx:id="selectMovie" layoutX="150.0" layoutY="23.0" mnemonicParsing="false" onAction="#btnSelectMovie" text="Select Movie" />
@@ -36,5 +19,6 @@
       <ComboBox fx:id="selectGenre2" layoutX="106.0" layoutY="211.0" prefWidth="150.0" />
       <ComboBox fx:id="selectGenre3" layoutX="106.0" layoutY="253.0" prefWidth="150.0" />
       <Label layoutX="29.0" layoutY="28.0" text="Select the movie" />
+      <TextField fx:id="movieRating" layoutX="150.0" layoutY="99.0" prefHeight="31.0" prefWidth="137.0" promptText="Set rating 1 - 10" />
    </children>
 </AnchorPane>
