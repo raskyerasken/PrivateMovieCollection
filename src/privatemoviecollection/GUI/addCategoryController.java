@@ -6,11 +6,13 @@
 package privatemoviecollection.GUI;
 
 import java.sql.SQLException;
+import java.util.Locale;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import privatemoviecollection.BE.CategoryID;
 import privatemoviecollection.BLL.BLLManager;
 
 /**
@@ -33,7 +35,7 @@ public class addCategoryController {
     private ListView<?> genreListView;
     
     BLLManager Bll = new BLLManager();
-
+    CategoryID category = new  CategoryID();
     
     @FXML
     private void saveBtn(ActionEvent event) {
@@ -47,8 +49,8 @@ public class addCategoryController {
     
     @FXML
     private void addGenre(ActionEvent event) throws SQLException {
-        
-        Bll.addGenre(txtAddGenre.getText());
+        category.setCategory(txtAddGenre.getText());
+        Bll.addGenre(category);
     }
     
     

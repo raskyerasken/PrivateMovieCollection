@@ -10,7 +10,7 @@
       <Button fx:id="saveGenre" layoutX="26.0" layoutY="244.0" mnemonicParsing="false" onAction="#saveBtn" text="Save" />
       <Button fx:id="cancel" layoutX="165.0" layoutY="244.0" mnemonicParsing="false" onAction="#cancelBtn" text="Cancel" />
       <TextField fx:id="txtAddGenre" layoutX="99.0" layoutY="34.0" promptText="add genre" />
-      <Button fx:id="addGenre" layoutX="28.0" layoutY="34.0" mnemonicParsing="false" style="-fx-background-radius: 30;" text="Add" />
+      <Button fx:id="addGenre" layoutX="28.0" layoutY="34.0" mnemonicParsing="false" onAction="#addGenre" style="-fx-background-radius: 30;" text="Add" />
       <Button fx:id="removeGenre" layoutX="15.0" layoutY="134.0" mnemonicParsing="false" style="-fx-background-radius: 30;" text="Remove" />
       <ListView fx:id="genreListView" layoutX="96.0" layoutY="79.0" prefHeight="164.0" prefWidth="200.0" />
    </children>

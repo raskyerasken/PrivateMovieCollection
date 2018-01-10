@@ -82,9 +82,9 @@ public class BLLManager
     }
     
 
-    public void addGenre(String genre) throws SQLException
+    public void addGenre(CategoryID genre) throws SQLException
     {
-       pmcdal.addGenre((PrivateMovieCollection) allGenres);
+       pmcdal.addGenre(genre);
         
     }
 }
