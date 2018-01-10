@@ -48,9 +48,9 @@ public class Controller implements Initializable
     private ComboBox<String> selectGenre;
     private Stage primaryStage;
     private Button addMovieBtn;
-    @FXML
-    private GridPane gridpane;
     BLLManager BLL=new BLLManager();
+    @FXML
+    private ListView<?> movieListView;
    
     @Override
     public void initialize(URL url, ResourceBundle rb) 
