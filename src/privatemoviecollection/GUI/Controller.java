@@ -84,7 +84,7 @@ public class Controller implements Initializable
     {
         File file = new File("");
         Desktop desktop = Desktop.getDesktop();
-        file = new File("C:\\Users\\mr.Andersen\\Downloads\\Rogue.One.2016.720p.BluRay.x264-SPARKS\\rogue.one.2016.720p.bluray.x264-sparks//Rogue.One.2016.720p.BluRay.x264-SPARKS");
+        file = new File(movieListView.getSelectionModel().getSelectedItem().getFilelink());
         desktop.open(file);
     }
     

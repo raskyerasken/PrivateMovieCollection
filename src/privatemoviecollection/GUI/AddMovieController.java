@@ -149,8 +149,7 @@ public class AddMovieController implements Initializable {
     {
         String title = movieTitle.getText();
         Toggle rating = movieRating.getSelectedToggle();
-    
-
+     
         if (rating.equals(ratingOne))
                 {
                     movie.setRating(1);  
