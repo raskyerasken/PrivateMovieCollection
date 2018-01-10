@@ -4,9 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="Alt">
             <file>file:/Users/kasper/Documents/GitHub/PrivateMovieCollection/src/privatemoviecollection/GUI/Controller.java</file>
-            <file>file:/Users/kasper/Documents/GitHub/PrivateMovieCollection/src/privatemoviecollection/GUI/PrivateMovieCollectionController.java</file>
+            <file>file:/Users/kasper/Documents/GitHub/PrivateMovieCollection/src/privatemoviecollection/BLL/BLLManager.java</file>
             <file>file:/Users/kasper/Documents/GitHub/PrivateMovieCollection/src/privatemoviecollection/DAL/PrivateMovieCollectionDAL.java</file>
-            <file>file:/Users/kasper/Documents/GitHub/PrivateMovieCollection/src/privatemoviecollection/GUI/Model.java</file>
+            <file>file:/Users/kasper/Documents/GitHub/PrivateMovieCollection/src/privatemoviecollection/GUI/AddMovieController.java</file>
             <file>file:/Users/kasper/Documents/GitHub/PrivateMovieCollection/src/privatemoviecollection/BE/PrivateMovieCollection.java</file>
         </group>
     </open-files>

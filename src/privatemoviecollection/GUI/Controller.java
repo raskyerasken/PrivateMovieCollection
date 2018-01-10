@@ -9,6 +9,7 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import static java.util.Collections.list;
 import java.util.List;
 import java.util.Locale;
@@ -57,23 +58,38 @@ public class Controller implements Initializable
     @FXML
     private TableView<PrivateMovieCollection> movieListView;
     @FXML
+<<<<<<< HEAD
     private TableColumn<PrivateMovieCollection, String> Title;
     @FXML
+=======
+>>>>>>> 20ac994b79b0ce3648b3b450ca44030dc6244ca2
     private TableColumn<PrivateMovieCollection, Integer> rating;
     @FXML
     private TableColumn<PrivateMovieCollection, String> filelink;
-    Model model= new Model();
+   Model model= new Model();
+    @FXML
+    private TextField txtSearch;
+    @FXML
+    private Button searchBtn;
+    @FXML
+    private TableColumn<PrivateMovieCollection, String> Title;
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
         selectGenre.getItems().removeAll(selectGenre.getItems());
+<<<<<<< HEAD
         for (CategoryID  id : model.allGenre()) {
             selectGenre.getItems().add(id.getCategory());
         }
         
        
+=======
+        selectGenre.getItems().addAll("Action", "Drama","Crime", "Sci-Fi", "Crime", 
+            "Western", "Horror", "Animation", 
+            "Thriller", "War");
+>>>>>>> 20ac994b79b0ce3648b3b450ca44030dc6244ca2
         Title.setCellValueFactory(
         new PropertyValueFactory("title"));
         rating.setCellValueFactory(
@@ -117,7 +133,18 @@ public class Controller implements Initializable
         newStage.show();
     }
     
-    
+    @FXML
+    private void removeMovie(ActionEvent event) throws SQLException
+    {
+        PrivateMovieCollection selectedMovie = movieListView.getSelectionModel()
+                .getSelectedItem();
+        if (selectedMovie == null)
+        {
+            showErrorDialog("Nothing Selected", null, "Cannot delete nothing");
+        }
+        else
+            model.removeMovie(selectedMovie);
+    }
     
     
     private void loadStage(String viewName) throws IOException
@@ -131,7 +158,6 @@ public class Controller implements Initializable
 
         newStage.initModality(Modality.WINDOW_MODAL);
         newStage.initOwner(primaryStage);
-
         newStage.show();
     }
     
@@ -191,7 +217,9 @@ public class Controller implements Initializable
     
 
     @FXML
-    private void getSelectedPlaylist(MouseEvent event) {
+    private void getSelectedPlaylist(MouseEvent event) 
+    {
+        
     }
 
     @FXML
@@ -204,6 +232,10 @@ public class Controller implements Initializable
     {
         newAddMovieView();
     }    
+
+    @FXML
+    private void searchMovie(ActionEvent event) {
+    }
     
     
     
@@ -212,5 +244,6 @@ public class Controller implements Initializable
     
     
     }
+
 
 

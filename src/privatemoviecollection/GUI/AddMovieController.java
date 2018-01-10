@@ -86,7 +86,8 @@ public class AddMovieController implements Initializable {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
+    
+    //Saves our shit to another shit
     @FXML
     private void saveBtn(ActionEvent event) throws SQLException 
     {
@@ -146,7 +147,6 @@ public class AddMovieController implements Initializable {
     private void saveRating()
     {
         String title = movieTitle.getText();
-
         System.out.println(genreMovie.getCategory());
     }
 

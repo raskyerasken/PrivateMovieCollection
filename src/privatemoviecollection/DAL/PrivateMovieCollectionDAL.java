@@ -60,7 +60,7 @@ public class PrivateMovieCollectionDAL
     }
     
     //hello
-    public ArrayList<PrivateMovieCollection> getAllByGenre(String search) throws SQLException, SQLServerException
+    public List<PrivateMovieCollection> getAllByGenre(String search) throws SQLException, SQLServerException
     {
         ArrayList<PrivateMovieCollection> allGenres = new ArrayList<>();
         
@@ -198,10 +198,18 @@ public class PrivateMovieCollectionDAL
    
     public void removeGenre(String genre) throws SQLServerException, SQLException
     {
+<<<<<<< HEAD
         try (Connection con = cm.getConnection()) {
             String sql = "DELETE FROM Category "
                     + "WHERE name LIKE ?" ;
 
+=======
+        System.out.println(genre);
+        try (Connection con = cm.getConnection()) 
+        {
+            String sql = "DELETE FROM Category "
+                    + "WHERE name LIKE ?" ;
+>>>>>>> 20ac994b79b0ce3648b3b450ca44030dc6244ca2
             PreparedStatement pstmt = con.prepareStatement(sql);
             pstmt.setString(1, genre);
             pstmt.execute();

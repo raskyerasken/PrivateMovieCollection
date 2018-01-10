@@ -10,9 +10,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="636.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="privatemoviecollection.GUI.Controller">
+<AnchorPane id="AnchorPane" prefHeight="632.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="privatemoviecollection.GUI.Controller">
    <children>
-      <MenuBar prefHeight="29.0" prefWidth="747.0">
+      <MenuBar prefHeight="32.0" prefWidth="815.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -33,18 +33,28 @@
           </Menu>
         </menus>
       </MenuBar>
+<<<<<<< HEAD
       <ComboBox fx:id="selectGenre" layoutX="236.0" layoutY="46.0" prefHeight="27.0" prefWidth="136.0" promptText="Select Genre" />
-      <TextField layoutX="495.0" layoutY="46.0" promptText="Search for movies here" />
-      <Button layoutX="671.0" layoutY="46.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="64.0" style="-fx-background-radius: 30;" text="Search" />
+      <TextField fx:id="txtSearch" layoutX="495.0" layoutY="46.0" promptText="Search for movies here" />
+      <Button fx:id="searchBtn" layoutX="671.0" layoutY="46.0" mnemonicParsing="false" onAction="#searchMovie" prefHeight="27.0" prefWidth="64.0" style="-fx-background-radius: 30;" text="Search" />
       <Button layoutX="23.0" layoutY="46.0" mnemonicParsing="false" onAction="#addMovie" text="Add movie" />
       <Button layoutX="410.0" layoutY="46.0" mnemonicParsing="false" onAction="#playMovie" style="-fx-background-radius: 30;" text="Play Movie" />
       <TableView fx:id="movieListView" layoutX="22.0" layoutY="94.0" onMouseClicked="#getSelectedPlaylist" prefHeight="538.0" prefWidth="699.0">
+=======
+      <ComboBox fx:id="selectGenre" layoutX="193.0" layoutY="46.0" prefHeight="27.0" prefWidth="136.0" promptText="Select Genre" />
+      <TextField layoutX="514.0" layoutY="46.0" promptText="Search for movies here" />
+      <Button layoutX="439.0" layoutY="46.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="69.0" style="-fx-background-radius: 30;" text="Search" />
+      <Button layoutX="5.0" layoutY="46.0" mnemonicParsing="false" onAction="#addMovie" text="Add movie" />
+      <Button layoutX="340.0" layoutY="46.0" mnemonicParsing="false" onAction="#playMovie" style="-fx-background-radius: 30;" text="Play Movie" />
+      <TableView fx:id="movieListView" layoutX="5.0" layoutY="94.0" onMouseClicked="#getSelectedPlaylist" prefHeight="538.0" prefWidth="806.0">
+>>>>>>> be5416a5d73e3c1e95b92393c63abc5df8951a74
          <columns>
             <TableColumn fx:id="Title" prefWidth="210.0" text="Title" />
             <TableColumn fx:id="rating" minWidth="0.0" prefWidth="221.0" text="Rating" />
             <TableColumn fx:id="filelink" prefWidth="267.0" text="Filelink" />
          </columns>
       </TableView>
-      <Button layoutX="116.0" layoutY="46.0" mnemonicParsing="false" onAction="#addGenre" text="Add genre" />
+      <Button layoutX="97.0" layoutY="46.0" mnemonicParsing="false" onAction="#addGenre" text="Add genre" />
+      <Button layoutX="729.0" layoutY="46.0" mnemonicParsing="false" onAction="#removeMovie" prefHeight="31.0" prefWidth="81.0" text="Remove" />
    </children>
 </AnchorPane>
