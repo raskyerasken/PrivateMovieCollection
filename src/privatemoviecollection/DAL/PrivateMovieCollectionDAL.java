@@ -47,11 +47,9 @@ public class PrivateMovieCollectionDAL
                     s.setId(rs.getInt("id"));
                     s.setRating(rs.getInt("Rating"));
                     s.setFilelink(rs.getString("Filelink"));
-                    
                     allMovies.add(s);
-                    
-                        }
-                   }
+                }
+        }
         
         catch (SQLException ex)
         {
@@ -83,7 +81,6 @@ public class PrivateMovieCollectionDAL
                 PrivateMovieCollection m = new PrivateMovieCollection();
                 m.setId(rs.getInt("Id"));
                 m.setTitle(rs.getString("Name"));
-                
                 allGenres.add(m);
             }
         }
@@ -94,7 +91,6 @@ public class PrivateMovieCollectionDAL
     {  System.out.println(allMovies);
         try (Connection con = cm.getConnection())
         {
-          
             String sql
                     = "INSERT INTO Movie"
                     + "(name, rating, filelink) "
@@ -105,42 +101,44 @@ public class PrivateMovieCollectionDAL
             pstmt.setInt(2, allMovies.getRating());
             pstmt.setString(3, allMovies.getFilelink());
            
+            int affected = pstmt.executeUpdate();
+            if (affected<1)
+            {
+                throw new SQLException("Movie could not be added");
+            }
             
-        int affected = pstmt.executeUpdate();
-            if (affected<1){
-                    throw new SQLException("Movie could not be added");}
-            
-            
-              ResultSet rs = pstmt.getGeneratedKeys();
-            if (rs.next()) {
+            ResultSet rs = pstmt.getGeneratedKeys();
+            if (rs.next()) 
+            {
                 allMovies.setId(rs.getInt(1));
-           }
-                 }
-    catch (SQLException ex) {
-        Logger.getLogger(PrivateMovieCollectionDAL.class.getName()).log(Level.SEVERE, null, ex);
-    }     
-         }
+            }
+        }
+    
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(PrivateMovieCollectionDAL.class.getName()).log(Level.SEVERE, null, ex);
+        }     
+    }
       
     
     public void remove(PrivateMovieCollection selectedPrivateMovieCollection) throws SQLServerException, SQLException
     {
-        try (Connection con = cm.getConnection()) {
+        try (Connection con = cm.getConnection()) 
+        {
             String sql = "DELETE FROM Movie WHERE name)=";
-            
             PreparedStatement pstmt = con.prepareStatement(sql);
             pstmt.setString(1, selectedPrivateMovieCollection.getTitle());
             pstmt.execute();
-            
         }
-        catch (SQLException ex) {
+        catch (SQLException ex) 
+        {
             Logger.getLogger(PrivateMovieCollectionDAL.class.getName()).log(Level.SEVERE, null, ex);
-            
-            
         }    
     }
 
     public void update(PrivateMovieCollection PrivateMovieCollection) throws SQLServerException, SQLException {
-        try (Connection con = cm.getConnection()) {
+        try (Connection con = cm.getConnection()) 
+        {
             String sql 
                     = "UPDATE Movie SET "
                     + "id=?, name=?, Rating=?, filelink=?, lastview=?) "
@@ -158,14 +156,11 @@ public class PrivateMovieCollectionDAL
             int affected = pstmt.executeUpdate();
             if (affected<1)
                 throw new SQLException("Movie list could not be updated");
-            
-            
         }
         
         catch (SQLException ex) 
         {
             Logger.getLogger(PrivateMovieCollectionDAL.class.getName()).log(Level.SEVERE, null, ex);
-            
         }
     }
     
@@ -173,7 +168,6 @@ public class PrivateMovieCollectionDAL
     { 
         try (Connection con = cm.getConnection())
         {
-          
             String sql
                     = "INSERT INTO Category"
                     + "(name) "
@@ -184,57 +178,57 @@ public class PrivateMovieCollectionDAL
             
            
             
-        int affected = pstmt.executeUpdate();
-            if (affected<1){
-                    throw new SQLException("Genre could not be added");}
+            int affected = pstmt.executeUpdate();
+            if (affected<1)
+            {
+                throw new SQLException("Genre could not be added");
+            }
             
-            
-              ResultSet rs = pstmt.getGeneratedKeys();
-            if (rs.next()) {
+            ResultSet rs = pstmt.getGeneratedKeys();
+            if (rs.next()) 
+            {
                 genre.setId(rs.getInt(1));
-           }
-                 }
-    catch (SQLException ex) {
-        Logger.getLogger(PrivateMovieCollectionDAL.class.getName()).log(Level.SEVERE, null, ex);
-    }   
-        
+            }
+        }
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(PrivateMovieCollectionDAL.class.getName()).log(Level.SEVERE, null, ex);
+        }   
     }     
+   
     public void removeGenre(String genre) throws SQLServerException, SQLException
     {
-        try (Connection con = cm.getConnection()) {
+        try (Connection con = cm.getConnection()) 
+        {
             String sql = "DELETE FROM Category WHERE name)=";
-            
             PreparedStatement pstmt = con.prepareStatement(sql);
             pstmt.setString(1, genre);
             pstmt.execute();
-            
         }
-        catch (SQLException ex) {
+        
+        catch (SQLException ex) 
+        {
             Logger.getLogger(PrivateMovieCollectionDAL.class.getName()).log(Level.SEVERE, null, ex);
-            
-            
         }    
     }  
 
     public ObservableList<CategoryID> allGenre() 
     {
-         ObservableList<CategoryID> Genre 
+        ObservableList<CategoryID> Genre 
             = FXCollections.observableArrayList();
-  
-        
         try (Connection con = cm.getConnection())
-            
-        { PreparedStatement stmt
+        {
+            PreparedStatement stmt
                     = con.prepareStatement("SELECT * FROM Category");
             ResultSet rs = stmt.executeQuery();
-                while (rs.next())
-                {
-                    CategoryID s = new CategoryID();
-                    s.setCategory(rs.getString("name"));
-                    s.setId(rs.getInt("id"));
-                    Genre.add(s);
-                    }
-                   }
+            while (rs.next())
+            {
+                CategoryID s = new CategoryID();
+                s.setCategory(rs.getString("name"));
+                s.setId(rs.getInt("id"));
+                Genre.add(s);
+            }
+        }
         
         catch (SQLException ex)
         {
@@ -246,7 +240,7 @@ public class PrivateMovieCollectionDAL
     
     
     
-   }
+}
     
 
 
