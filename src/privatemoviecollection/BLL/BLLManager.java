@@ -8,6 +8,7 @@ package privatemoviecollection.BLL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.ObservableList;
 import privatemoviecollection.BE.CatMovieBE;
 import privatemoviecollection.BE.CategoryID;
 import privatemoviecollection.BE.PrivateMovieCollection;
@@ -88,10 +89,16 @@ public class BLLManager
         
     }
     
-    public void removeGenre(CategoryID genre) throws SQLException
+    public void removeGenre(String genre) throws SQLException
     {
         pmcdal.removeGenre(genre);
         
         
     }
+
+    public ObservableList<CategoryID> allGenre() {
+     return pmcdal.allGenre();
+             }
+
+    
 }
