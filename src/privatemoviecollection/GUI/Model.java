@@ -5,6 +5,7 @@
  */
 package privatemoviecollection.GUI;
 
+import java.sql.SQLException;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,6 +18,8 @@ import privatemoviecollection.BLL.BLLManager;
  */
 public class Model 
 {
+
+    
     private BLLManager bllManager = new BLLManager();
     
     private ObservableList<PrivateMovieCollection> movieList
@@ -28,5 +31,10 @@ public class Model
         movieList.addAll(bllManager.getAllMovies());
         
         return movieList;
+    }
+   void add (PrivateMovieCollection movie) throws SQLException
+    {   
+        bllManager.add(movie);
+       movieList.add(movie);
     }
 }

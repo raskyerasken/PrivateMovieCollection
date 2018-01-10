@@ -79,6 +79,7 @@ public class AddMovieController implements Initializable {
     private ComboBox<?> selectGenre2;
     @FXML
     private ComboBox<?> selectGenre3;
+    private Model model;
     /**
      * Initializes the controller class.
      */
@@ -104,7 +105,7 @@ public class AddMovieController implements Initializable {
             
             movie.setFilelink(URLAdressSong);
             movie.setTitle(movieTitle.getText());
-            BLL.add(movie);
+            model.add(movie);
             Stage stage = (Stage) cancel.getScene().getWindow();
         stage.close();
             
@@ -175,51 +176,55 @@ public class AddMovieController implements Initializable {
                     movie.setRating(6);
                 }
         
-        Toggle genre = movieGenre.getSelectedToggle();
-        if (genre.equals(selectedDrama))
-        {
-            genreMovie.setCategory("Drama");
-        }
-        
-        if (genre.equals(selectedHorror))
-        {
-            genreMovie.setCategory("Horror");
-        }
-        
-        if (genre.equals(selectedAction))
-        {
-            genreMovie.setCategory("Action");
-        }
-        if (genre.equals(selectedCrime))
-        {
-            genreMovie.setCategory("Crime");
-        }
-        if (genre.equals(selectedComedy))
-        {
-            genreMovie.setCategory("Comedy");
-        }
-        if (genre.equals(selectedWar))
-        {
-            genreMovie.setCategory("War");
-        }
-        if (genre.equals(selectedThriller))
-        {
-            genreMovie.setCategory("Thriller");
-        }
-        if (genre.equals(selectedNoir))
-        {
-            genreMovie.setCategory("Noir");
-        }
-        if (genre.equals(selectedAnimation))
-        {
-            genreMovie.setCategory("Animation");
-        }
-        if (genre.equals(selectedWestern))
-        {
-            genreMovie.setCategory("Western");
-        }
+//        Toggle genre = movieGenre.getSelectedToggle();
+//        if (genre.equals(selectedDrama))
+//        {
+//            genreMovie.setCategory("Drama");
+//        }
+//        
+//        if (genre.equals(selectedHorror))
+//        {
+//            genreMovie.setCategory("Horror");
+//        }
+//        
+//        if (genre.equals(selectedAction))
+//        {
+//            genreMovie.setCategory("Action");
+//        }
+//        if (genre.equals(selectedCrime))
+//        {
+//            genreMovie.setCategory("Crime");
+//        }
+//        if (genre.equals(selectedComedy))
+//        {
+//            genreMovie.setCategory("Comedy");
+//        }
+//        if (genre.equals(selectedWar))
+//        {
+//            genreMovie.setCategory("War");
+//        }
+//        if (genre.equals(selectedThriller))
+//        {
+//            genreMovie.setCategory("Thriller");
+//        }
+//        if (genre.equals(selectedNoir))
+//        {
+//            genreMovie.setCategory("Noir");
+//        }
+//        if (genre.equals(selectedAnimation))
+//        {
+//            genreMovie.setCategory("Animation");
+//        }
+//        if (genre.equals(selectedWestern))
+//        {
+//            genreMovie.setCategory("Western");
+//        }
         System.out.println(genreMovie.getCategory());
      
+    }
+
+    void setModel(Model model) {
+    this.model=model;
     }
     
    
