@@ -173,8 +173,8 @@ public class PrivateMovieCollectionDAL
         {
           
             String sql
-                    = "INSERT INTO Movie"
-                    + "(genre) "
+                    = "INSERT INTO Category"
+                    + "(name) "
                     + "VALUES(?)";
             
             PreparedStatement pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -197,7 +197,25 @@ public class PrivateMovieCollectionDAL
     }   
         
     }     
-      
+    public void removeGenre(CategoryID genre) throws SQLServerException, SQLException
+    {
+        try (Connection con = cm.getConnection()) {
+            String sql = "DELETE FROM category WHERE name)=";
+            
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, genre.getCategory());
+            pstmt.execute();
+            
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(PrivateMovieCollectionDAL.class.getName()).log(Level.SEVERE, null, ex);
+            
+            
+        }    
+    }  
+    
+    
+    
    }
     
 

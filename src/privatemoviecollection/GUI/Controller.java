@@ -108,7 +108,7 @@ public class Controller implements Initializable
 
         FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("addCategory.fxml"));
         Parent root = fxLoader.load();
-        AddMovieController controller= fxLoader.getController();
+       addCategoryController controller= fxLoader.getController();
         controller.setModel(model);
          
         Scene scene = new Scene(root);

@@ -36,6 +36,7 @@ public class addCategoryController {
     
     BLLManager Bll = new BLLManager();
     CategoryID category = new  CategoryID();
+    private Model model;
     
     @FXML
     private void saveBtn(ActionEvent event) {
@@ -45,14 +46,22 @@ public class addCategoryController {
     private void cancelBtn(ActionEvent event) {
     }
 
-   
+    @FXML
+    private void removeGenre(ActionEvent event) throws SQLException {
+        
+        Bll.removeGenre((CategoryID) genreListView.getSelectionModel().getSelectedItem());
+    }
     
     @FXML
     private void addGenre(ActionEvent event) throws SQLException {
         category.setCategory(txtAddGenre.getText());
-        Bll.addGenre(category);
+        model.addGenre(category);
+    }
+
+    void setModel(Model model) {
+        this.model=model;
     }
     
     
-    
 }
+

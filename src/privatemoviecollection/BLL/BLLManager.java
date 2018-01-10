@@ -87,4 +87,11 @@ public class BLLManager
        pmcdal.addGenre(genre);
         
     }
+    
+    public void removeGenre(CategoryID genre) throws SQLException
+    {
+        pmcdal.removeGenre(genre);
+        
+        
+    }
 }
