@@ -33,6 +33,7 @@ public class PrivateMovieCollectionDAL
         
         try (Connection con = cm.getConnection())
         {
+            
             PreparedStatement stmt
                     = con.prepareStatement("SELECT * FROM Movie");
             ResultSet rs = stmt.executeQuery();
@@ -41,7 +42,6 @@ public class PrivateMovieCollectionDAL
                     PrivateMovieCollection s = new PrivateMovieCollection();
                     s.setTitle(rs.getString("Name"));
                     s.setId(rs.getInt("id"));
-                    s.setLastview(rs.getDate("LastView"));
                     s.setRating(rs.getInt("Rating"));
                     s.setFilelink(rs.getString("Filelink"));
                     
@@ -88,34 +88,36 @@ public class PrivateMovieCollectionDAL
     }
 
     public void add (PrivateMovieCollection allMovies) throws SQLServerException, SQLException 
-    {
+    {  System.out.println(allMovies);
         try (Connection con = cm.getConnection())
         {
+          
             String sql
                     = "INSERT INTO Movie"
-                    + "(Id, name, Rating, filelink, lastview) "
-                    + "VALUES(?,?,?,?,?)";
+                    + "(name, rating, filelink) "
+                    + "VALUES(?,?,?)";
             
             PreparedStatement pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, allMovies.getTitle());
-            pstmt.setInt(2, allMovies.getId());
-            pstmt.setInt(3, allMovies.getRating());
-            pstmt.setString(4, allMovies.getFilelink());
-            pstmt.setDate(5, (Date) allMovies.getLastview());
+            pstmt.setInt(2, allMovies.getRating());
+            pstmt.setString(3, allMovies.getFilelink());
+           
             
-            
-            int affected = pstmt.executeUpdate();
+        int affected = pstmt.executeUpdate();
             if (affected<1){
-                throw new SQLException("Movie could not be added");}
+                    throw new SQLException("Song could not be added");}
             
-            ResultSet rs = pstmt.getGeneratedKeys();
             
-            if (rs.next())
-            {
+              ResultSet rs = pstmt.getGeneratedKeys();
+            if (rs.next()) {
                 allMovies.setId(rs.getInt(1));
-            }
+           }
+                 }
+    catch (SQLException ex) {
+        Logger.getLogger(PrivateMovieCollectionDAL.class.getName()).log(Level.SEVERE, null, ex);
+    }     
          }
-      }
+      
     
     public void remove(PrivateMovieCollection selectedPrivateMovieCollection) throws SQLServerException, SQLException
     {

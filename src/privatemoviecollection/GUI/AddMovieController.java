@@ -6,6 +6,9 @@
 package privatemoviecollection.GUI;
 
 import java.net.URL;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -23,6 +26,7 @@ import javafx.stage.Stage;
 import javax.swing.JFileChooser;
 import privatemoviecollection.BE.CategoryID;
 import privatemoviecollection.BE.PrivateMovieCollection;
+import privatemoviecollection.BLL.BLLManager;
 
 /**
  * FXML Controller class
@@ -67,17 +71,18 @@ public class AddMovieController implements Initializable {
     private RadioButton selectedAnimation;
     @FXML
     private RadioButton selectedWestern;
-    private PrivateMovieCollection movieRate;
-    private CategoryID genreMovie;
+    
+    private CategoryID genreMovie = new CategoryID();
    String URLAdressSong;
     @FXML
     private ToggleGroup movieRating;
     @FXML
     private ToggleGroup movieGenre;
-    PrivateMovieCollection pmc;
+   
     @FXML
     private Button selectMovie;
-    
+     PrivateMovieCollection movie=new PrivateMovieCollection();
+     BLLManager BLL= new BLLManager();
     /**
      * Initializes the controller class.
      */
@@ -87,20 +92,27 @@ public class AddMovieController implements Initializable {
     }    
 
     @FXML
-    private void saveBtn(ActionEvent event) 
+    private void saveBtn(ActionEvent event) throws SQLException 
     {
-        pmc.setTitle(movieTitle.getText());
-        pmc.setRating(Integer.parseInt(ratingOne.getText()));
-        pmc.setRating(Integer.parseInt(ratingTwo.getText()));
-        pmc.setRating(Integer.parseInt(ratingThree.getText()));
-        pmc.setRating(Integer.parseInt(ratingFour.getText()));
-        pmc.setRating(Integer.parseInt(ratingFive.getText()));
-        Stage stage = (Stage) cancel.getScene().getWindow();
-        stage.close();
+       
+       
+     
         
-        if (URLAdressSong == null || movieTitle==null  )
+        if (URLAdressSong == null || movieTitle==null )
         {
             
+        }
+        else
+        { 
+            saveRating();
+            
+            movie.setFilelink(URLAdressSong);
+            movie.setTitle(movieTitle.getText());
+            BLL.add(movie);
+            Stage stage = (Stage) cancel.getScene().getWindow();
+        stage.close();
+            
+        
         }
     }
 
@@ -140,30 +152,31 @@ public class AddMovieController implements Initializable {
     {
         String title = movieTitle.getText();
         Toggle rating = movieRating.getSelectedToggle();
+    
 
         if (rating.equals(ratingOne))
                 {
-                    movieRate.setRating(1);  
+                    movie.setRating(1);  
                 }
-        if (rating.equals(ratingTwo))
+          if (rating.equals(ratingTwo))
                 {
-                    movieRate.setRating(2);  
+                    movie.setRating(2);  
                 }
-        if (rating.equals(ratingThree))
+         if (rating.equals(ratingThree))
                 {
-                    movieRate.setRating(3);
+                    movie.setRating(3);
                 }
         if (rating.equals(ratingFour))
                 {
-                    movieRate.setRating(4);
+                    movie.setRating(4);
                 }
         if (rating.equals(ratingFive))
                 {
-                    movieRate.setRating(5);
+                    movie.setRating(5);
                 }
         if (rating.equals(ratingSix))
                 {
-                    movieRate.setRating(6);
+                    movie.setRating(6);
                 }
         
         Toggle genre = movieGenre.getSelectedToggle();
@@ -209,8 +222,8 @@ public class AddMovieController implements Initializable {
         {
             genreMovie.setCategory("Western");
         }
-        
-        movieRate.setTitle(title);
+        System.out.println(genreMovie.getCategory());
+     
     }
     
    

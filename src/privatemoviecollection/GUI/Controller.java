@@ -32,6 +32,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import privatemoviecollection.BE.PrivateMovieCollection;
 
 /**
  *
@@ -45,7 +46,7 @@ public class Controller implements Initializable
     private Button addMovieBtn;
     @FXML
     private GridPane movieList;
-    
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {

@@ -63,7 +63,7 @@ public class PrivateMovieCollection
     
     public void setRating(int rating)
     {
-        this.id.set(rating);
+        this.rating.set(rating);
     }
     
     public IntegerProperty ratingProperty()
@@ -89,6 +89,11 @@ public class PrivateMovieCollection
     public void setFilelink(String filelink) 
     {
         this.filelink.set(filelink);
+    }
+
+    @Override
+    public String toString() {
+        return "PrivateMovieCollection{" + "id=" + id + ", title=" + title + ", filelink=" + filelink + ", rating=" + rating + ", lastview=" + lastview + ", allMovies=" + allMovies + '}';
     }
     
     public StringProperty filelinkProperty()
