@@ -60,22 +60,22 @@ public class Controller implements Initializable
     private TableColumn<PrivateMovieCollection, Integer> rating;
     @FXML
     private TableColumn<PrivateMovieCollection, String> filelink;
-   Model model= new Model();
+    Model model= new Model();
+    
     @Override
-    public
- void initialize(URL url, ResourceBundle rb) 
+    public void initialize(URL url, ResourceBundle rb) 
     {
         selectGenre.getItems().removeAll(selectGenre.getItems());
         selectGenre.getItems().addAll("Action", "Drama","Crime", "Sci-Fi", "Crime", 
-                                    "Western", "Horror", "Animation", "Thriller",
-                                    "War");
-          TItle.setCellValueFactory(
-            new PropertyValueFactory("title"));
-           rating.setCellValueFactory(
-            new PropertyValueFactory("rating"));
-            filelink.setCellValueFactory(
-            new PropertyValueFactory("filelink"));
-            movieListView.setItems((ObservableList<PrivateMovieCollection>)model.getAllMovies() );
+            "Western", "Horror", "Animation", 
+            "Thriller", "War");
+        TItle.setCellValueFactory(
+        new PropertyValueFactory("title"));
+        rating.setCellValueFactory(
+        new PropertyValueFactory("rating"));
+        filelink.setCellValueFactory(
+        new PropertyValueFactory("filelink"));
+        movieListView.setItems((ObservableList<PrivateMovieCollection>)model.getAllMovies() );
     }
     
     
@@ -91,12 +91,10 @@ public class Controller implements Initializable
     void newAddMovieView() throws IOException
     {
         Stage newStage = new Stage();
-
         FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("AddMovie.fxml"));
         Parent root = fxLoader.load();
         AddMovieController controller= fxLoader.getController();
         controller.setModel(model);
-         
         Scene scene = new Scene(root);
         newStage.setScene(scene);
         newStage.show();
@@ -105,12 +103,10 @@ public class Controller implements Initializable
     void newAddGenreView() throws IOException
     {
         Stage newStage = new Stage();
-
-        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("addGenre.fxml"));
+        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("AddGenre.fxml"));
         Parent root = fxLoader.load();
         AddGenreController controller= fxLoader.getController();
         controller.setModel(model);
-         
         Scene scene = new Scene(root);
         newStage.setScene(scene);
         newStage.show();

@@ -40,7 +40,7 @@
       <Button layoutX="410.0" layoutY="46.0" mnemonicParsing="false" onAction="#playMovie" style="-fx-background-radius: 30;" text="Play Movie" />
       <TableView fx:id="movieListView" layoutX="22.0" layoutY="94.0" onMouseClicked="#getSelectedPlaylist" prefHeight="538.0" prefWidth="699.0">
          <columns>
-            <TableColumn fx:id="TItle" prefWidth="210.0" text="Title" />
+            <TableColumn fx:id="Title" prefWidth="210.0" text="Title" />
             <TableColumn fx:id="rating" minWidth="0.0" prefWidth="221.0" text="Rating" />
             <TableColumn fx:id="filelink" prefWidth="267.0" text="Filelink" />
          </columns>
