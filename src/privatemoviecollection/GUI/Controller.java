@@ -49,6 +49,7 @@ import privatemoviecollection.BLL.BLLManager;
  */
 public class Controller implements Initializable 
 {    
+    boolean badMovies=false;
     @FXML
     private ComboBox<String> selectGenre;
     private Stage primaryStage;
@@ -95,6 +96,15 @@ public class Controller implements Initializable
         
         try {
             movieListView.setItems((ObservableList<PrivateMovieCollection>)model.getAllMovies() );
+        } catch (SQLException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            badMovieAlert();
+        } catch (ParseException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -205,13 +215,26 @@ public class Controller implements Initializable
     }
     
 
-    private void badMovieAlert() throws ParseException, IOException
+    private void badMovieAlert() throws ParseException, IOException, SQLException
     {
+<<<<<<< HEAD
+        for (PrivateMovieCollection allMovy : model.getAllMovies()) {
+       
+        if (BLL.daysBetween(allMovy.getLastview(), newTime())<730) {
+            badMovies=true;
+        
+               }  
+        }  
+        if(badMovies)
+        {
+        Stage newStage = new Stage();
+=======
 
 
        if (BLL.daysBetween(lastViewDate(), newTime()).getDays() > 700)
                { 
                    Stage newStage = new Stage();
+>>>>>>> d78ec4b48d0dd29b07ac52c57bfd338dc08b3c64
         FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("alertWindow.fxml"));
         Parent root = fxLoader.load();
         alertWindowController controller= fxLoader.getController();
@@ -219,24 +242,37 @@ public class Controller implements Initializable
         Scene scene = new Scene(root);
         newStage.setScene(scene);
         newStage.show();
+<<<<<<< HEAD
+        badMovies=false;
+        }
+}
+    
+=======
                }  
 
     }
+>>>>>>> d78ec4b48d0dd29b07ac52c57bfd338dc08b3c64
 
   
     private Date newTime() throws ParseException
     {
-        Calendar cal1 = new GregorianCalendar();
-        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
-        
-        Date date = sdf.parse("This date");
-        cal1.setTime(date);
-        
-
-        return date;
+        java.util.Date utilDate = new java.util.Date();
+        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+        return sqlDate;
         
     }
+<<<<<<< HEAD
   
+=======
+    
+<<<<<<< HEAD
+=======
+    private Date lastViewDate()
+    {
+        
+    }
+>>>>>>> d78ec4b48d0dd29b07ac52c57bfd338dc08b3c64
+>>>>>>> a16645286bc8a4a976f72a05858f28680fe0e0ea
     
     @FXML
     private void handleAbout(ActionEvent event) {  //sets the "About Us"
@@ -317,7 +353,9 @@ public class Controller implements Initializable
 }
 
     @FXML
-    private void getSelectedPlaylist(MouseEvent event) {
+    private void getSelectedPlaylist(MouseEvent event) 
+    {
+        
     }
 }
 

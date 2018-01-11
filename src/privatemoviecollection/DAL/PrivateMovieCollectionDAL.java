@@ -379,7 +379,6 @@ public class PrivateMovieCollectionDAL
                
             }
         } 
-        System.out.println(allMovies);
         return allMovies;
         
     }

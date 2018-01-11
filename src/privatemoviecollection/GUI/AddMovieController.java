@@ -63,6 +63,7 @@ public class AddMovieController implements Initializable {
     @FXML
     private ComboBox<String> selectGenre3;
     private Model model;
+    boolean titleError = false;
 
     
     @Override
@@ -119,6 +120,19 @@ public class AddMovieController implements Initializable {
             else
                 movie.setRating(rate);
             
+            titleError = true;
+            for (PrivateMovieCollection pmc : model.getAllMovies()) 
+            {   
+                System.out.println(movieTitle.getText());
+                if (pmc.getTitle().trim() == movieTitle.getText().trim()) 
+                {
+                    showErrorDialog("Naming error", null, "That name already exists");
+                    titleError = false;
+                    System.out.println("inside the if");
+                }
+                
+            }
+            
             saveRating();
             java.util.Date utilDate = new java.util.Date();
             java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
@@ -126,7 +140,10 @@ public class AddMovieController implements Initializable {
             movie.setFilelink(URLAdressSong);
             movie.setTitle(movieTitle.getText());
             movie.setLastview(sqlDate);
-            model.add(movie);
+            if (titleError)
+            {
+                model.add(movie);
+            }
             
             catMoviebe.setMovieName(movie.getTitle());
             
