@@ -70,10 +70,6 @@ public class Controller implements Initializable
     int dayCount = 0;
     boolean search = false;
     @FXML
-    private Button saveGenre;
-    @FXML
-    private Button removeMovie;
-    @FXML
     private ListView<?> genreListView;
     
     @Override
@@ -193,13 +189,18 @@ public class Controller implements Initializable
         } 
     }
     
-    private void badMovieAlert() throws ParseException
+    private void badMovieAlert() throws ParseException, IOException
     {
-       if (BLL.daysBetween(lastViewDate(), newTime()).getDays() > 700 && )
+       if (BLL.daysBetween(lastViewDate(), newTime()).getDays() > 700)
                { 
-                   Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                   alert.setTitle("You should delete these movies:" + );
-                   
+                   Stage newStage = new Stage();
+        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("alertWindow.fxml"));
+        Parent root = fxLoader.load();
+        alertWindowController controller= fxLoader.getController();
+        controller.setModel(model);
+        Scene scene = new Scene(root);
+        newStage.setScene(scene);
+        newStage.show();
                }  
     }
   
@@ -213,6 +214,11 @@ public class Controller implements Initializable
         
 
         return date;
+        
+    }
+    
+    private Date lastViewDate()
+    {
         
     }
     

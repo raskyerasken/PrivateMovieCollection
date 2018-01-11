@@ -7,23 +7,16 @@ package privatemoviecollection.GUI;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Optional;
 import java.util.ResourceBundle;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javax.swing.JFileChooser;
 import privatemoviecollection.BE.CatMovieBE;
@@ -127,27 +120,32 @@ public class AddMovieController implements Initializable {
                 movie.setRating(rate);
             
             saveRating();
+            java.util.Date utilDate = new java.util.Date();
+            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+            
             movie.setFilelink(URLAdressSong);
             movie.setTitle(movieTitle.getText());
-             java.util.Date utilDate = new java.util.Date();
-    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
             movie.setLastview(sqlDate);
             model.add(movie);
+            
             catMoviebe.setMovieName(movie.getTitle());
+            
            if(selectGenre1.getSelectionModel().getSelectedItem()!=null)
            {
-           catMoviebe.setCategoryName(selectGenre1.getSelectionModel().getSelectedItem());
-           model.addMovieGenre(catMoviebe);
+                catMoviebe.setCategoryName(selectGenre1.getSelectionModel().getSelectedItem());
+                model.addMovieGenre(catMoviebe);
            } 
+           
            if(selectGenre2.getSelectionModel().getSelectedItem()!=null)
            {
-           catMoviebe.setCategoryName(selectGenre2.getSelectionModel().getSelectedItem());
-           model.addMovieGenre(catMoviebe);
+                catMoviebe.setCategoryName(selectGenre2.getSelectionModel().getSelectedItem());
+                model.addMovieGenre(catMoviebe);
            }
+           
             if(selectGenre3.getSelectionModel().getSelectedItem()!=null)
            {
-           catMoviebe.setCategoryName(selectGenre3.getSelectionModel().getSelectedItem());
-           model.addMovieGenre(catMoviebe);
+                catMoviebe.setCategoryName(selectGenre3.getSelectionModel().getSelectedItem());
+                model.addMovieGenre(catMoviebe);
            }
            
             Stage stage = (Stage) cancel.getScene().getWindow();
