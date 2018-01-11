@@ -317,7 +317,7 @@ private void genreFilter(ActionEvent event) throws SQLException {
         }
         else
         {
-          model.getAllMoviesByGenre(selectGenre.getSelectionModel().getSelectedItem());
+          movieListView.setItems(model.getAllMoviesByGenre(selectGenre.getSelectionModel().getSelectedItem()));
         }
 }
 

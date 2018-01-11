@@ -298,6 +298,33 @@ public class PrivateMovieCollectionDAL
         } 
         return allMovies;
     }
+
+    public PrivateMovieCollection getMovie(String movieName) throws SQLServerException, SQLException {
+   
+        PrivateMovieCollection s = new PrivateMovieCollection();
+        try (Connection con = cm.getConnection())
+        {
+            String query
+                    = "SELECT * FROM Movie "
+                    + "WHERE name LIKE ?";
+            
+            PreparedStatement stmt
+                    = con.prepareStatement(query);
+            stmt.setString(1, movieName );
+            
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next())
+            {
+                
+                s.setTitle(rs.getString("Name"));
+                s.setId(rs.getInt("id"));
+                s.setRating(rs.getInt("Rating"));
+                s.setFilelink(rs.getString("Filelink"));
+                s.setLastview(rs.getDate("lastview"));
+                
+            }
+        } 
+        return s;}
   
 }
     

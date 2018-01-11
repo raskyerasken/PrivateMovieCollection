@@ -156,5 +156,9 @@ public class BLLManager
     return pmcdal.getAllMoviesByGenre(selectedGenre);
     }
 
+    public PrivateMovieCollection  getMovie(String movieName) throws SQLException {
+    return pmcdal.getMovie(movieName);
+    }
+
     
 }
