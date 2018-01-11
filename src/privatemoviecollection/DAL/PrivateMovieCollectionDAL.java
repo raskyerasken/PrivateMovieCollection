@@ -90,34 +90,7 @@ public class PrivateMovieCollectionDAL
         return allMovies;
     }
     
-    //hello
-    public List<PrivateMovieCollection> getAllByGenre(String search) throws SQLException, SQLServerException
-    {
-        ArrayList<PrivateMovieCollection> allGenres = new ArrayList<>();
-        
-        try (Connection con = cm.getConnection())
-        {
-            String query 
-                    = "SELECT * FROM category"
-                    + "WHERE name LIKE ?";
-            
-            PreparedStatement pstmt
-                    = con.prepareStatement(query);
-            
-            pstmt.setString(1, "%" + search + "%");
-            
-            ResultSet rs = pstmt.executeQuery();
-            while (rs.next())
-            {
-                PrivateMovieCollection m = new PrivateMovieCollection();
-                m.setId(rs.getInt("Id"));
-                m.setTitle(rs.getString("Name"));
-                allGenres.add(m);
-            }
-        }
-        return allGenres;
-    }
-
+    
     public void add (PrivateMovieCollection allMovies) throws SQLServerException, SQLException 
     {  
         try (Connection con = cm.getConnection())
@@ -299,9 +272,33 @@ public class PrivateMovieCollectionDAL
             Logger.getLogger(PrivateMovieCollectionDAL.class.getName()).log(Level.SEVERE, null, ex);
         }     
     }
-    
-    
-    
+   public List<CatMovieBE> getAllMoviesByGenre(String selectedGenre) throws SQLServerException, SQLException
+    {
+        List<CatMovieBE> allMovies = new ArrayList();
+        
+        try (Connection con = cm.getConnection())
+        {
+            String query
+                    = "SELECT * FROM movieCategory "
+                    + "WHERE categoryName LIKE ?";
+            
+            PreparedStatement stmt
+                    = con.prepareStatement(query);
+            stmt.setString(1,"%" + selectedGenre + "%");
+            
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next())
+            {
+                CatMovieBE s = new CatMovieBE();
+                s.setCategoryName(rs.getString("categoryName"));
+                s.setMovieName(rs.getString("movieName"));
+                
+                allMovies.add(s);
+            }
+        } 
+        return allMovies;
+    }
+  
 }
     
 

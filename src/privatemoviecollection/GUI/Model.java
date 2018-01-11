@@ -77,4 +77,9 @@ public class Model
      bllManager.add(categoryToMovie);
         movieCategory.add(categoryToMovie);
     }
+
+    void getAllMoviesByGenre(String selectedGenre) throws SQLException {
+     bllManager.getAllMovieByGenre(selectedGenre);
+        System.out.println(bllManager.getAllMovieByGenre(selectedGenre));
+    }
 }

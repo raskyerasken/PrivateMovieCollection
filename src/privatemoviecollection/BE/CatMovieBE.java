@@ -17,7 +17,8 @@ import javafx.beans.property.StringProperty;
 public class CatMovieBE {
 
     private final StringProperty movieName = new SimpleStringProperty();
-
+  private final StringProperty categoryName = new SimpleStringProperty();
+  
     public String getMovieName() {
         return movieName.get();
     }
@@ -30,7 +31,7 @@ public class CatMovieBE {
         return movieName;
     }
 
-    private final StringProperty categoryName = new SimpleStringProperty();
+   
 
     public String getCategoryName() {
         return categoryName.get();
