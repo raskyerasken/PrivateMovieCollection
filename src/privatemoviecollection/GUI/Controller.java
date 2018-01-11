@@ -98,8 +98,6 @@ public class Controller implements Initializable
         
         genre.setCellValueFactory(
         new PropertyValueFactory("filelink"));
-
-        
         movieListView.setItems((ObservableList<PrivateMovieCollection>)model.getAllMovies() );
     }
     
@@ -111,7 +109,7 @@ public class Controller implements Initializable
     @FXML
     private void playMovie(ActionEvent event) throws IOException 
     {
-        if (movieListView.getSelectionModel().getSelectedItem() != null) 
+        if (movieListView.getSelectionModel().getSelectedItem() != null ) 
         {
             File file = new File("");
             Desktop desktop = Desktop.getDesktop();
