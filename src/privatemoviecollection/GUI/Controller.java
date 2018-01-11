@@ -68,6 +68,7 @@ public class Controller implements Initializable
     private TextField txtSearch;
     @FXML
     private Button searchBtn;
+    boolean search = false;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
@@ -225,16 +226,27 @@ public class Controller implements Initializable
     }    
 
     @FXML
-    private void searchMovie(ActionEvent event) {
+    private void searchMovie(ActionEvent event) 
+    {
+        if (search) 
+        {
+            search = false;
+            searchBtn.setText("Search");
+            movieListView.setItems
+                ((ObservableList<PrivateMovieCollection>) 
+                    model.getAllMovies());
+        }
+        else
+        {
+            String a = txtSearch.getText();
+            movieListView.setItems((ObservableList<PrivateMovieCollection>)
+                    model.getAllMovies());
+            search = true;
+            searchBtn.setText("All Movies");
+            System.out.println("lolol");
+        }
     }
-    
-    
-    
-    
-    
-    
-    
-    }
+}
 
 
 
