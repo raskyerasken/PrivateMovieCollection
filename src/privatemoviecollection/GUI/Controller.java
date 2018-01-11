@@ -67,7 +67,7 @@ public class Controller implements Initializable
     private TableColumn<PrivateMovieCollection, String> Title;
     @FXML
     private TableColumn<PrivateMovieCollection, Integer> rating;
-  Model model= new Model();
+    Model model= new Model();
     @FXML
     private TextField txtSearch;
     @FXML
@@ -97,7 +97,7 @@ public class Controller implements Initializable
         new PropertyValueFactory("rating"));
         
         genre.setCellValueFactory(
-        new PropertyValueFactory("lastview"));
+        new PropertyValueFactory("filelink"));
 
         
         movieListView.setItems((ObservableList<PrivateMovieCollection>)model.getAllMovies() );
@@ -107,10 +107,17 @@ public class Controller implements Initializable
     @FXML
     private void playMovie(ActionEvent event) throws IOException 
     {
-        File file = new File("");
-        Desktop desktop = Desktop.getDesktop();
-        file = new File(movieListView.getSelectionModel().getSelectedItem().getFilelink());
-        desktop.open(file);
+        if (movieListView.getSelectionModel().getSelectedItem() != null) 
+        {
+            File file = new File("");
+            Desktop desktop = Desktop.getDesktop();
+            file = new File(movieListView.getSelectionModel().getSelectedItem().getFilelink());
+            desktop.open(file);
+        }
+        else
+            showErrorDialog("Selection Error", null, 
+                    "Please select a movie from the "
+                            + "list before clicking Play movie");
     }
     
     void newAddMovieView() throws IOException
@@ -306,9 +313,8 @@ public class Controller implements Initializable
         }
     }
 
-    
     @FXML
-private void genreFilter(ActionEvent event) throws SQLException {
+    private void genreFilter(ActionEvent event) throws SQLException {
         if(selectGenre.getSelectionModel().getSelectedItem()=="All movies")
         {
             movieListView.setItems
