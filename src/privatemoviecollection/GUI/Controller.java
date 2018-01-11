@@ -330,7 +330,9 @@ public class Controller implements Initializable
 }
 
     @FXML
-    private void getSelectedPlaylist(MouseEvent event) {
+    private void getSelectedPlaylist(MouseEvent event) 
+    {
+        
     }
 }
 
