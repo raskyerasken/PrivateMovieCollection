@@ -121,5 +121,10 @@ public class BLLManager
         return pmcdal.getMovie(movieName);
     }
 
+    public List<CatMovieBE> getMoviesGenre(String title) throws SQLException {
+    return pmcdal.getGenreByMovue(title);
+    }
+
+
     
 }
