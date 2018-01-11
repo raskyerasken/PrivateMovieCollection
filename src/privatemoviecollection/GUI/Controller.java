@@ -67,8 +67,7 @@ public class Controller implements Initializable
     private TableColumn<PrivateMovieCollection, String> Title;
     @FXML
     private TableColumn<PrivateMovieCollection, Integer> rating;
-    private TableColumn<PrivateMovieCollection, String> filelink;
-   Model model= new Model();
+    Model model= new Model();
     @FXML
     private TextField txtSearch;
     @FXML
@@ -76,7 +75,8 @@ public class Controller implements Initializable
     int dayCount = 0;
     boolean search = false;
     @FXML
-    private TableColumn<?, ?> genre;
+    private TableColumn<PrivateMovieCollection, String> genre;
+
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
@@ -98,7 +98,7 @@ public class Controller implements Initializable
         rating.setCellValueFactory(
         new PropertyValueFactory("rating"));
         
-        filelink.setCellValueFactory(
+        genre.setCellValueFactory(
         new PropertyValueFactory("filelink"));
         
         movieListView.setItems((ObservableList<PrivateMovieCollection>)model.getAllMovies() );
@@ -197,15 +197,15 @@ public class Controller implements Initializable
         } 
     }
     
-    private void badMovieAlert() throws ParseException
-    {
-       if (BLL.daysBetween(lastViewDate(), newTime()).getDays() > 700 && )
-               { 
-                   Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                   alert.setTitle("You should delete these movies:" + );
-                   
-               }  
-    }
+//    private void badMovieAlert() throws ParseException
+//    {
+//       if (BLL.daysBetween(lastViewDate(), newTime()).getDays() > 700 && )
+//               { 
+//                   Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+//                   alert.setTitle("You should delete these movies:" + );
+//                   
+//               }  
+//    }
   
     private Date newTime() throws ParseException
     {
@@ -287,6 +287,10 @@ public class Controller implements Initializable
             search = true;
             searchBtn.setText("All Movies");
         }
+    }
+
+    @FXML
+    private void genreFilter(ActionEvent event) {
     }
 }
 
