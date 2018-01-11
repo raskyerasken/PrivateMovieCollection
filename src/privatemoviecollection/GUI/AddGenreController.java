@@ -77,6 +77,8 @@ public class AddGenreController implements Initializable {
         
         model.addGenre(category);
         setGenre();
+        
+        
     }
     void setGenre()
     {

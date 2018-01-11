@@ -148,5 +148,9 @@ public class BLLManager
     }
     
 
+    public void add(CatMovieBE categoryToMovie) {
+   pmcdal.addGenreToMovies(categoryToMovie);
+    }
+
     
 }
