@@ -67,7 +67,6 @@ public class Controller implements Initializable
     private TableColumn<PrivateMovieCollection, String> Title;
     @FXML
     private TableColumn<PrivateMovieCollection, Integer> rating;
-    @FXML
     private TableColumn<PrivateMovieCollection, String> filelink;
    Model model= new Model();
     @FXML
@@ -76,24 +75,32 @@ public class Controller implements Initializable
     private Button searchBtn;
     int dayCount = 0;
     boolean search = false;
+    @FXML
+    private TableColumn<?, ?> genre;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
         selectGenre.getItems().clear();
-        for (CategoryID  id : model.allGenre()) {
-            selectGenre.getItems().add(id.getCategory());
+        
+        for (CategoryID  id : model.allGenre()) 
+        {
+        selectGenre.getItems().add(id.getCategory());
         }
         
-        selectGenre.getItems().addAll("Action", "Drama","Crime", "Sci-Fi", "Crime", 
-            "Western", "Horror", "Animation", 
-            "Thriller", "War");
+        selectGenre.getItems().addAll(
+            "Action","Drama","Crime", "Sci-Fi", 
+            "Crime", "Western", "Horror", 
+            "Animation", "Thriller", "War");
         Title.setCellValueFactory(
         new PropertyValueFactory("title"));
+        
         rating.setCellValueFactory(
         new PropertyValueFactory("rating"));
+        
         filelink.setCellValueFactory(
         new PropertyValueFactory("filelink"));
+        
         movieListView.setItems((ObservableList<PrivateMovieCollection>)model.getAllMovies() );
     }
     
@@ -192,14 +199,15 @@ public class Controller implements Initializable
     
     private void badMovieAlert() throws ParseException
     {
-       if (BLL.daysBetween(lastViewDate(), newTime).getDays() > 700)
+       if (BLL.daysBetween(lastViewDate(), newTime()).getDays() > 700 && )
                { 
-       
-           
-    }  
+                   Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                   alert.setTitle("You should delete these movies:" + );
+                   
+               }  
     }
     
-    private Date lastViewDate() throws ParseException
+    private Date newTime() throws ParseException
     {
         Calendar cal1 = new GregorianCalendar();
         SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
