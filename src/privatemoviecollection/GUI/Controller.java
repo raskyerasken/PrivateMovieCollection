@@ -5,12 +5,20 @@
  */
 package privatemoviecollection.GUI;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import static java.util.Collections.list;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
@@ -54,7 +62,7 @@ public class Controller implements Initializable
     private ComboBox<String> selectGenre;
     private Stage primaryStage;
     private Button addMovieBtn;
-    BLLManager BLL=new BLLManager();
+    BLLManager BLL = new BLLManager();
     @FXML
     private TableView<PrivateMovieCollection> movieListView;
     @FXML
@@ -68,6 +76,11 @@ public class Controller implements Initializable
     private TextField txtSearch;
     @FXML
     private Button searchBtn;
+<<<<<<< HEAD
+    int dayCount = 0;
+=======
+    boolean search = false;
+>>>>>>> 5e1f7d3484371efa197efa6bf0ebaf35a4a6546f
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
@@ -163,6 +176,9 @@ public class Controller implements Initializable
 
         alert.showAndWait();
     }
+     
+     
+    
     //allows the user to close the program, and does a pop-up making sure the user actually wants to
     @FXML
     private void closeProgram(ActionEvent event) 
@@ -170,13 +186,33 @@ public class Controller implements Initializable
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");
         alert.setHeaderText(null);
-        alert.setContentText("Are you sure you want to exit this awesome Program?");
+        alert.setContentText("Are you sure you want to exit this Program?");
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK)
         {
             Platform.exit();
         } 
+    }
+    
+    private void badMovieAlert() throws ParseException
+    {
+       if (BLL.daysBetween(lastViewDate(), newTime).getDays() > 700)
+               { 
+       
+           
+    }  
+    }
+    
+    private int lastViewDate() throws ParseException
+    {
+        Calendar cal1 = new GregorianCalendar();
+        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
+        
+        Date date = sdf.parse("This date");
+        cal1.setTime(date);
+        
+        System.out.println(date);
     }
     
     @FXML
@@ -206,6 +242,9 @@ public class Controller implements Initializable
         about.showAndWait();
     }
     
+    
+   
+    
 
     @FXML
     private void getSelectedPlaylist(MouseEvent event) 
@@ -225,16 +264,27 @@ public class Controller implements Initializable
     }    
 
     @FXML
-    private void searchMovie(ActionEvent event) {
+    private void searchMovie(ActionEvent event) throws SQLException 
+    {
+        if (search) 
+        {
+            search = false;
+            searchBtn.setText("Search");
+            movieListView.setItems
+                ((ObservableList<PrivateMovieCollection>) 
+                    model.getAllMovies());
+        }
+        else
+        {
+            String a = txtSearch.getText();
+            movieListView.setItems((ObservableList<PrivateMovieCollection>)
+                    model.getAllMoviesList(a));
+            search = true;
+            searchBtn.setText("All Movies");
+            System.out.println("lolol");
+        }
     }
-    
-    
-    
-    
-    
-    
-    
-    }
+}
 
 
 
