@@ -66,13 +66,11 @@ public class PrivateMovieCollectionDAL
         try (Connection con = cm.getConnection())
         {
             String query
-                    = "SELECT * FROM Movie";
-//                    + "WHERE name Like ? OR rating LIKE ?";
+                    = "SELECT * FROM Movie WHERE name=?";
             
             PreparedStatement stmt
                     = con.prepareStatement(query);
-//            stmt.setString(1,"%" + search + "%");
-//            stmt.setString(2, "%" + search + "%");
+            stmt.setString(1,"%" + search + "%");
             
             ResultSet rs = stmt.executeQuery();
             while(rs.next())
