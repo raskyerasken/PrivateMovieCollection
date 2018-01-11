@@ -99,8 +99,7 @@ public class Controller implements Initializable
         new PropertyValueFactory("rating"));
         
         genre.setCellValueFactory(
-<<<<<<< HEAD
-        new PropertyValueFactory("categoryName"));
+     new PropertyValueFactory("categoryName"));
 
         
         try {
@@ -108,10 +107,6 @@ public class Controller implements Initializable
         } catch (SQLException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
-=======
-        new PropertyValueFactory("filelink"));
-        movieListView.setItems((ObservableList<PrivateMovieCollection>)model.getAllMovies() );
->>>>>>> e3ad5c56b8770867710a63ead6aa874e4b9f4fbf
     }
     
     /**
