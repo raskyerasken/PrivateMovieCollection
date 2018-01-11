@@ -197,7 +197,6 @@ public class Controller implements Initializable
         } 
     }
     
-<<<<<<< HEAD
     private void badMovieAlert() throws ParseException
     {
        if (BLL.daysBetween(lastViewDate(), newTime()).getDays() > 700 && )
@@ -207,17 +206,7 @@ public class Controller implements Initializable
                    
                }  
     }
-=======
-//    private void badMovieAlert() throws ParseException
-//    {
-//       if (BLL.daysBetween(lastViewDate(), newTime).getDays() > 700)
-//               { 
-//       
-//           
-//    }  
-//    }
->>>>>>> f5e903363e70e5def7156c33ceced05e5deba5f3
-    
+  
     private Date newTime() throws ParseException
     {
         Calendar cal1 = new GregorianCalendar();
