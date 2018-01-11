@@ -56,27 +56,25 @@ import privatemoviecollection.BLL.BLLManager;
  */
 public class Controller implements Initializable 
 {    
-    @FXML
     private ComboBox<String> selectGenre;
     private Stage primaryStage;
     private Button addMovieBtn;
     BLLManager BLL = new BLLManager();
-    @FXML
     private TableView<PrivateMovieCollection> movieListView;
-    @FXML
     private TableColumn<PrivateMovieCollection, String> Title;
-    @FXML
     private TableColumn<PrivateMovieCollection, Integer> rating;
     private TableColumn<PrivateMovieCollection, String> filelink;
    Model model= new Model();
-    @FXML
     private TextField txtSearch;
-    @FXML
     private Button searchBtn;
     int dayCount = 0;
     boolean search = false;
     @FXML
-    private TableColumn<?, ?> genre;
+    private Button saveGenre;
+    @FXML
+    private Button removeMovie;
+    @FXML
+    private ListView<?> genreListView;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
@@ -105,7 +103,6 @@ public class Controller implements Initializable
     }
     
     
-    @FXML
     private void playMovie(ActionEvent event) throws IOException 
     {
         File file = new File("");
@@ -182,7 +179,6 @@ public class Controller implements Initializable
      
     
     //allows the user to close the program, and does a pop-up making sure the user actually wants to
-    @FXML
     private void closeProgram(ActionEvent event) 
     {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -220,7 +216,6 @@ public class Controller implements Initializable
         
     }
     
-    @FXML
     private void handleAbout(ActionEvent event) {  //sets the "About Us"
              String contentText = "\t Hello, and welcome to our PrivateMovieCollection."
                 +"\n\t In the file menu you can find:\n"
@@ -251,24 +246,16 @@ public class Controller implements Initializable
    
     
 
-    @FXML
-    private void getSelectedPlaylist(MouseEvent event) 
-    {
-        
-    }
 
-    @FXML
     private void addGenre(ActionEvent event) throws IOException {
         newAddGenreView();
     }
 
-    @FXML
     private void addMovie(ActionEvent event) throws IOException 
     {
         newAddMovieView();
     }    
 
-    @FXML
     private void searchMovie(ActionEvent event) throws SQLException 
     {
         if (search) 
@@ -287,6 +274,10 @@ public class Controller implements Initializable
             search = true;
             searchBtn.setText("All Movies");
         }
+    }
+
+    @FXML
+    private void saveBtn(ActionEvent event) {
     }
 }
 
