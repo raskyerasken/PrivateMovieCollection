@@ -72,7 +72,7 @@ public class Controller implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        selectGenre.getItems().removeAll(selectGenre.getItems());
+        selectGenre.getItems().clear();
         for (CategoryID  id : model.allGenre()) {
             selectGenre.getItems().add(id.getCategory());
         }
