@@ -42,7 +42,6 @@ public class Model
            for (CatMovieBE genre  : bllManager.getMoviesGenre(privateMovieCollection.getTitle())) {
               
                 genrer=genrer+genre.getCategoryName()+",";
-                 System.out.println(genrer);
             }
             privateMovieCollection.setCategoryName(genrer);
             movieList.add(privateMovieCollection);
