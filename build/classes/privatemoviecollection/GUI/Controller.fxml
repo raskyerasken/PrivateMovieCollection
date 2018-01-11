@@ -16,7 +16,9 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
+              <MenuItem mnemonicParsing="false" onAction="#addMovie" text="Add" />
                   <MenuItem mnemonicParsing="false" onAction="#removeMovie" text="Remove" />
+                  <MenuItem mnemonicParsing="false" onAction="#closeProgram" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
@@ -26,20 +28,28 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="About" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
       <ComboBox fx:id="selectGenre" layoutX="432.0" layoutY="46.0" onAction="#genreFilter" prefHeight="27.0" prefWidth="136.0" promptText="Select Genre" />
       <TextField fx:id="txtSearch" layoutX="576.0" layoutY="46.0" promptText="Search for movies here" />
-     
+      <Button fx:id="searchBtn" layoutX="751.0" layoutY="48.0" mnemonicParsing="false" onAction="#searchMovie" prefHeight="27.0" prefWidth="64.0" style="-fx-background-radius: 30;" text="Search" />
+      <Button layoutX="23.0" layoutY="46.0" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30;" text="Add movie" />
+      <Button layoutX="336.0" layoutY="46.0" mnemonicParsing="false" onAction="#playMovie" style="-fx-background-radius: 30;" text="Play Movie" />
+      <TableView fx:id="movieListView" layoutX="22.0" layoutY="94.0" onMouseClicked="#getSelectedPlaylist" prefHeight="538.0" prefWidth="699.0">
       <TextField layoutX="514.0" layoutY="46.0" promptText="Search for movies here" />
       <Button layoutX="439.0" layoutY="46.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="69.0" style="-fx-background-radius: 30;" text="Search" />
-      
+      <Button layoutX="5.0" layoutY="46.0" mnemonicParsing="false" onAction="#addMovie" text="Add movie" />
+      <Button layoutX="340.0" layoutY="46.0" mnemonicParsing="false" onAction="#playMovie" style="-fx-background-radius: 30;" text="Play Movie" />
+         <columns>
             <TableColumn fx:id="Title" prefWidth="210.0" text="Title" />
             <TableColumn fx:id="rating" minWidth="0.0" prefWidth="221.0" text="Rating" />
             <TableColumn fx:id="genre" prefWidth="267.0" text="Genre" />
-       
+         </columns>
+      </TableView>
+      <Button layoutX="119.0" layoutY="46.0" mnemonicParsing="false" onAction="#addGenre" style="-fx-background-radius: 30;" text="Add genre" />
       <Button layoutX="734.0" layoutY="144.0" mnemonicParsing="false" onAction="#removeMovie" prefHeight="31.0" prefWidth="81.0" style="-fx-background-radius: 30;" text="Remove" />
    </children>
 </AnchorPane>

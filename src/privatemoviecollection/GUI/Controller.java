@@ -63,17 +63,33 @@ public class Controller implements Initializable
     private TableView<PrivateMovieCollection> movieListView;
     private TableColumn<PrivateMovieCollection, String> Title;
     private TableColumn<PrivateMovieCollection, Integer> rating;
+<<<<<<< HEAD
     Model model= new Model();
-  
     @FXML
+=======
+<<<<<<< HEAD
+  Model model= new Model();
+    @FXML
+=======
     private TableColumn<PrivateMovieCollection, String> filelink;
+   Model model= new Model();
+>>>>>>> ada935cf3faf79bf72fc26e00d50547de422400c
+>>>>>>> d1177bbfe52cd4f49b995554228002bd5c20655b
     private TextField txtSearch;
     private Button searchBtn;
     int dayCount = 0;
     boolean search = false;
     @FXML
+<<<<<<< HEAD
     private TableColumn<PrivateMovieCollection, String> genre;
+
+=======
+<<<<<<< HEAD
+    private TableColumn<PrivateMovieCollection, String> genre;
+=======
     private ListView<?> genreListView;
+>>>>>>> ada935cf3faf79bf72fc26e00d50547de422400c
+>>>>>>> d1177bbfe52cd4f49b995554228002bd5c20655b
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
@@ -92,7 +108,11 @@ public class Controller implements Initializable
         new PropertyValueFactory("rating"));
         
         genre.setCellValueFactory(
+<<<<<<< HEAD
+        new PropertyValueFactory("filelink"));
+=======
         new PropertyValueFactory("lastview"));
+>>>>>>> d1177bbfe52cd4f49b995554228002bd5c20655b
         
         movieListView.setItems((ObservableList<PrivateMovieCollection>)model.getAllMovies() );
     }
@@ -187,30 +207,39 @@ public class Controller implements Initializable
             Platform.exit();
         } 
     }
+    
+<<<<<<< HEAD
 //    private void badMovieAlert() throws ParseException
 //    {
-//    private void badMovieAlert() throws ParseException, IOException
-//    {
-////       if (BLL.daysBetween(lastViewDate(), newTime()).getDays() > 700 && )
-////               { 
-////                   Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-////                   alert.setTitle("You should delete these movies:" + );
-////                   
-////               }  
-////    }
-//
-//       if (BLL.daysBetween(lastViewDate(), newTime()).getDays() > 700)
+=======
+    private void badMovieAlert() throws ParseException, IOException
+    {
+<<<<<<< HEAD
+>>>>>>> d1177bbfe52cd4f49b995554228002bd5c20655b
+//       if (BLL.daysBetween(lastViewDate(), newTime()).getDays() > 700 && )
 //               { 
-//                   Stage newStage = new Stage();
-//        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("alertWindow.fxml"));
-//        Parent root = fxLoader.load();
-//        alertWindowController controller= fxLoader.getController();
-//        controller.setModel(model);
-//        Scene scene = new Scene(root);
-//        newStage.setScene(scene);
-//        newStage.show();
-//               }
+//                   Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+//                   alert.setTitle("You should delete these movies:" + );
+//                   
+//               }  
+<<<<<<< HEAD
 //    }
+=======
+=======
+       if (BLL.daysBetween(lastViewDate(), newTime()).getDays() > 700)
+               { 
+                   Stage newStage = new Stage();
+        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("alertWindow.fxml"));
+        Parent root = fxLoader.load();
+        alertWindowController controller= fxLoader.getController();
+        controller.setModel(model);
+        Scene scene = new Scene(root);
+        newStage.setScene(scene);
+        newStage.show();
+               }  
+>>>>>>> ada935cf3faf79bf72fc26e00d50547de422400c
+    }
+>>>>>>> d1177bbfe52cd4f49b995554228002bd5c20655b
   
     private Date newTime() throws ParseException
     {
@@ -225,10 +254,10 @@ public class Controller implements Initializable
         
     }
     
-//    private Date lastViewDate()
-//    {
-//        
-//    }
+    private Date lastViewDate()
+    {
+        
+    }
     
     private void handleAbout(ActionEvent event) {  //sets the "About Us"
              String contentText = "\t Hello, and welcome to our PrivateMovieCollection."
@@ -291,8 +320,11 @@ public class Controller implements Initializable
     }
 
     @FXML
-    private void genreFilter(ActionEvent event) throws SQLException 
-    {
+<<<<<<< HEAD
+    private void genreFilter(ActionEvent event) {
+=======
+<<<<<<< HEAD
+    private void genreFilter(ActionEvent event) throws SQLException {
         if(selectGenre.getSelectionModel().getSelectedItem()=="All movies")
         {
             movieListView.setItems
@@ -303,11 +335,10 @@ public class Controller implements Initializable
         {
           model.getAllMoviesByGenre(selectGenre.getSelectionModel().getSelectedItem());
         }
-    }
-    
-    private void saveBtn(ActionEvent event)
-    {
-
+=======
+    private void saveBtn(ActionEvent event) {
+>>>>>>> ada935cf3faf79bf72fc26e00d50547de422400c
+>>>>>>> d1177bbfe52cd4f49b995554228002bd5c20655b
     }
 }
 
