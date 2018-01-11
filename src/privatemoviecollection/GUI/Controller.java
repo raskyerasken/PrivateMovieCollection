@@ -211,26 +211,18 @@ public class Controller implements Initializable
     private void badMovieAlert() throws ParseException, IOException
     {
 
-//       if (BLL.daysBetween(lastViewDate(), newTime()).getDays() > 700 && )
-//               { 
-//                   Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-//                   alert.setTitle("You should delete these movies:" + );
-//                   
-//               }  
 
-//    }
-
-//       if (BLL.daysBetween(lastViewDate(), newTime()).getDays() > 700)
-//               { 
-//                   Stage newStage = new Stage();
-//        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("alertWindow.fxml"));
-//        Parent root = fxLoader.load();
-//        alertWindowController controller= fxLoader.getController();
-//        controller.setModel(model);
-//        Scene scene = new Scene(root);
-//        newStage.setScene(scene);
-//        newStage.show();
-//               }  
+       if (BLL.daysBetween(lastViewDate(), newTime()).getDays() > 700)
+               { 
+                   Stage newStage = new Stage();
+        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("alertWindow.fxml"));
+        Parent root = fxLoader.load();
+        alertWindowController controller= fxLoader.getController();
+        controller.setModel(model);
+        Scene scene = new Scene(root);
+        newStage.setScene(scene);
+        newStage.show();
+               }  
 
     }
 
@@ -248,10 +240,10 @@ public class Controller implements Initializable
         
     }
     
-//    private Date lastViewDate()
-//    {
-//        
-//    }
+    private Date lastViewDate()
+    {
+        
+    }
     
     @FXML
     private void handleAbout(ActionEvent event) {  //sets the "About Us"

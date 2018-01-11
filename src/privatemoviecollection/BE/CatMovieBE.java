@@ -17,31 +17,35 @@ import javafx.beans.property.StringProperty;
 public class CatMovieBE {
 
     private final StringProperty movieName = new SimpleStringProperty();
-  private final StringProperty categoryName = new SimpleStringProperty();
+    private final StringProperty categoryName = new SimpleStringProperty();
   
-    public String getMovieName() {
+    public String getMovieName() 
+    {
         return movieName.get();
     }
 
-    public void setMovieName(String value) {
+    public void setMovieName(String value) 
+    {
         movieName.set(value);
     }
 
-    public StringProperty movieNameProperty() {
+    public StringProperty movieNameProperty() 
+    {
         return movieName;
     }
-
-   
-
-    public String getCategoryName() {
+    
+    public String getCategoryName() 
+    {
         return categoryName.get();
     }
 
-    public void setCategoryName(String value) {
+    public void setCategoryName(String value) 
+    {
         categoryName.set(value);
     }
 
-    public StringProperty categoryNameProperty() {
+    public StringProperty categoryNameProperty() 
+    {
         return categoryName;
     }
     
