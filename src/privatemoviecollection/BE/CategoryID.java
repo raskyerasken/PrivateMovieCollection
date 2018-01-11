@@ -40,6 +40,7 @@ public class CategoryID
     {
         return category;
     }
+    
         public int getId()
     {
         return id.get();
@@ -47,7 +48,6 @@ public class CategoryID
     
     public void setId(int id)
     {
-
         this.id.set(id);
     }
     

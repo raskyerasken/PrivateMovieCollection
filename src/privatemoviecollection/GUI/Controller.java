@@ -226,6 +226,7 @@ public class Controller implements Initializable
 
     private void badMovieAlert() throws ParseException, IOException, SQLException
     {
+<<<<<<< HEAD
         for (PrivateMovieCollection allMovy : model.getAllMovies()) {
        
         if (BLL.daysBetween(allMovy.getLastview(), newTime())<730) {
@@ -236,6 +237,13 @@ public class Controller implements Initializable
         if(badMovies)
         {
         Stage newStage = new Stage();
+=======
+
+
+       if (BLL.daysBetween(lastViewDate(), newTime()).getDays() > 700)
+               { 
+                   Stage newStage = new Stage();
+>>>>>>> d78ec4b48d0dd29b07ac52c57bfd338dc08b3c64
         FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("alertWindow.fxml"));
         Parent root = fxLoader.load();
         alertWindowController controller= fxLoader.getController();
@@ -243,10 +251,16 @@ public class Controller implements Initializable
         Scene scene = new Scene(root);
         newStage.setScene(scene);
         newStage.show();
+<<<<<<< HEAD
         badMovies=false;
         }
 }
     
+=======
+               }  
+
+    }
+>>>>>>> d78ec4b48d0dd29b07ac52c57bfd338dc08b3c64
 
   
     private Date newTime() throws ParseException
@@ -257,6 +271,13 @@ public class Controller implements Initializable
         
     }
     
+<<<<<<< HEAD
+=======
+    private Date lastViewDate()
+    {
+        
+    }
+>>>>>>> d78ec4b48d0dd29b07ac52c57bfd338dc08b3c64
     
     @FXML
     private void handleAbout(ActionEvent event) {  //sets the "About Us"

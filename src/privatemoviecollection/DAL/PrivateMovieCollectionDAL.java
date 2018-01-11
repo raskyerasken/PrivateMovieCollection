@@ -325,7 +325,7 @@ public class PrivateMovieCollectionDAL
         } 
         return s;}
 
-    public void removeConneting(PrivateMovieCollection selectPrivateMovieCollection) {
+    public void removeConnection(PrivateMovieCollection selectPrivateMovieCollection) {
     try (Connection con = cm.getConnection()) 
         {
             String sql = "DELETE FROM movieCategory WHERE movieName=?";

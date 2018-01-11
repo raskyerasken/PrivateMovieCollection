@@ -28,10 +28,6 @@ import privatemoviecollection.BLL.BLLManager;
 public class AddGenreController implements Initializable {
 
     @FXML
-    private Button saveGenre;
-    @FXML
-    private Button cancel;
-    @FXML
     private TextField txtAddGenre;
     @FXML
     private Button addGenre;
@@ -40,29 +36,22 @@ public class AddGenreController implements Initializable {
     @FXML
     private ListView<String> genreListView;
     
- private ObservableList<String> genrelist
+    private ObservableList<String> genrelist
             = FXCollections.observableArrayList();
  
     BLLManager Bll = new BLLManager();
     CategoryID category = new  CategoryID();
     private Model model;
-    /**
-     * Initializes the controller class.
-     */
+    @FXML
+    private Button closeBtn;
+    
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-      
-        
+        // TODO   
     }    
 
-     @FXML
-    private void saveBtn(ActionEvent event) {
-    }
-
-    @FXML
-    private void cancelBtn(ActionEvent event) {
-    }
 
     @FXML
     private void removeGenre(ActionEvent event) throws SQLException {
@@ -74,24 +63,27 @@ public class AddGenreController implements Initializable {
     @FXML
     private void addGenre(ActionEvent event) throws SQLException {
         category.setCategory(txtAddGenre.getText());
-        
         model.addGenre(category);
-        setGenre();
-        
-        
+        setGenre(); 
     }
+    
     void setGenre()
     {
     genreListView.getItems().clear();
+    
        for (CategoryID categoryID : model.allGenre()) {
            genrelist.add(categoryID.getCategory());
          }
-        genreListView.setItems(genrelist);
+    genreListView.setItems(genrelist);
     }
 
     void setModel(Model model) {
         this.model=model;
-     setGenre();
+        setGenre();
+    }
+
+    @FXML
+    private void closeBtn(ActionEvent event) {
     }
     
 }
