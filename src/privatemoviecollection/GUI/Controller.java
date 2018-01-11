@@ -6,8 +6,6 @@
 package privatemoviecollection.GUI;
 
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
@@ -76,11 +74,8 @@ public class Controller implements Initializable
     private TextField txtSearch;
     @FXML
     private Button searchBtn;
-<<<<<<< HEAD
     int dayCount = 0;
-=======
     boolean search = false;
->>>>>>> 5e1f7d3484371efa197efa6bf0ebaf35a4a6546f
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
@@ -204,7 +199,7 @@ public class Controller implements Initializable
     }  
     }
     
-    private int lastViewDate() throws ParseException
+    private Date lastViewDate() throws ParseException
     {
         Calendar cal1 = new GregorianCalendar();
         SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
@@ -212,7 +207,9 @@ public class Controller implements Initializable
         Date date = sdf.parse("This date");
         cal1.setTime(date);
         
-        System.out.println(date);
+
+        return date;
+        
     }
     
     @FXML
