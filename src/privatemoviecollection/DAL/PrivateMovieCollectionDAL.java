@@ -67,7 +67,8 @@ public class PrivateMovieCollectionDAL
         try (Connection con = cm.getConnection())
         {
             String query
-                    = "SELECT * FROM Movie WHERE name=?";
+                    = "SELECT * FROM Movie "
+                    + "WHERE name LIKE ?";
             
             PreparedStatement stmt
                     = con.prepareStatement(query);

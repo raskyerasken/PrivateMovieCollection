@@ -278,7 +278,6 @@ public class Controller implements Initializable
                     model.getAllMoviesList(a));
             search = true;
             searchBtn.setText("All Movies");
-            System.out.println("lolol");
         }
     }
 }
