@@ -69,11 +69,11 @@ public class Model
         movieList.remove(movie);
     }
 
-    List<CategoryID> allGenre() {
+    List<CategoryID> allGenre() 
+    {
         genreList.clear();
         genreList.addAll(bllManager.allGenre());
         return genreList;
-        
     }
 
     public List<PrivateMovieCollection> getAllMoviesList(String movie) throws SQLException

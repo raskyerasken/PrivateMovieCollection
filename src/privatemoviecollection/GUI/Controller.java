@@ -69,7 +69,7 @@ public class Controller implements Initializable
     private TableColumn<PrivateMovieCollection, String> Title;
     @FXML
     private TableColumn<PrivateMovieCollection, Integer> rating;
-  Model model= new Model();
+    Model model= new Model();
     @FXML
     private TextField txtSearch;
     @FXML
@@ -99,6 +99,7 @@ public class Controller implements Initializable
         new PropertyValueFactory("rating"));
         
         genre.setCellValueFactory(
+<<<<<<< HEAD
         new PropertyValueFactory("categoryName"));
 
         
@@ -107,16 +108,31 @@ public class Controller implements Initializable
         } catch (SQLException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
+=======
+        new PropertyValueFactory("filelink"));
+        movieListView.setItems((ObservableList<PrivateMovieCollection>)model.getAllMovies() );
+>>>>>>> e3ad5c56b8770867710a63ead6aa874e4b9f4fbf
     }
     
-    
+    /**
+     * 
+     * This Opens up a file in your computer and runs it, so if you
+     *      select a movie then it will open it, if nothing is selected you get an error
+     */
     @FXML
     private void playMovie(ActionEvent event) throws IOException 
     {
-        File file = new File("");
-        Desktop desktop = Desktop.getDesktop();
-        file = new File(movieListView.getSelectionModel().getSelectedItem().getFilelink());
-        desktop.open(file);
+        if (movieListView.getSelectionModel().getSelectedItem() != null ) 
+        {
+            File file = new File("");
+            Desktop desktop = Desktop.getDesktop();
+            file = new File(movieListView.getSelectionModel().getSelectedItem().getFilelink());
+            desktop.open(file);
+        }
+        else
+            showErrorDialog("Selection Error", null, 
+                    "Check if you selected a movie from the list\n "
+                            + "If the list is empty then please add a movie");
     }
     
     void newAddMovieView() throws IOException
@@ -253,7 +269,7 @@ public class Controller implements Initializable
              String contentText = "\t Hello, and welcome to our PrivateMovieCollection."
                 +"\n\t In the file menu you can find:\n"
                 +"\t * How to add a new movie\n"
-                +"\t * How to create a new playlist\n"
+                +"\t * How to create a new movie list\n"
                 +"\t * How to close the program \n"
                 +"\n\t In the edit menu you can find:\n"
                 +"\t * How to edit a movie\n"
@@ -312,9 +328,8 @@ public class Controller implements Initializable
         }
     }
 
-    
     @FXML
-private void genreFilter(ActionEvent event) throws SQLException {
+    private void genreFilter(ActionEvent event) throws SQLException {
         if(selectGenre.getSelectionModel().getSelectedItem()=="All movies")
         {
             movieListView.setItems
