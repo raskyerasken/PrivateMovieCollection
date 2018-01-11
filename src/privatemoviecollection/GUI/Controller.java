@@ -103,7 +103,11 @@ public class Controller implements Initializable
         movieListView.setItems((ObservableList<PrivateMovieCollection>)model.getAllMovies() );
     }
     
-    
+    /**
+     * 
+     * This Opens up a file in your computer and runs it, so if you
+     *      select a movie then it will open it, if nothing is selected you get an error
+     */
     @FXML
     private void playMovie(ActionEvent event) throws IOException 
     {
@@ -116,8 +120,8 @@ public class Controller implements Initializable
         }
         else
             showErrorDialog("Selection Error", null, 
-                    "Please select a movie from the "
-                            + "list before clicking Play movie");
+                    "Check if you selected a movie from the list\n "
+                            + "If the list is empty then please add a movie");
     }
     
     void newAddMovieView() throws IOException
@@ -254,7 +258,7 @@ public class Controller implements Initializable
              String contentText = "\t Hello, and welcome to our PrivateMovieCollection."
                 +"\n\t In the file menu you can find:\n"
                 +"\t * How to add a new movie\n"
-                +"\t * How to create a new playlist\n"
+                +"\t * How to create a new movie list\n"
                 +"\t * How to close the program \n"
                 +"\n\t In the edit menu you can find:\n"
                 +"\t * How to edit a movie\n"
