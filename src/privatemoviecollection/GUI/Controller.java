@@ -58,6 +58,7 @@ import privatemoviecollection.BLL.BLLManager;
  */
 public class Controller implements Initializable 
 {    
+    boolean badMovies=false;
     @FXML
     private ComboBox<String> selectGenre;
     private Stage primaryStage;
@@ -104,6 +105,15 @@ public class Controller implements Initializable
         
         try {
             movieListView.setItems((ObservableList<PrivateMovieCollection>)model.getAllMovies() );
+        } catch (SQLException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            badMovieAlert();
+        } catch (ParseException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -214,50 +224,39 @@ public class Controller implements Initializable
     }
     
 
-    private void badMovieAlert() throws ParseException, IOException
+    private void badMovieAlert() throws ParseException, IOException, SQLException
     {
-
-//       if (BLL.daysBetween(lastViewDate(), newTime()).getDays() > 700 && )
-//               { 
-//                   Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-//                   alert.setTitle("You should delete these movies:" + );
-//                   
-//               }  
-
-//    }
-
-//       if (BLL.daysBetween(lastViewDate(), newTime()).getDays() > 700)
-//               { 
-//                   Stage newStage = new Stage();
-//        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("alertWindow.fxml"));
-//        Parent root = fxLoader.load();
-//        alertWindowController controller= fxLoader.getController();
-//        controller.setModel(model);
-//        Scene scene = new Scene(root);
-//        newStage.setScene(scene);
-//        newStage.show();
-//               }  
-
-    }
+        for (PrivateMovieCollection allMovy : model.getAllMovies()) {
+       
+        if (BLL.daysBetween(allMovy.getLastview(), newTime())<730) {
+            badMovies=true;
+        
+               }  
+        }  
+        if(badMovies)
+        {
+        Stage newStage = new Stage();
+        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("alertWindow.fxml"));
+        Parent root = fxLoader.load();
+        alertWindowController controller= fxLoader.getController();
+        controller.setModel(model);
+        Scene scene = new Scene(root);
+        newStage.setScene(scene);
+        newStage.show();
+        badMovies=false;
+        }
+}
+    
 
   
     private Date newTime() throws ParseException
     {
-        Calendar cal1 = new GregorianCalendar();
-        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
-        
-        Date date = sdf.parse("This date");
-        cal1.setTime(date);
-        
-
-        return date;
+        java.util.Date utilDate = new java.util.Date();
+        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+        return sqlDate;
         
     }
     
-//    private Date lastViewDate()
-//    {
-//        
-//    }
     
     @FXML
     private void handleAbout(ActionEvent event) {  //sets the "About Us"
