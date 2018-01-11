@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="292.0" prefWidth="304.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="privatemoviecollection.GUI.alertWindowController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutY="8.0" prefHeight="285.0" prefWidth="305.0">
+         <children>
+            <Button fx:id="saveGenre" layoutX="26.0" layoutY="244.0" mnemonicParsing="false" onAction="#saveBtn" text="Save" />
+            <Button fx:id="removeMovie" layoutX="14.0" layoutY="129.0" mnemonicParsing="false" onAction="#removeMovie" style="-fx-background-radius: 30;" text="Remove" />
+            <ListView fx:id="genreListView" layoutX="96.0" layoutY="79.0" prefHeight="164.0" prefWidth="200.0" />
+            <Label layoutX="42.0" text="Movies you haven't seen in 2 years, " />
+            <Label layoutX="42.0" layoutY="25.0" text="and is rated under 3 should be deleted" />
+            <Label layoutX="121.0" layoutY="55.0" text="Movies are shown below" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

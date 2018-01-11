@@ -56,26 +56,30 @@ import privatemoviecollection.BLL.BLLManager;
  */
 public class Controller implements Initializable 
 {    
-    @FXML
     private ComboBox<String> selectGenre;
     private Stage primaryStage;
     private Button addMovieBtn;
     BLLManager BLL = new BLLManager();
-    @FXML
     private TableView<PrivateMovieCollection> movieListView;
-    @FXML
     private TableColumn<PrivateMovieCollection, String> Title;
-    @FXML
     private TableColumn<PrivateMovieCollection, Integer> rating;
+<<<<<<< HEAD
   Model model= new Model();
     @FXML
+=======
+    private TableColumn<PrivateMovieCollection, String> filelink;
+   Model model= new Model();
+>>>>>>> ada935cf3faf79bf72fc26e00d50547de422400c
     private TextField txtSearch;
-    @FXML
     private Button searchBtn;
     int dayCount = 0;
     boolean search = false;
     @FXML
+<<<<<<< HEAD
     private TableColumn<PrivateMovieCollection, String> genre;
+=======
+    private ListView<?> genreListView;
+>>>>>>> ada935cf3faf79bf72fc26e00d50547de422400c
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
@@ -100,7 +104,6 @@ public class Controller implements Initializable
     }
     
     
-    @FXML
     private void playMovie(ActionEvent event) throws IOException 
     {
         File file = new File("");
@@ -177,7 +180,6 @@ public class Controller implements Initializable
      
     
     //allows the user to close the program, and does a pop-up making sure the user actually wants to
-    @FXML
     private void closeProgram(ActionEvent event) 
     {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -192,14 +194,28 @@ public class Controller implements Initializable
         } 
     }
     
-    private void badMovieAlert() throws ParseException
+    private void badMovieAlert() throws ParseException, IOException
     {
+<<<<<<< HEAD
 //       if (BLL.daysBetween(lastViewDate(), newTime()).getDays() > 700 && )
 //               { 
 //                   Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 //                   alert.setTitle("You should delete these movies:" + );
 //                   
 //               }  
+=======
+       if (BLL.daysBetween(lastViewDate(), newTime()).getDays() > 700)
+               { 
+                   Stage newStage = new Stage();
+        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("alertWindow.fxml"));
+        Parent root = fxLoader.load();
+        alertWindowController controller= fxLoader.getController();
+        controller.setModel(model);
+        Scene scene = new Scene(root);
+        newStage.setScene(scene);
+        newStage.show();
+               }  
+>>>>>>> ada935cf3faf79bf72fc26e00d50547de422400c
     }
   
     private Date newTime() throws ParseException
@@ -215,7 +231,11 @@ public class Controller implements Initializable
         
     }
     
-    @FXML
+    private Date lastViewDate()
+    {
+        
+    }
+    
     private void handleAbout(ActionEvent event) {  //sets the "About Us"
              String contentText = "\t Hello, and welcome to our PrivateMovieCollection."
                 +"\n\t In the file menu you can find:\n"
@@ -246,24 +266,16 @@ public class Controller implements Initializable
    
     
 
-    @FXML
-    private void getSelectedPlaylist(MouseEvent event) 
-    {
-        
-    }
 
-    @FXML
     private void addGenre(ActionEvent event) throws IOException {
         newAddGenreView();
     }
 
-    @FXML
     private void addMovie(ActionEvent event) throws IOException 
     {
         newAddMovieView();
     }    
 
-    @FXML
     private void searchMovie(ActionEvent event) throws SQLException 
     {
         if (search) 
@@ -285,6 +297,7 @@ public class Controller implements Initializable
     }
 
     @FXML
+<<<<<<< HEAD
     private void genreFilter(ActionEvent event) throws SQLException {
         if(selectGenre.getSelectionModel().getSelectedItem()=="All movies")
         {
@@ -296,6 +309,9 @@ public class Controller implements Initializable
         {
           model.getAllMoviesByGenre(selectGenre.getSelectionModel().getSelectedItem());
         }
+=======
+    private void saveBtn(ActionEvent event) {
+>>>>>>> ada935cf3faf79bf72fc26e00d50547de422400c
     }
 }
 
