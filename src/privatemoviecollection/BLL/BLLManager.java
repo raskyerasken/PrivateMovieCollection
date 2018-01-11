@@ -152,5 +152,9 @@ public class BLLManager
    pmcdal.addGenreToMovies(categoryToMovie);
     }
 
+    public  List<CatMovieBE> getAllMovieByGenre(String selectedGenre) throws SQLException {
+    return pmcdal.getAllMoviesByGenre(selectedGenre);
+    }
+
     
 }

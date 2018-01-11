@@ -33,7 +33,7 @@
           </Menu>
         </menus>
       </MenuBar>
-      <ComboBox fx:id="selectGenre" layoutX="432.0" layoutY="46.0" prefHeight="27.0" prefWidth="136.0" promptText="Select Genre" />
+      <ComboBox fx:id="selectGenre" layoutX="432.0" layoutY="46.0" onAction="#genreFilter" prefHeight="27.0" prefWidth="136.0" promptText="Select Genre" />
       <TextField fx:id="txtSearch" layoutX="576.0" layoutY="46.0" promptText="Search for movies here" />
       <Button fx:id="searchBtn" layoutX="751.0" layoutY="48.0" mnemonicParsing="false" onAction="#searchMovie" prefHeight="27.0" prefWidth="64.0" style="-fx-background-radius: 30;" text="Search" />
       <Button layoutX="23.0" layoutY="46.0" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30;" text="Add movie" />

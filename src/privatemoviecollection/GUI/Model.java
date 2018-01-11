@@ -26,9 +26,11 @@ public class Model
     
     private ObservableList<PrivateMovieCollection> movieList
             = FXCollections.observableArrayList();
+    
     private ObservableList<CategoryID> genreList
             = FXCollections.observableArrayList();
-     private ObservableList<CatMovieBE> movieCategory
+    
+    private ObservableList<CatMovieBE> movieCategory
             = FXCollections.observableArrayList();
     
     List<PrivateMovieCollection> getAllMovies()
@@ -38,6 +40,7 @@ public class Model
         
         return movieList;
     }
+    
    void add (PrivateMovieCollection movie) throws SQLException
     {   
         bllManager.add(movie);
@@ -76,5 +79,10 @@ public class Model
     void addMovieGenre(CatMovieBE categoryToMovie) {
      bllManager.add(categoryToMovie);
         movieCategory.add(categoryToMovie);
+    }
+
+    void getAllMoviesByGenre(String selectedGenre) throws SQLException {
+     bllManager.getAllMovieByGenre(selectedGenre);
+        System.out.println(bllManager.getAllMovieByGenre(selectedGenre));
     }
 }
