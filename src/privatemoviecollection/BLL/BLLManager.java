@@ -44,6 +44,7 @@ public class BLLManager
     public void remove(PrivateMovieCollection selectPrivateMovieCollection) throws SQLException
     {
         pmcdal.remove(selectPrivateMovieCollection);
+        pmcdal.removeConneting(selectPrivateMovieCollection);
     }
     
 //    public void add(CategoryID allMovies) 
@@ -84,6 +85,7 @@ public class BLLManager
     public List getAllMovie() 
     {
         return pmcdal.getAllMovies();
+        
     }
     
     public List<PrivateMovieCollection> getAllMoviesList(String movie) throws SQLException
@@ -110,6 +112,7 @@ public class BLLManager
     public void removeGenre(String genre) throws SQLException
     {
         pmcdal.removeGenre(genre);
+        pmcdal.removeGenreConnection(genre);
     }
 
     public ObservableList<CategoryID> allGenre() 
