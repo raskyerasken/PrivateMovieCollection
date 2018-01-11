@@ -36,46 +36,11 @@ public class BLLManager
         pmcdal.add(allMovies);
     }
     
-//    public List<PrivateMovieCollection> getAllMovies()
-//    {
-//        return pmcdal.getAllMovies();
-//    }
-    
     public void remove(PrivateMovieCollection selectPrivateMovieCollection) throws SQLException
     {
         pmcdal.remove(selectPrivateMovieCollection);
-        pmcdal.removeConneting(selectPrivateMovieCollection);
+        pmcdal.removeConnection(selectPrivateMovieCollection);
     }
-    
-//    public void add(CategoryID allMovies) 
-//    {
-//        pmcdal.addCategoryID(allMovies);
-//    }
-//    
-//    public List<CategoryID> getAllByGenre()
-//    {
-//        return pmcdal.getAllByGenre();
-//    }
-//    
-//    public void remove(CategoryID categoryidMovies)
-//    {
-//        pmcdal.removeCategoryID(categoryMovies);
-//    }
-//    
-//    public void addMoviesToPlayer(CatMovieBE ID)
-//    {
-//        pmcdal.addMoviesToPlayer(ID);
-//    }
-//    
-//    public void removeMoviesPlaylist(CatMovieBE movieList)
-//    {
-//        pmcdal.removeMoviesPlaylist(movieList);
-//    }
-//    
-//    public List<CatMovieBE> getSelectedMovieList(int movieListID)
-//    {
-//        return pmcdal.getSelectedMovieList(movieListID);
-//    }
     
     public void update(PrivateMovieCollection privateMovieCollection) throws SQLException
     {
@@ -97,16 +62,10 @@ public class BLLManager
     {
         return pmcdal.getAllMovies();
     }
-    
-//    public List<PrivateMovieCollection> getAllByGenre()
-//    {
-//        return pmcdal.getAllByGenre();
-//        
-//    }
 
     public void addGenre(CategoryID genre) throws SQLException
     {
-       pmcdal.addGenre(genre); 
+        pmcdal.addGenre(genre); 
     }
     
     public void removeGenre(String genre) throws SQLException
@@ -117,13 +76,13 @@ public class BLLManager
 
     public ObservableList<CategoryID> allGenre() 
     {
-     return pmcdal.allGenre();
+        return pmcdal.allGenre();
     }
     
     private void getDate()
     {
         java.util.Date d = new java.util.Date();
-    SimpleDateFormat sdf = new SimpleDateFormat("DD:MM:YYYY");
+        SimpleDateFormat sdf = new SimpleDateFormat("DD:MM:YYYY");
         System.out.println("The current time is "+sdf.format(d));
     }
     
@@ -139,10 +98,7 @@ public class BLLManager
         date = sdf.parse("second date");
         cal2.setTime(date);
         
-        System.out.println("Days = " + daysBetween(cal1.getTime(), cal2.getTime()));
-       
-                
-                
+        System.out.println("Days = " + daysBetween(cal1.getTime(), cal2.getTime()));        
     }
     
     public int daysBetween(Date d1, Date d2)
@@ -152,16 +108,23 @@ public class BLLManager
     
 
     public void add(CatMovieBE categoryToMovie) {
-   pmcdal.addGenreToMovies(categoryToMovie);
+        pmcdal.addGenreToMovies(categoryToMovie);
     }
 
-    public  List<CatMovieBE> getAllMovieByGenre(String selectedGenre) throws SQLException {
-    return pmcdal.getAllMoviesByGenre(selectedGenre);
+    public  List<CatMovieBE> getAllMovieByGenre(String selectedGenre) throws SQLException 
+    {
+        return pmcdal.getAllMoviesByGenre(selectedGenre);
     }
 
-    public PrivateMovieCollection  getMovie(String movieName) throws SQLException {
-    return pmcdal.getMovie(movieName);
+    public PrivateMovieCollection  getMovie(String movieName) throws SQLException 
+    {
+        return pmcdal.getMovie(movieName);
     }
+
+    public List<CatMovieBE> getMoviesGenre(String title) throws SQLException {
+    return pmcdal.getGenreByMovue(title);
+    }
+
 
     
 }
