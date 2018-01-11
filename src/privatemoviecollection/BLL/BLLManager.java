@@ -85,6 +85,11 @@ public class BLLManager
     {
         return pmcdal.getAllMovies();
     }
+    
+    public List<PrivateMovieCollection> getAllMoviesList(String movie) throws SQLException
+    {
+        return pmcdal.getAllMoviesList(movie);
+    }
 
     public List<PrivateMovieCollection> getAllMovies() 
     {

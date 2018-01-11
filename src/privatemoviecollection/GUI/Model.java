@@ -56,7 +56,11 @@ public class Model
         
     }
 
-   
+    public List<PrivateMovieCollection> getAllMoviesList(String movie) throws SQLException
+    {
+        movieList.setAll(bllManager.getAllMoviesList(movie));
+        return movieList;
+    }
 
     void removeGenre(String selectedItem) throws SQLException {
     bllManager.removeGenre(selectedItem);

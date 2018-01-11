@@ -59,6 +59,35 @@ public class PrivateMovieCollectionDAL
         return allMovies;
     }
     
+    public List<PrivateMovieCollection> getAllMoviesList(String search) throws SQLServerException, SQLException
+    {
+        List<PrivateMovieCollection> allMovies = new ArrayList();
+        
+        try (Connection con = cm.getConnection())
+        {
+            String query
+                    = "SELECT * FROM Movie";
+//                    + "WHERE name Like ? OR rating LIKE ?";
+            
+            PreparedStatement stmt
+                    = con.prepareStatement(query);
+//            stmt.setString(1,"%" + search + "%");
+//            stmt.setString(2, "%" + search + "%");
+            
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next())
+            {
+                PrivateMovieCollection s = new PrivateMovieCollection();
+                s.setTitle(rs.getString("Name"));
+                s.setId(rs.getInt("id"));
+                s.setRating(rs.getInt("Rating"));
+                s.setFilelink(rs.getString("Filelink"));
+                allMovies.add(s);
+            }
+        } 
+        return allMovies;
+    }
+    
     //hello
     public List<PrivateMovieCollection> getAllByGenre(String search) throws SQLException, SQLServerException
     {
