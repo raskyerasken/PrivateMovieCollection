@@ -48,6 +48,7 @@ public class PrivateMovieCollectionDAL
                     s.setId(rs.getInt("id"));
                     s.setRating(rs.getInt("Rating"));
                     s.setFilelink(rs.getString("Filelink"));
+                    s.setLastview(rs.getDate("lastview"));
                     allMovies.add(s);
                 }
         }
@@ -82,6 +83,7 @@ public class PrivateMovieCollectionDAL
                 s.setId(rs.getInt("id"));
                 s.setRating(rs.getInt("Rating"));
                 s.setFilelink(rs.getString("Filelink"));
+                s.setLastview(rs.getDate("lastview"));
                 allMovies.add(s);
             }
         } 
@@ -122,13 +124,14 @@ public class PrivateMovieCollectionDAL
         {
             String sql
                     = "INSERT INTO Movie"
-                    + "(name, rating, filelink) "
-                    + "VALUES(?,?,?)";
+                    + "(name, rating, filelink,lastview) "
+                    + "VALUES(?,?,?,?)";
             
             PreparedStatement pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, allMovies.getTitle());
             pstmt.setInt(2, allMovies.getRating());
             pstmt.setString(3, allMovies.getFilelink());
+            pstmt.setDate(4, (Date) allMovies.getLastview());
            
             int affected = pstmt.executeUpdate();
             if (affected<1)

@@ -129,6 +129,9 @@ public class AddMovieController implements Initializable {
             saveRating();
             movie.setFilelink(URLAdressSong);
             movie.setTitle(movieTitle.getText());
+             java.util.Date utilDate = new java.util.Date();
+    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+            movie.setLastview(sqlDate);
             model.add(movie);
             catMoviebe.setMovieName(movie.getTitle());
            if(selectGenre1.getSelectionModel().getSelectedItem()!=null)
