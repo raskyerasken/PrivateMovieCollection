@@ -226,7 +226,7 @@ public class Controller implements Initializable
     }    
 
     @FXML
-    private void searchMovie(ActionEvent event) 
+    private void searchMovie(ActionEvent event) throws SQLException 
     {
         if (search) 
         {
@@ -240,7 +240,7 @@ public class Controller implements Initializable
         {
             String a = txtSearch.getText();
             movieListView.setItems((ObservableList<PrivateMovieCollection>)
-                    model.getAllMovies());
+                    model.getAllMoviesList(a));
             search = true;
             searchBtn.setText("All Movies");
             System.out.println("lolol");

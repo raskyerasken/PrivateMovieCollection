@@ -70,7 +70,8 @@ public class PrivateMovieCollectionDAL
             
             PreparedStatement stmt
                     = con.prepareStatement(query);
-            stmt.setString(1,"%" + search + "%");
+            stmt.setString(2,"%" + search + "%");
+            
             ResultSet rs = stmt.executeQuery();
             while(rs.next())
             {
