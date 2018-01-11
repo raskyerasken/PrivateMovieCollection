@@ -31,6 +31,11 @@ public class CatMovieBE {
         return movieName;
     }
 
+    @Override
+    public String toString() {
+        return "CatMovieBE{" + "movieName=" + movieName + ", categoryName=" + categoryName + '}';
+    }
+
    
 
     public String getCategoryName() {

@@ -354,6 +354,36 @@ public class PrivateMovieCollectionDAL
             Logger.getLogger(PrivateMovieCollectionDAL.class.getName()).log(Level.SEVERE, null, ex);
         }    
     }
+
+    public List<CatMovieBE> getGenreByMovue(String title) throws SQLServerException, SQLException    
+    { 
+       
+        List<CatMovieBE> allMovies = new ArrayList();
+        try (Connection con = cm.getConnection())
+        {
+            String query
+                    = "SELECT * FROM movieCategory "
+                    + "WHERE movieName LIKE ?";
+            
+            PreparedStatement stmt
+                    = con.prepareStatement(query);
+            stmt.setString(1,title);
+            
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next())
+            {
+                CatMovieBE s = new CatMovieBE();
+                s.setCategoryName(rs.getString("categoryName"));
+                s.setMovieName(rs.getString("movieName"));
+                allMovies.add(s);
+               
+            }
+        } 
+        System.out.println(allMovies);
+        return allMovies;
+        
+    }
+     
   
 }
     

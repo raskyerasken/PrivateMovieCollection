@@ -32,13 +32,23 @@ public class Model
     
     private ObservableList<CatMovieBE> movieCategory
             = FXCollections.observableArrayList();
+    PrivateMovieCollection PMC = new PrivateMovieCollection();
     
-    List<PrivateMovieCollection> getAllMovies()
+    List<PrivateMovieCollection> getAllMovies() throws SQLException
     {
         movieList.clear();
-        movieList.addAll(bllManager.getAllMovies());
+        for (PrivateMovieCollection privateMovieCollection : bllManager.getAllMovies()) {
+            String genrer="";
+           for (CatMovieBE genre  : bllManager.getMoviesGenre(privateMovieCollection.getTitle())) {
+              
+                genrer=genrer+genre.getCategoryName()+",";
+                 System.out.println(genrer);
+            }
+            privateMovieCollection.setCategoryName(genrer);
+            movieList.add(privateMovieCollection);
         
-        return movieList;
+        }
+       return movieList;
     }
     
    void add (PrivateMovieCollection movie) throws SQLException
@@ -82,9 +92,11 @@ public class Model
     }
 
      ObservableList<PrivateMovieCollection> getAllMoviesByGenre(String selectedGenre) throws SQLException {
-     movieList.clear();
-        for (CatMovieBE catMovieBE : bllManager.getAllMovieByGenre(selectedGenre)) {
-             movieList.add(bllManager.getMovie(catMovieBE.getMovieName()));
+      movieList.clear();
+      for (CatMovieBE catMovieBE : bllManager.getAllMovieByGenre(selectedGenre)) {
+            PMC=bllManager.getMovie(catMovieBE.getMovieName());
+            PMC.setCategoryName(selectedGenre);
+             movieList.add(PMC);
          } 
         return movieList; 
     }

@@ -21,6 +21,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -97,10 +99,14 @@ public class Controller implements Initializable
         new PropertyValueFactory("rating"));
         
         genre.setCellValueFactory(
-        new PropertyValueFactory("lastview"));
+        new PropertyValueFactory("categoryName"));
 
         
-        movieListView.setItems((ObservableList<PrivateMovieCollection>)model.getAllMovies() );
+        try {
+            movieListView.setItems((ObservableList<PrivateMovieCollection>)model.getAllMovies() );
+        } catch (SQLException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     
