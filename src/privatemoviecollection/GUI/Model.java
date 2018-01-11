@@ -83,11 +83,9 @@ public class Model
 
      ObservableList<PrivateMovieCollection> getAllMoviesByGenre(String selectedGenre) throws SQLException {
      movieList.clear();
-         System.out.println(bllManager.getAllMovieByGenre(selectedGenre));
         for (CatMovieBE catMovieBE : bllManager.getAllMovieByGenre(selectedGenre)) {
              movieList.add(bllManager.getMovie(catMovieBE.getMovieName()));
-            System.out.println("hey");
-        } 
+         } 
         return movieList; 
     }
 }
