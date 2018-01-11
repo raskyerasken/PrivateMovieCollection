@@ -190,14 +190,14 @@ public class Controller implements Initializable
         } 
     }
     
-    private void badMovieAlert() throws ParseException
-    {
-       if (BLL.daysBetween(lastViewDate(), newTime).getDays() > 700)
-               { 
-       
-           
-    }  
-    }
+//    private void badMovieAlert() throws ParseException
+//    {
+//       if (BLL.daysBetween(lastViewDate(), newTime).getDays() > 700)
+//               { 
+//       
+//           
+//    }  
+//    }
     
     private Date lastViewDate() throws ParseException
     {
