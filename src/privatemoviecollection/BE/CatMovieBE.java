@@ -7,44 +7,43 @@ package privatemoviecollection.BE;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 /**
  *
  * @author kasper
  */
 public class CatMovieBE {
-    
-    
-  private final IntegerProperty IDCategory= new SimpleIntegerProperty();
-    private final IntegerProperty IDMovie= new SimpleIntegerProperty();
-    
-    public int getIDCategory()
-    {
-        return IDCategory.get();
-    }
-    
-    public void setIDPlaylist(int IDCategory)
-    {
-        this.IDCategory.set(IDCategory);
-    }
-    
-    public IntegerProperty IDCategoryProperty()
-    {
-        return IDCategory;
-    }
-        public int getIDMovie()
-    {
-        return IDMovie.get();
-    }
-    
-    public void setIDSong(int IDMovie)
-    {
-        this.IDMovie.set(IDMovie);
-    }
-    
-    public IntegerProperty IDMovieProperty()
-    {
-        return IDMovie;
+
+    private final StringProperty movieName = new SimpleStringProperty();
+
+    public String getMovieName() {
+        return movieName.get();
     }
 
+    public void setMovieName(String value) {
+        movieName.set(value);
+    }
+
+    public StringProperty movieNameProperty() {
+        return movieName;
+    }
+
+    private final StringProperty categoryName = new SimpleStringProperty();
+
+    public String getCategoryName() {
+        return categoryName.get();
+    }
+
+    public void setCategoryName(String value) {
+        categoryName.set(value);
+    }
+
+    public StringProperty categoryNameProperty() {
+        return categoryName;
+    }
+    
+    
+  
 }

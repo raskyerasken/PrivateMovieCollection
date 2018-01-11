@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import privatemoviecollection.BE.CatMovieBE;
 import privatemoviecollection.BE.CategoryID;
 import privatemoviecollection.BE.PrivateMovieCollection;
 import privatemoviecollection.BLL.BLLManager;
@@ -25,6 +26,10 @@ public class Model
     
     private ObservableList<PrivateMovieCollection> movieList
             = FXCollections.observableArrayList();
+    private ObservableList<CategoryID> genreList
+            = FXCollections.observableArrayList();
+     private ObservableList<CatMovieBE> movieCategory
+            = FXCollections.observableArrayList();
     
     List<PrivateMovieCollection> getAllMovies()
     {
@@ -40,7 +45,8 @@ public class Model
     }
 
     void addGenre(CategoryID category) throws SQLException 
-    {
+    { 
+        genreList.add(category);
         bllManager.addGenre(category);
     }
     
@@ -50,9 +56,10 @@ public class Model
         movieList.remove(movie);
     }
 
-    ObservableList<CategoryID> allGenre() {
-        
-        return bllManager.allGenre();
+    List<CategoryID> allGenre() {
+        genreList.clear();
+        genreList.addAll(bllManager.allGenre());
+        return genreList;
         
     }
 
@@ -64,5 +71,10 @@ public class Model
 
     void removeGenre(String selectedItem) throws SQLException {
     bllManager.removeGenre(selectedItem);
+    }
+
+    void addMovieGenre(CatMovieBE categoryToMovie) {
+     bllManager.add(categoryToMovie);
+        movieCategory.add(categoryToMovie);
     }
 }

@@ -26,6 +26,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javax.swing.JFileChooser;
+import privatemoviecollection.BE.CatMovieBE;
 import privatemoviecollection.BE.CategoryID;
 import privatemoviecollection.BE.PrivateMovieCollection;
 import privatemoviecollection.BLL.BLLManager;
@@ -51,7 +52,7 @@ public class AddMovieController implements Initializable {
     private RadioButton selectedNoir;
     private RadioButton selectedAnimation;
     private RadioButton selectedWestern;
-    
+    CatMovieBE catMoviebe= new CatMovieBE();
     private CategoryID genreMovie = new CategoryID();
     String URLAdressSong;
     @FXML
@@ -63,23 +64,42 @@ public class AddMovieController implements Initializable {
     PrivateMovieCollection movie=new PrivateMovieCollection();
     BLLManager BLL= new BLLManager();
     @FXML
-    private ComboBox<?> selectGenre1;
+    private ComboBox<String> selectGenre1;
     @FXML
-    private ComboBox<?> selectGenre2;
+    private ComboBox<String> selectGenre2;
     @FXML
-    private ComboBox<?> selectGenre3;
+    private ComboBox<String> selectGenre3;
     private Model model;
 
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        
+       
     }   
+    private void setComboBox()
+    {  
+        
+        selectGenre1.getItems().clear();
+        for (CategoryID  id : model.allGenre()) {
+            selectGenre1.getItems().add(id.getCategory());
+        }
+        
+        selectGenre2.getItems().removeAll(selectGenre2.getItems());
+        for (CategoryID  id : model.allGenre()) {
+            selectGenre2.getItems().add(id.getCategory());
+        }
+        selectGenre3.getItems().removeAll(selectGenre3.getItems());
+        for (CategoryID  id : model.allGenre()) {
+            selectGenre3.getItems().add(id.getCategory());
+        }
+    
+    }
     
     //allows us to create error messages
     private void showErrorDialog(String title, String header, String message)
     {
+       
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(header);
@@ -110,8 +130,26 @@ public class AddMovieController implements Initializable {
             movie.setFilelink(URLAdressSong);
             movie.setTitle(movieTitle.getText());
             model.add(movie);
+            catMoviebe.setMovieName(movie.getTitle());
+           if(selectGenre1.getSelectionModel().getSelectedItem()!=null)
+           {
+           catMoviebe.setCategoryName(selectGenre1.getSelectionModel().getSelectedItem());
+           model.addMovieGenre(catMoviebe);
+           } 
+           if(selectGenre2.getSelectionModel().getSelectedItem()!=null)
+           {
+           catMoviebe.setCategoryName(selectGenre2.getSelectionModel().getSelectedItem());
+           model.addMovieGenre(catMoviebe);
+           }
+            if(selectGenre3.getSelectionModel().getSelectedItem()!=null)
+           {
+           catMoviebe.setCategoryName(selectGenre3.getSelectionModel().getSelectedItem());
+           model.addMovieGenre(catMoviebe);
+           }
+           
             Stage stage = (Stage) cancel.getScene().getWindow();
             stage.close();
+           
         }
     }
 
@@ -153,6 +191,7 @@ public class AddMovieController implements Initializable {
     void setModel(Model model) 
     {
         this.model=model;
+        setComboBox();
     }
     
 }
