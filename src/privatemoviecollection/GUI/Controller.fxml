@@ -46,7 +46,7 @@
          <columns>
             <TableColumn fx:id="Title" prefWidth="210.0" text="Title" />
             <TableColumn fx:id="rating" minWidth="0.0" prefWidth="221.0" text="Rating" />
-            <TableColumn fx:id="filelink" prefWidth="267.0" text="Filelink" />
+            <TableColumn fx:id="genre" prefWidth="267.0" text="Genre" />
          </columns>
       </TableView>
       <Button layoutX="119.0" layoutY="46.0" mnemonicParsing="false" onAction="#addGenre" style="-fx-background-radius: 30;" text="Add genre" />

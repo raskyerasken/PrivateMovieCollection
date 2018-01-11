@@ -10,20 +10,10 @@
             <file>file:/Users/kasper/Documents/GitHub/PrivateMovieCollection/src/privatemoviecollection/BE/PrivateMovieCollection.java</file>
         </group>
         <group>
-            <file>file:/C:/Users/jacob/Desktop/PrivateMovieCollection/src/privatemoviecollection/GUI/AddGenreController.java</file>
-            <file>file:/C:/Users/jacob/Desktop/PrivateMovieCollection/src/privatemoviecollection/DAL/ConnectionManager.java</file>
-            <file>file:/C:/Users/jacob/Desktop/PrivateMovieCollection/src/privatemoviecollection/GUI/Controller.fxml</file>
-            <file>file:/C:/Users/jacob/Desktop/PrivateMovieCollection/src/privatemoviecollection/GUI/addGenre.fxml</file>
-            <file>file:/C:/Users/jacob/Desktop/PrivateMovieCollection/src/privatemoviecollection/BE/PrivateMovieCollection.java</file>
-            <file>file:/C:/Users/jacob/Desktop/PrivateMovieCollection/src/privatemoviecollection/GUI/AddMovieController.java</file>
-            <file>file:/C:/Users/jacob/Desktop/PrivateMovieCollection/src/privatemoviecollection/BLL/BLLManager.java</file>
-            <file>file:/C:/Users/jacob/Desktop/PrivateMovieCollection/src/privatemoviecollection/GUI/Model.java</file>
-            <file>file:/C:/Users/jacob/Desktop/PrivateMovieCollection/src/privatemoviecollection/GUI/Controller.java</file>
-            <file>file:/C:/Users/jacob/Desktop/PrivateMovieCollection/src/privatemoviecollection/DAL/PrivateMovieCollectionDAL.java</file>
-            <file>file:/C:/Users/jacob/Desktop/PrivateMovieCollection/src/privatemoviecollection/BLL/MovieManager.java</file>
-            <file>file:/C:/Users/jacob/Desktop/PrivateMovieCollection/src/privatemoviecollection/BE/CategoryID.java</file>
-            <file>file:/C:/Users/jacob/Desktop/PrivateMovieCollection/src/privatemoviecollection/MainWindow.java</file>
-            <file>file:/C:/Users/jacob/Desktop/PrivateMovieCollection/src/privatemoviecollection/BE/CatMovieBE.java</file>
+            <file>file:/D:/School/NetBeansProject/PrivateMovieCollection/src/privatemoviecollection/DAL/PrivateMovieCollectionDAL.java</file>
+            <file>file:/D:/School/NetBeansProject/PrivateMovieCollection/src/privatemoviecollection/GUI/Controller.java</file>
+            <file>file:/D:/School/NetBeansProject/PrivateMovieCollection/src/privatemoviecollection/GUI/Model.java</file>
+            <file>file:/D:/School/NetBeansProject/PrivateMovieCollection/src/privatemoviecollection/BLL/BLLManager.java</file>
         </group>
     </open-files>
 </project-private>
