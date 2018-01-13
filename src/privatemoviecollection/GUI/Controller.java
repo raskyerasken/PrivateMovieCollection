@@ -33,6 +33,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import privatemoviecollection.BE.CategoryID;
@@ -213,10 +214,7 @@ public class Controller implements Initializable
 
     private void badMovieAlert() throws ParseException, IOException, SQLException
     {
-<<<<<<< HEAD
 
-=======
->>>>>>> 66fa6261b04cea825689b29294d6405f264e3692
         for (PrivateMovieCollection allMovy : model.getAllMovies()) {
        
         if (BLL.daysBetween(allMovy.getLastview(), newTime())<730) {
@@ -227,54 +225,25 @@ public class Controller implements Initializable
         if(badMovies)
         {
         Stage newStage = new Stage();
-<<<<<<< HEAD
-=======
-
-
-
-       if (BLL.daysBetween(lastViewDate(), newTime()).getDays() > 700)
-               { 
-                   Stage newStage = new Stage();
->>>>>>> 66fa6261b04cea825689b29294d6405f264e3692
-        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("alertWindow.fxml"));
+FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("alertWindow.fxml"));
         Parent root = fxLoader.load();
         alertWindowController controller= fxLoader.getController();
         controller.setModel(model);
         Scene scene = new Scene(root);
         newStage.setScene(scene);
-        newStage.show();
-<<<<<<< HEAD
-       badMovies=false;
+      newStage.show();
+badMovies=false;
         }
 }
-=======
-        badMovies=false;
-        }
-}
-    
-               }  
 
-    
->>>>>>> 66fa6261b04cea825689b29294d6405f264e3692
-
-    private Date newTime() throws ParseException
+private Date newTime() throws ParseException
     {
         java.util.Date utilDate = new java.util.Date();
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
         return sqlDate;
         
     }
-<<<<<<< HEAD
 
-=======
-  
-    
-    private Date lastViewDate()
-    {
-        
-    }
-    
->>>>>>> 66fa6261b04cea825689b29294d6405f264e3692
     @FXML
     private void handleAbout(ActionEvent event) {  //sets the "About Us"
              String contentText = "\t Hello, and welcome to our PrivateMovieCollection."
@@ -354,10 +323,9 @@ public class Controller implements Initializable
 }
 
     @FXML
-    private void getSelectedPlaylist(MouseEvent event) 
-    {
-        
+    private void getSelectedPlaylist(MouseEvent event) {
     }
+
 }
 
 
