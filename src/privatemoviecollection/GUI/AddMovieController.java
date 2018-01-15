@@ -140,11 +140,19 @@ public class AddMovieController implements Initializable {
             {
                 model.add(movie);
             }
-            catMoviebe.setMovieName(movie.getTitle());
+           
+           Stage stage = (Stage) cancel.getScene().getWindow();
+            stage.close();
+        }
+    }
+    
+    private void setGenre()
+    {
+     catMoviebe.setMovieName(movie.getTitle());
            if(selectGenre1.getSelectionModel().getSelectedItem()!=null)
            {
                 catMoviebe.setCategoryName(selectGenre1.getSelectionModel().getSelectedItem());
-                model.addMovieGenre(catMoviebe);
+               model.addMovieGenre(catMoviebe);
            } 
            
            if(selectGenre2.getSelectionModel().getSelectedItem()!=null)
@@ -158,12 +166,9 @@ public class AddMovieController implements Initializable {
                 catMoviebe.setCategoryName(selectGenre3.getSelectionModel().getSelectedItem());
                 model.addMovieGenre(catMoviebe);
            }
-           
-            Stage stage = (Stage) cancel.getScene().getWindow();
-            stage.close();
-           
-        }
+    
     }
+  
 
     @FXML
     private void cancelBtn(ActionEvent event) 
