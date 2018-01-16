@@ -71,7 +71,7 @@ public class Controller implements Initializable
     private Stage primaryStage;
     private Button addMovieBtn;
     BLLManager BLL = new BLLManager();
-   
+     int daysForBadMovie= 730;
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
@@ -197,7 +197,8 @@ public class Controller implements Initializable
     private void badMovieAlert() throws ParseException, IOException, SQLException
     {
        for (PrivateMovieCollection allMovy : model.getAllMovies()) {
-            if (BLL.daysBetween(allMovy.getLastview(), newTime())<730)
+         
+            if (BLL.daysBetween(allMovy.getLastview(), newTime())>daysForBadMovie ||allMovy.getRating()<3)
             {
               badMovies=true;
               badMovie.add(allMovy);

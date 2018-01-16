@@ -108,7 +108,8 @@ public class AddMovieController implements Initializable {
     {
         if (URLAdressSong == null || movieTitle==null )
         {
-
+                showErrorDialog("Please Select Movie and give it a title",
+                        null, " Please Select Movie and give it a title");
         }
         else
         { 
