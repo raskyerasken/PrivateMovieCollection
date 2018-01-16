@@ -127,6 +127,7 @@ public class Controller implements Initializable
     @FXML
     private void playMovie(ActionEvent event) throws IOException 
     {
+        try{
         if (movieListView.getSelectionModel().getSelectedItem() != null ) 
         {
             File file = new File("");
@@ -138,6 +139,11 @@ public class Controller implements Initializable
             showErrorDialog("Selection Error", null, 
                     "Check if you selected a movie from the list\n "
                             + "If the list is empty then please add a movie");
+        }
+        catch (IOException ex) 
+        {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     void newAddMovieView() throws IOException
@@ -182,6 +188,7 @@ public class Controller implements Initializable
     @FXML
     private void removeMovie(ActionEvent event) throws SQLException
     {
+        try{
         PrivateMovieCollection selectedMovie = movieListView.getSelectionModel()
                 .getSelectedItem();
         if (selectedMovie == null)
@@ -190,6 +197,11 @@ public class Controller implements Initializable
         }
         else
             model.removeMovie(selectedMovie);
+        }
+       catch (SQLException ex) 
+        {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     
@@ -285,20 +297,33 @@ public class Controller implements Initializable
     }
 
     @FXML
-    private void addGenre(ActionEvent event) throws IOException 
+    private void addGenre(ActionEvent event) 
     {
-        newAddGenreView();
+         try{
+         newAddGenreView();
+         }
+         catch (IOException ex) 
+         {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+         } 
     }
 
     @FXML
-    private void addMovie(ActionEvent event) throws IOException 
+    private void addMovie(ActionEvent event)  
     {
+        try{
         newAddMovieView();
+        }
+        catch (IOException ex) 
+        {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }    
     
     @FXML
-    private void searchMovie(ActionEvent event) throws SQLException 
+    private void searchMovie(ActionEvent event) 
     {
+        try{
         if(!txtSearch.getText().isEmpty())
         {
         if (search) 
@@ -321,10 +346,16 @@ public class Controller implements Initializable
         else
         {
             showErrorDialog("Input error", null, "Please input search term");}
+        }
+         catch (SQLException ex) 
+        {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
 
     @FXML
-    private void genreFilter(ActionEvent event) throws SQLException {
+    private void genreFilter(ActionEvent event) {
+        try{
         if(selectGenre.getSelectionModel().getSelectedItem()=="All movies")
         {
             movieListView.setItems
@@ -334,11 +365,17 @@ public class Controller implements Initializable
         else
         {
           movieListView.setItems(model.getAllMoviesByGenre(selectGenre.getSelectionModel().getSelectedItem()));
-        }
+        }}
+         catch (SQLException ex) 
+        {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    
     }
 
     @FXML
-    private void edditRating(ActionEvent event) throws IOException {
+    private void editRating(ActionEvent event) {  
+        try{
         if(!movieListView.getSelectionModel().isEmpty())
         {
         newEditRatingView();
@@ -347,6 +384,11 @@ public class Controller implements Initializable
         {
             showErrorDialog("Selecet a movie", null,"Select a movie");
         }
+        }
+        catch (IOException ex) 
+        {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
 
 }

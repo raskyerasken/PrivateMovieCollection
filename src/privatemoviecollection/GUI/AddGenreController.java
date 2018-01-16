@@ -5,9 +5,12 @@
  */
 package privatemoviecollection.GUI;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -55,17 +58,30 @@ public class AddGenreController implements Initializable {
 
 
     @FXML
-    private void removeGenre(ActionEvent event) throws SQLException {
-        
+    private void removeGenre(ActionEvent event) {
+        try
+        {
        model.removeGenre( genreListView.getSelectionModel().getSelectedItem().trim());
        setGenre();
+        }
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     @FXML
-    private void addGenre(ActionEvent event) throws SQLException {
+    private void addGenre(ActionEvent event) {
+        try
+        {    
         category.setCategory(txtAddGenre.getText());
         model.addGenre(category);
         setGenre(); 
+        }
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     void setGenre()

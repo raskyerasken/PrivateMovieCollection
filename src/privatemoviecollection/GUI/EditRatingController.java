@@ -8,6 +8,8 @@ package privatemoviecollection.GUI;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -44,7 +46,8 @@ public class EditRatingController implements Initializable {
 
 
     @FXML
-    private void SaveRating(ActionEvent event) throws SQLException {
+    private void SaveRating(ActionEvent event){
+        try{
             int rate = Integer.parseInt(ratingEdit.getText());
             if (rate > maxRating)
             {
@@ -59,6 +62,11 @@ public class EditRatingController implements Initializable {
                 Stage stage = (Stage) cancelButton.getScene().getWindow();
                 stage.close();
             }
+        }
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
                 }
      private void showErrorDialog(String title, String header, String message)
     {

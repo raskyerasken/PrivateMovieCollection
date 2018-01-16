@@ -8,6 +8,8 @@ package privatemoviecollection.GUI;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -104,8 +106,9 @@ public class AddMovieController implements Initializable {
     
     //Saves our shit to another shit
     @FXML
-    private void saveBtn(ActionEvent event) throws SQLException 
+    private void saveBtn(ActionEvent event) 
     {
+        try{
         if (URLAdressSong == null || movieTitle==null )
         {
                 showErrorDialog("Please Select Movie and give it a title",
@@ -144,6 +147,11 @@ public class AddMovieController implements Initializable {
                 stage.close();
                 }
             }
+        }
+        }
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
