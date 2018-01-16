@@ -98,9 +98,12 @@ public class Controller implements Initializable
         } catch (SQLException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
-        try {
+        try 
+        {
             badMovieAlert();
-        } catch (ParseException ex) {
+        } 
+        
+        catch (ParseException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
@@ -216,36 +219,32 @@ public class Controller implements Initializable
        {
             if (BLL.daysBetween(allMovy.getLastview(), newTime())>daysForBadMovie ||allMovy.getRating()<badMovieRating)
             {
-              badMovies=true;
-              badMovie.add(allMovy);
+                badMovies=true;
+                badMovie.add(allMovy);
             }  
         }
        
         if(badMovies)
         {
-          
             Stage newStage = new Stage();
-
-            FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("alertWindow.fxml"));
+            FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("AlertWindows.fxml"));
             Parent root = fxLoader.load();
             alertWindowController controller= fxLoader.getController();
             controller.setModel(model);
             controller.setBadMovies(badMovie);
             Scene scene = new Scene(root);
             newStage.setScene(scene);
-            newStage.show();
             newStage.showAndWait();
             badMovies=false;
         }
     }
     
 
-private Date newTime() throws ParseException
+    private Date newTime() throws ParseException
     {
         java.util.Date utilDate = new java.util.Date();
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
         return sqlDate;
-        
     }
   
     
