@@ -85,7 +85,7 @@ public class BLLManager
         SimpleDateFormat sdf = new SimpleDateFormat("DD:MM:YYYY");
         System.out.println("The current time is "+sdf.format(d));
     }
-    
+    // a function that allows us to count the days between 2 dates
     public void dayCount() throws ParseException
     {
         Calendar cal1 = new GregorianCalendar();
@@ -100,7 +100,7 @@ public class BLLManager
         
         System.out.println("Days = " + daysBetween(cal1.getTime(), cal2.getTime()));        
     }
-    
+    //prints out an int we can use for the alert popup
     public int daysBetween(Date d1, Date d2)
     {
         return (int)((d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24)); 
