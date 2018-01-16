@@ -71,8 +71,8 @@ public class Controller implements Initializable
     private Stage primaryStage;
     private Button addMovieBtn;
     BLLManager BLL = new BLLManager();
-     int daysForBadMovie= 730;
-     int badMovieRating=3;
+    int daysForBadMovie= 730;
+    int badMovieRating=3;
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
@@ -90,12 +90,14 @@ public class Controller implements Initializable
         new PropertyValueFactory("rating"));
         
         genre.setCellValueFactory(
-     new PropertyValueFactory("categoryName"));
-
-        
-        try {
+        new PropertyValueFactory("categoryName"));
+        try 
+        {
             movieListView.setItems((ObservableList<PrivateMovieCollection>)model.getAllMovies() );
-        } catch (SQLException ex) {
+        }
+        
+        catch (SQLException ex) 
+        {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
         try 
@@ -103,14 +105,18 @@ public class Controller implements Initializable
             badMovieAlert();
         } 
         
-        catch (ParseException ex) {
+        catch (ParseException ex) 
+        {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+        } 
+        catch (IOException ex) 
+        {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } 
+        catch (SQLException ex) 
+        {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
     
     /**
