@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import privatemoviecollection.BE.CategoryID;
 import privatemoviecollection.BE.PrivateMovieCollection;
 import privatemoviecollection.BLL.BLLManager;
@@ -43,7 +44,7 @@ public class AddGenreController implements Initializable {
     CategoryID category = new  CategoryID();
     private Model model;
     @FXML
-    private Button closeBtn;
+    private Button cancelButton;
     
     
     
@@ -83,7 +84,10 @@ public class AddGenreController implements Initializable {
     }
 
     @FXML
-    private void closeBtn(ActionEvent event) {
+    private void cancelGenre(ActionEvent event) 
+    {
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
     }
     
 }

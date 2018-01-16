@@ -24,6 +24,7 @@
           <Menu mnemonicParsing="false" text="Edit">
             <items>
               <MenuItem mnemonicParsing="false" text="Edit" />
+                  <MenuItem mnemonicParsing="false" onAction="#addGenre" text="Add genre" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

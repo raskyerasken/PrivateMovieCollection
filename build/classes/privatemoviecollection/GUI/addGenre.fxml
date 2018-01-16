@@ -10,7 +10,7 @@
    <children>
       <AnchorPane id="AnchorPane" layoutY="8.0" prefHeight="285.0" prefWidth="305.0">
          <children>
-            <Button fx:id="closeBtn" layoutX="165.0" layoutY="244.0" mnemonicParsing="false" onAction="#closeBtn" style="-fx-background-radius: 30;" text="Close" />
+            <Button fx:id="cancelButton" layoutX="165.0" layoutY="244.0" mnemonicParsing="false" onAction="#cancelGenre" style="-fx-background-radius: 30;" text="Cancel" />
             <TextField fx:id="txtAddGenre" layoutX="99.0" layoutY="34.0" promptText="add genre" />
             <Button fx:id="addGenre" layoutX="28.0" layoutY="34.0" mnemonicParsing="false" onAction="#addGenre" style="-fx-background-radius: 30;" text="Add" />
             <Button fx:id="removeGenre" layoutX="15.0" layoutY="134.0" mnemonicParsing="false" onAction="#removeGenre" style="-fx-background-radius: 30;" text="Remove" />
