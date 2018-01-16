@@ -5,11 +5,10 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="151.0" prefWidth="247.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="privatemoviecollection.GUI.EditRatingController">
+<AnchorPane id="AnchorPane" prefHeight="151.0" prefWidth="247.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="privatemoviecollection.GUI.EditRatingController">
    <children>
       <Label layoutX="35.0" layoutY="14.0" prefHeight="21.0" prefWidth="178.0" text="Please edit the rating here" />
-      <TextField layoutX="30.0" layoutY="45.0" onAction="#ratingEdit" promptText="Input rating 1 - 10" />
+      <TextField fx:id="ratingEdit" layoutX="30.0" layoutY="45.0" promptText="Input rating 1 - 10" />
       <Button fx:id="saveRating" layoutX="30.0" layoutY="106.0" mnemonicParsing="false" onAction="#SaveRating" prefHeight="31.0" prefWidth="64.0" text="Save" />
       <Button fx:id="cancelButton" layoutX="153.0" layoutY="106.0" mnemonicParsing="false" onAction="#cancelButton" text="Cancel" />
    </children>

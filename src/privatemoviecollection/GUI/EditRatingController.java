@@ -6,11 +6,16 @@
 package privatemoviecollection.GUI;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import privatemoviecollection.BE.PrivateMovieCollection;
 
 /**
  * FXML Controller class
@@ -24,7 +29,10 @@ public class EditRatingController implements Initializable {
     @FXML
     private Button cancelButton;
     Model model;
-
+    @FXML
+    private TextField ratingEdit;
+    private PrivateMovieCollection movie;
+    int maxRating=10;
     /**
      * Initializes the controller class.
      */
@@ -34,21 +42,48 @@ public class EditRatingController implements Initializable {
         // TODO
     }    
 
-    @FXML
-    private void ratingEdit(ActionEvent event) {
-    }
 
     @FXML
-    private void SaveRating(ActionEvent event) {
+    private void SaveRating(ActionEvent event) throws SQLException {
+            int rate = Integer.parseInt(ratingEdit.getText());
+            if (rate > maxRating)
+            {
+                showErrorDialog("Please input rating from 1 - 10 only",
+                        null, " You can only input rating from 1 to 10");
+            }
+            else
+            {
+                movie.setRating(rate);
+                model.removeMovieRate(movie);
+                model.add(movie);
+                Stage stage = (Stage) cancelButton.getScene().getWindow();
+                stage.close();
+            }
+                }
+     private void showErrorDialog(String title, String header, String message)
+    {
+       
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     @FXML
     private void cancelButton(ActionEvent event) {
+           Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
     }
 
     void setModel(Model model)
     {
         this.model = model;
     }
+    void getMovie(PrivateMovieCollection movie)
+    {
+    this.movie= movie;
+    ratingEdit.setText(""+movie.getRating());
+   }
     
 }

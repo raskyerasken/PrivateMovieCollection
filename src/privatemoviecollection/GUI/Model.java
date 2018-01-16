@@ -105,4 +105,9 @@ public class Model
          } 
         return movieList; 
     }
+    void removeMovieRate(PrivateMovieCollection movie) throws SQLException {
+    bllManager.removeRate(movie);
+        movieList.remove(movie);
+    }
+
 }

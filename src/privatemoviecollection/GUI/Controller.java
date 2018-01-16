@@ -153,6 +153,7 @@ public class Controller implements Initializable
         Parent root = fxLoader.load();
         EditRatingController controller= fxLoader.getController();
         controller.setModel(model);
+        controller.getMovie(movieListView.getSelectionModel().getSelectedItem());
         Scene scene = new Scene(root);
         newStage.setScene(scene);
         newStage.show();
@@ -290,12 +291,6 @@ public class Controller implements Initializable
     }    
     
     @FXML
-    private void edditRating(ActionEvent event) throws IOException 
-    {
-        newEditRatingView();
-    }
-
-    @FXML
     private void searchMovie(ActionEvent event) throws SQLException 
     {
         if(!txtSearch.getText().isEmpty())
@@ -337,14 +332,14 @@ public class Controller implements Initializable
     }
 
     @FXML
-    private void addMovie(MouseEvent event) 
-    {
-        //does nothing
+    private void edditRating(ActionEvent event) throws IOException {
+        newEditRatingView();
     }
 
     @FXML
-    private void getSelectedPlaylist(MouseEvent event) {
+    private void editRating(ActionEvent event) {
     }
+
 
 }
 

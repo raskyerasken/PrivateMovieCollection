@@ -41,12 +41,12 @@ public class BLLManager
         pmcdal.remove(selectPrivateMovieCollection);
         pmcdal.removeConnection(selectPrivateMovieCollection);
     }
-    
-    public void update(PrivateMovieCollection privateMovieCollection) throws SQLException
+    public void removeRate(PrivateMovieCollection selectPrivateMovieCollection) throws SQLException
     {
-        pmcdal.update(privateMovieCollection);
+        pmcdal.remove(selectPrivateMovieCollection);
     }
-
+    
+    
     public List getAllMovie() 
     {
         return pmcdal.getAllMovies();
@@ -124,6 +124,7 @@ public class BLLManager
     public List<CatMovieBE> getMoviesGenre(String title) throws SQLException {
     return pmcdal.getGenreByMovue(title);
     }
+
 
 
     
