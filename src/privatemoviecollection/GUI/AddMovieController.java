@@ -65,7 +65,7 @@ public class AddMovieController implements Initializable {
     private ComboBox<String> selectGenre3;
     private Model model;
     boolean titleError = false;
-
+ int maxRating= 10; 
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
@@ -74,7 +74,7 @@ public class AddMovieController implements Initializable {
     }   
     private void setComboBox()
     {  
-        
+       
         selectGenre1.getItems().clear();
         for (CategoryID  id : model.allGenre()) {
             selectGenre1.getItems().add(id.getCategory());
@@ -114,16 +114,15 @@ public class AddMovieController implements Initializable {
         else
         { 
             int rate = Integer.parseInt(movieRating.getText());
-            if (rate >= 11)
+            if (rate > maxRating)
             {
                 showErrorDialog("Please input rating from 1 - 10 only",
                         null, " You can only input rating from 1 to 10");
             }
             else
-                movie.setRating(rate);
-            
-            titleError = true;
-            for (PrivateMovieCollection pmc : model.getAllMovies()) 
+            {
+                titleError = true;
+                for (PrivateMovieCollection pmc : model.getAllMovies()) 
             {   
                 if (pmc.getTitle().trim().equals(movieTitle.getText())) 
                 {
@@ -131,19 +130,20 @@ public class AddMovieController implements Initializable {
                     titleError = false;
                }
              }
-            saveRating();
-            java.util.Date utilDate = new java.util.Date();
-            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-            movie.setFilelink(URLAdressSong);
-            movie.setTitle(movieTitle.getText());
-            movie.setLastview(sqlDate);
-            if (titleError)
-            {
+                if(titleError){
+                movie.setRating(rate);
+                saveRating();
+                java.util.Date utilDate = new java.util.Date();
+                java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+                movie.setFilelink(URLAdressSong);
+                movie.setTitle(movieTitle.getText());
+                movie.setLastview(sqlDate);
+                setGenre();
                 model.add(movie);
+                Stage stage = (Stage) cancel.getScene().getWindow();
+                stage.close();
+                }
             }
-           setGenre();
-           Stage stage = (Stage) cancel.getScene().getWindow();
-            stage.close();
         }
     }
     
@@ -152,9 +152,9 @@ public class AddMovieController implements Initializable {
      catMoviebe.setMovieName(movie.getTitle());
            if(selectGenre1.getSelectionModel().getSelectedItem()!=null)
            {
-                catMoviebe.setCategoryName(selectGenre1.getSelectionModel().getSelectedItem());
+               catMoviebe.setCategoryName(selectGenre1.getSelectionModel().getSelectedItem());
                model.addMovieGenre(catMoviebe);
-           } 
+           }
            
            if(selectGenre2.getSelectionModel().getSelectedItem()!=null)
            {
