@@ -8,6 +8,8 @@ package privatemoviecollection.GUI;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -51,16 +53,11 @@ private ObservableList<PrivateMovieCollection> badMovies
     }
 
     @FXML
-<<<<<<< HEAD
-    private void saveBtn(ActionEvent event) 
-    {
-        if (!genreListView.getSelectionModel().isEmpty())  
-=======
+
     private void saveBtn(ActionEvent event) {
-       badMovies.remove(genreListView.getSelectionModel().getSelectedIndex());
-        genreListView.getItems().remove(genreListView.getSelectionModel().getSelectedIndex());
-        if(genreListView.getItems().isEmpty())
->>>>>>> 0490edc0ab028f119bc39eec91184ff89dcf4ec6
+        
+        if (!genreListView.getSelectionModel().isEmpty()) 
+
         {
             badMovies.remove(genreListView.getSelectionModel().getSelectedIndex());
             genreListView.getItems().remove(genreListView.getSelectionModel().getSelectedIndex());
@@ -75,8 +72,9 @@ private ObservableList<PrivateMovieCollection> badMovies
     }
 
     @FXML
-    private void removeMovie(ActionEvent event) throws SQLException 
+    private void removeMovie(ActionEvent event)  
     {
+        try{
         if (!genreListView.getSelectionModel().isEmpty()) 
         {
             model.removeMovie(badMovies.get(genreListView.getSelectionModel().getSelectedIndex()));
@@ -85,6 +83,11 @@ private ObservableList<PrivateMovieCollection> badMovies
         }
         else
             showErrorDialog("Selection Error", null, "You need to select a movie in order to remove it.");
+        }
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     void setModel(Model model)
