@@ -66,15 +66,12 @@ public class Controller implements Initializable
     Model model= new Model();
     int dayCount = 0;
     boolean search = false;
+     @FXML
     private ComboBox<String> selectGenre;
     private Stage primaryStage;
     private Button addMovieBtn;
     BLLManager BLL = new BLLManager();
    
-  
-
-    private ListView<?> genreListView;
-
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
