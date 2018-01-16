@@ -193,7 +193,7 @@ public class Controller implements Initializable
     }
     
     
-     private void showErrorDialog(String title, String header, String message)
+    private void showErrorDialog(String title, String header, String message)
     {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
