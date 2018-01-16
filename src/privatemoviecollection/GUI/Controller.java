@@ -35,7 +35,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import privatemoviecollection.BE.CategoryID;
 import privatemoviecollection.BE.PrivateMovieCollection;
@@ -211,10 +210,7 @@ public class Controller implements Initializable
         {
           
         Stage newStage = new Stage();
-<<<<<<< HEAD
 
-=======
->>>>>>> 61afd9d5c0891a70ea44449fc8de0a4714c49bc1
         FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("alertWindow.fxml"));
         Parent root = fxLoader.load();
         alertWindowController controller= fxLoader.getController();
@@ -228,26 +224,19 @@ public class Controller implements Initializable
          
         }
 }
-<<<<<<< HEAD
     
-    private Date newTime() throws ParseException
-=======
 
 private Date newTime() throws ParseException
->>>>>>> 61afd9d5c0891a70ea44449fc8de0a4714c49bc1
     {
         java.util.Date utilDate = new java.util.Date();
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
         return sqlDate;
         
     }
-<<<<<<< HEAD
   
     
     
-=======
 
->>>>>>> 61afd9d5c0891a70ea44449fc8de0a4714c49bc1
     @FXML
     private void handleAbout(ActionEvent event) {  //sets the "About Us"
              String contentText = "\t Hello, and welcome to our PrivateMovieCollection."
@@ -320,14 +309,11 @@ private Date newTime() throws ParseException
           movieListView.setItems(model.getAllMoviesByGenre(selectGenre.getSelectionModel().getSelectedItem()));
         }
 }
-<<<<<<< HEAD
-=======
 
     @FXML
     private void getSelectedPlaylist(MouseEvent event) {
     }
 
->>>>>>> 61afd9d5c0891a70ea44449fc8de0a4714c49bc1
 }
 
     
