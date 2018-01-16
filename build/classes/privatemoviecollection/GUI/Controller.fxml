@@ -21,7 +21,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#closeProgram" text="Close" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" onAction="#editRating" text="Edit">
+          <Menu mnemonicParsing="false" text="Edit">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#edditRating" text="Edit" />
                   <MenuItem mnemonicParsing="false" onAction="#addGenre" text="Add genre" />

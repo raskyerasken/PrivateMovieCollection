@@ -339,13 +339,15 @@ public class Controller implements Initializable
 
     @FXML
     private void edditRating(ActionEvent event) throws IOException {
+        if(!movieListView.getSelectionModel().isEmpty())
+        {
         newEditRatingView();
+        }
+        else
+        {
+            showErrorDialog("Selecet a movie", null,"Select a movie");
+        }
     }
-
-    @FXML
-    private void editRating(ActionEvent event) {
-    }
-
 
 }
 
