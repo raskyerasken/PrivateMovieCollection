@@ -109,6 +109,7 @@ public class Controller implements Initializable
         } catch (SQLException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
     
     /**
@@ -207,6 +208,7 @@ public class Controller implements Initializable
         }  
         if(badMovies)
         {
+          
         Stage newStage = new Stage();
         FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("alertWindow.fxml"));
         Parent root = fxLoader.load();
@@ -215,8 +217,10 @@ public class Controller implements Initializable
         controller.setBadMovies(badMovie);
         Scene scene = new Scene(root);
         newStage.setScene(scene);
-        newStage.show();
+     //   newStage.show();
+        newStage.showAndWait();
         badMovies=false;
+         
         }
 }
 

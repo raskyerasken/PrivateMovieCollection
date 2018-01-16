@@ -140,7 +140,7 @@ public class AddMovieController implements Initializable {
             {
                 model.add(movie);
             }
-           
+           setGenre();
            Stage stage = (Stage) cancel.getScene().getWindow();
             stage.close();
         }
