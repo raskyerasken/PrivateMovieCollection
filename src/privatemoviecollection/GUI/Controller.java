@@ -72,6 +72,7 @@ public class Controller implements Initializable
     private Button addMovieBtn;
     BLLManager BLL = new BLLManager();
      int daysForBadMovie= 730;
+     int badMovieRating=3;
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
@@ -198,7 +199,7 @@ public class Controller implements Initializable
     {
        for (PrivateMovieCollection allMovy : model.getAllMovies()) {
          
-            if (BLL.daysBetween(allMovy.getLastview(), newTime())>daysForBadMovie ||allMovy.getRating()<3)
+            if (BLL.daysBetween(allMovy.getLastview(), newTime())>daysForBadMovie ||allMovy.getRating()<badMovieRating)
             {
               badMovies=true;
               badMovie.add(allMovy);
@@ -276,6 +277,8 @@ private Date newTime() throws ParseException
     @FXML
     private void searchMovie(ActionEvent event) throws SQLException 
     {
+        if(!txtSearch.getText().isEmpty())
+        {
         if (search) 
         {
             search = false;
@@ -292,6 +295,10 @@ private Date newTime() throws ParseException
             search = true;
             searchBtn.setText("All Movies");
         }
+        }
+        else
+        {
+            showErrorDialog("Input error", null, "Please input search term");}
     }
 
     @FXML
