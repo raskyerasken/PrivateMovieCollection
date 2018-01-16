@@ -47,7 +47,6 @@ private Model model;
     @FXML
     private void saveBtn(ActionEvent event) {
        badMovies.remove(genreListView.getSelectionModel().getSelectedIndex());
-        
         genreListView.getItems().remove(genreListView.getSelectionModel().getSelectedIndex());
         if(genreListView.getItems().isEmpty())
         {
