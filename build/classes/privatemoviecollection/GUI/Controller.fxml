@@ -21,7 +21,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#closeProgram" text="Close" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" onAction="#edditRating" text="Edit">
             <items>
               <MenuItem mnemonicParsing="false" text="Edit" />
                   <MenuItem mnemonicParsing="false" onAction="#addGenre" text="Add genre" />
@@ -39,7 +39,7 @@
       <Button fx:id="searchBtn" layoutX="765.0" layoutY="46.0" mnemonicParsing="false" onAction="#searchMovie" prefHeight="31.0" prefWidth="75.0" style="-fx-background-radius: 30;" text="Search" />
       <Button layoutX="23.0" layoutY="46.0" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30;" text="Add movie" />
       <Button layoutX="336.0" layoutY="46.0" mnemonicParsing="false" onAction="#playMovie" style="-fx-background-radius: 30;" text="Play Movie" />
-      <TableView fx:id="movieListView" layoutX="22.0" layoutY="94.0" onMouseClicked="#getSelectedPlaylist" prefHeight="538.0" prefWidth="699.0">
+      <TableView fx:id="movieListView" layoutX="22.0" layoutY="94.0" onMouseClicked="#getSelectedPlaylist" onMouseDragged="#addMovie" prefHeight="538.0" prefWidth="699.0">
       <TextField layoutX="514.0" layoutY="46.0" promptText="Search for movies here" />
       <Button layoutX="439.0" layoutY="46.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="69.0" style="-fx-background-radius: 30;" text="Search" />
       <Button layoutX="5.0" layoutY="46.0" mnemonicParsing="false" onAction="#addMovie" text="Add movie" />

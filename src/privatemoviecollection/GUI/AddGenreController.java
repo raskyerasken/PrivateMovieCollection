@@ -78,7 +78,8 @@ public class AddGenreController implements Initializable {
     genreListView.setItems(genrelist);
     }
 
-    void setModel(Model model) {
+    void setModel(Model model) 
+    {
         this.model=model;
         setGenre();
     }

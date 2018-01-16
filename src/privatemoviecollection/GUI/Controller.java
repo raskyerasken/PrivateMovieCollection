@@ -143,6 +143,18 @@ public class Controller implements Initializable
         newStage.show();
     }
     
+    void newEditRatingView() throws IOException
+    {
+        Stage newStage = new Stage();
+        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("EditRating.fxml"));
+        Parent root = fxLoader.load();
+        EditRatingController controller= fxLoader.getController();
+        controller.setModel(model);
+        Scene scene = new Scene(root);
+        newStage.setScene(scene);
+        newStage.show();
+    }
+    
     void newAddGenreView() throws IOException
     {
         Stage newStage = new Stage();
@@ -154,6 +166,8 @@ public class Controller implements Initializable
         newStage.setScene(scene);
         newStage.show();
     }
+    
+    
     
     @FXML
     private void removeMovie(ActionEvent event) throws SQLException
@@ -189,6 +203,7 @@ public class Controller implements Initializable
         alert.setHeaderText(null);
         alert.setContentText("Are you sure you want to exit this Program?");
         Optional<ButtonType> result = alert.showAndWait();
+        
         if (result.get() == ButtonType.OK)
         {
             Platform.exit();
@@ -197,32 +212,32 @@ public class Controller implements Initializable
     
     private void badMovieAlert() throws ParseException, IOException, SQLException
     {
-       for (PrivateMovieCollection allMovy : model.getAllMovies()) {
-         
+       for (PrivateMovieCollection allMovy : model.getAllMovies()) 
+       {
             if (BLL.daysBetween(allMovy.getLastview(), newTime())>daysForBadMovie ||allMovy.getRating()<badMovieRating)
             {
               badMovies=true;
               badMovie.add(allMovy);
             }  
-        }  
+        }
+       
         if(badMovies)
         {
           
-        Stage newStage = new Stage();
+            Stage newStage = new Stage();
 
-        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("alertWindow.fxml"));
-        Parent root = fxLoader.load();
-        alertWindowController controller= fxLoader.getController();
-        controller.setModel(model);
-        controller.setBadMovies(badMovie);
-        Scene scene = new Scene(root);
-        newStage.setScene(scene);
-     //   newStage.show();
-        newStage.showAndWait();
-        badMovies=false;
-         
+            FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("alertWindow.fxml"));
+            Parent root = fxLoader.load();
+            alertWindowController controller= fxLoader.getController();
+            controller.setModel(model);
+            controller.setBadMovies(badMovie);
+            Scene scene = new Scene(root);
+            newStage.setScene(scene);
+            newStage.show();
+            newStage.showAndWait();
+            badMovies=false;
         }
-}
+    }
     
 
 private Date newTime() throws ParseException
@@ -264,7 +279,8 @@ private Date newTime() throws ParseException
     }
 
     @FXML
-    private void addGenre(ActionEvent event) throws IOException {
+    private void addGenre(ActionEvent event) throws IOException 
+    {
         newAddGenreView();
     }
 
@@ -273,6 +289,12 @@ private Date newTime() throws ParseException
     {
         newAddMovieView();
     }    
+    
+    @FXML
+    private void edditRating(ActionEvent event) throws IOException 
+    {
+        newEditRatingView();
+    }
 
     @FXML
     private void searchMovie(ActionEvent event) throws SQLException 
@@ -313,7 +335,13 @@ private Date newTime() throws ParseException
         {
           movieListView.setItems(model.getAllMoviesByGenre(selectGenre.getSelectionModel().getSelectedItem()));
         }
-}
+    }
+
+    @FXML
+    private void addMovie(MouseEvent event) 
+    {
+        //does nothing
+    }
 
     @FXML
     private void getSelectedPlaylist(MouseEvent event) {
