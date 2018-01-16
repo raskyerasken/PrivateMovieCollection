@@ -11,11 +11,6 @@ public class MovieManager
     private PrivateMovieCollection movie;
     private MediaPlayer player;
     
-    public void playMovie(PrivateMovieCollection movie, boolean overwrite)
-    {
-        //allows for playing & pausing movies
-    }
-    
     public PrivateMovieCollection getCurrentlyPlayingMovie()
     {
         return this.movie;

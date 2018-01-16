@@ -47,26 +47,27 @@ public class Controller implements Initializable
 {    
     boolean badMovies=false;
     @FXML
-    private ComboBox<String> selectGenre;
-    private Stage primaryStage;
-    private Button addMovieBtn;
-    BLLManager BLL = new BLLManager();
+    private TableColumn<PrivateMovieCollection, String> genre;
     @FXML
     private TableView<PrivateMovieCollection> movieListView;
     @FXML
     private TableColumn<PrivateMovieCollection, String> Title;
     @FXML
     private TableColumn<PrivateMovieCollection, Integer> rating;
-    Model model= new Model();
     @FXML
     private TextField txtSearch;
     @FXML
     private Button searchBtn;
+    
+    Model model= new Model();
     int dayCount = 0;
     boolean search = false;
+    private ComboBox<String> selectGenre;
+    private Stage primaryStage;
+    private Button addMovieBtn;
+    BLLManager BLL = new BLLManager();
    
-    @FXML
-    private TableColumn<PrivateMovieCollection, String> genre;
+  
 
     private ListView<?> genreListView;
 
@@ -224,11 +225,6 @@ public class Controller implements Initializable
         {
         Stage newStage = new Stage();
 
-
-
-       if (BLL.daysBetween(lastViewDate(), newTime()).getDays() > 700)
-               { 
-                   Stage newStage = new Stage();
         FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("alertWindow.fxml"));
         Parent root = fxLoader.load();
         alertWindowController controller= fxLoader.getController();
@@ -240,11 +236,6 @@ public class Controller implements Initializable
         }
 }
     
-               }  
-
-    
-
-  
     private Date newTime() throws ParseException
     {
         java.util.Date utilDate = new java.util.Date();
@@ -254,10 +245,6 @@ public class Controller implements Initializable
     }
   
     
-    private Date lastViewDate()
-    {
-        
-    }
     
     @FXML
     private void handleAbout(ActionEvent event) {  //sets the "About Us"
@@ -285,11 +272,6 @@ public class Controller implements Initializable
         about.resizableProperty().set(true);
         about.showAndWait();
     }
-    
-    
-   
-    
-
 
     @FXML
     private void addGenre(ActionEvent event) throws IOException {
@@ -336,13 +318,9 @@ public class Controller implements Initializable
           movieListView.setItems(model.getAllMoviesByGenre(selectGenre.getSelectionModel().getSelectedItem()));
         }
 }
-
-    @FXML
-    private void getSelectedPlaylist(MouseEvent event) 
-    {
-        
-    }
 }
+
+    
 
 
 
