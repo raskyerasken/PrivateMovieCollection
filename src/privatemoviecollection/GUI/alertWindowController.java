@@ -51,21 +51,24 @@ private ObservableList<PrivateMovieCollection> badMovies
         alert.setContentText(message);
         alert.showAndWait();
     }
-
+    
+    void selectionInputError()
+    {
+        if(genreListView.getItems().isEmpty())
+        {
+            Stage stage =(Stage) removeMovie.getScene().getWindow();
+            stage.close();
+        }
+    }
+    
     @FXML
-
-    private void saveBtn(ActionEvent event) {
-        
+    private void saveBtn(ActionEvent event) 
+    {
         if (!genreListView.getSelectionModel().isEmpty()) 
-
         {
             badMovies.remove(genreListView.getSelectionModel().getSelectedIndex());
             genreListView.getItems().remove(genreListView.getSelectionModel().getSelectedIndex());
-            if(genreListView.getItems().isEmpty())
-            {
-                Stage stage =(Stage) removeMovie.getScene().getWindow();
-                stage.close();
-            }
+            selectionInputError();
         }
         else
             showErrorDialog("Selection Error", null, "You need to select a movie in order to save it."); 
@@ -80,6 +83,7 @@ private ObservableList<PrivateMovieCollection> badMovies
             model.removeMovie(badMovies.get(genreListView.getSelectionModel().getSelectedIndex()));
             badMovies.remove(genreListView.getSelectionModel().getSelectedIndex());
             genreListView.getItems().remove(genreListView.getSelectionModel().getSelectedIndex());
+            selectionInputError();
         }
         else
             showErrorDialog("Selection Error", null, "You need to select a movie in order to remove it.");
