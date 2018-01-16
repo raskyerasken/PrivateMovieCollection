@@ -36,8 +36,15 @@ public class Model
     
     List<PrivateMovieCollection> getAllMovies() throws SQLException
     {
+       
+        genreToMovies();
+       return movieList;
+       
+    }
+    void genreToMovies() throws SQLException
+    { 
         movieList.clear();
-        for (PrivateMovieCollection privateMovieCollection : bllManager.getAllMovies()) {
+    for (PrivateMovieCollection privateMovieCollection : bllManager.getAllMovies()) {
             String genrer="";
            for (CatMovieBE genre  : bllManager.getMoviesGenre(privateMovieCollection.getTitle())) {
               
@@ -47,13 +54,12 @@ public class Model
             movieList.add(privateMovieCollection);
         
         }
-       return movieList;
     }
     
    void add (PrivateMovieCollection movie) throws SQLException
     {   
         bllManager.add(movie);
-        movieList.add(movie);
+        genreToMovies();
     }
 
     void addGenre(CategoryID category) throws SQLException 
