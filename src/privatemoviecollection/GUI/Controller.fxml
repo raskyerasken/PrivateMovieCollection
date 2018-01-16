@@ -23,7 +23,7 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#editMovie" text="Edit" />
+              <MenuItem mnemonicParsing="false" text="Edit" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
