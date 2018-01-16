@@ -248,7 +248,7 @@ private Date newTime() throws ParseException
                 +"\t If you have any problems at all,\n"
                 +"\t you are very welcome to run head first into a wall \n"
                 +"\t since there will be roughly zero support from us \n"
-                +"\t unless you throw money at the screen. \n"
+                +"\t unless you throw money at the monitor. \n"
                 +"\t Proudly presented by De Raske: \n"
                 +"\t Jacob, Kristófer  & Kasper Raskafar\n";
                 
@@ -309,6 +309,12 @@ private Date newTime() throws ParseException
 
     @FXML
     private void getSelectedPlaylist(MouseEvent event) {
+    }
+
+    @FXML
+    private void editMovie(ActionEvent event) 
+    {
+        showErrorDialog("Doesn't work", null, "Useless function at the moment");
     }
 
 }
