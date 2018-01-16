@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,6 +34,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import privatemoviecollection.BE.CategoryID;
@@ -45,6 +47,9 @@ import privatemoviecollection.BLL.BLLManager;
  */
 public class Controller implements Initializable 
 {    
+     private ObservableList<PrivateMovieCollection> badMovie
+            = FXCollections.observableArrayList();
+     
     boolean badMovies=false;
     @FXML
     private TableColumn<PrivateMovieCollection, String> genre;
@@ -105,6 +110,7 @@ public class Controller implements Initializable
         } catch (SQLException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
     
     /**
@@ -162,34 +168,16 @@ public class Controller implements Initializable
             showErrorDialog("Nothing Selected", null, "Cannot delete nothing");
         }
         else
-            
             model.removeMovie(selectedMovie);
     }
     
     
-    private void loadStage(String viewName) throws IOException
-    {
-        primaryStage = (Stage) addMovieBtn.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/mytunes/gui/view/" + viewName));
-        Parent root = loader.load();
-
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-
-        newStage.initModality(Modality.WINDOW_MODAL);
-        newStage.initOwner(primaryStage);
-        newStage.show();
-    }
-    
-    
-     
      private void showErrorDialog(String title, String header, String message)
     {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(header);
         alert.setContentText(message);
-
         alert.showAndWait();
     }
      
@@ -203,7 +191,6 @@ public class Controller implements Initializable
         alert.setTitle("Confirmation Dialog");
         alert.setHeaderText(null);
         alert.setContentText("Are you sure you want to exit this Program?");
-
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK)
         {
@@ -211,41 +198,56 @@ public class Controller implements Initializable
         } 
     }
     
-
     private void badMovieAlert() throws ParseException, IOException, SQLException
     {
-        for (PrivateMovieCollection allMovy : model.getAllMovies()) {
-       
-        if (BLL.daysBetween(allMovy.getLastview(), newTime())<730) {
-            badMovies=true;
-        
-               }  
+       for (PrivateMovieCollection allMovy : model.getAllMovies()) {
+            if (BLL.daysBetween(allMovy.getLastview(), newTime())<730)
+            {
+              badMovies=true;
+              badMovie.add(allMovy);
+            }  
         }  
         if(badMovies)
         {
+          
         Stage newStage = new Stage();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 61afd9d5c0891a70ea44449fc8de0a4714c49bc1
         FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("alertWindow.fxml"));
         Parent root = fxLoader.load();
         alertWindowController controller= fxLoader.getController();
         controller.setModel(model);
+        controller.setBadMovies(badMovie);
         Scene scene = new Scene(root);
         newStage.setScene(scene);
-        newStage.show();
+     //   newStage.show();
+        newStage.showAndWait();
         badMovies=false;
+         
         }
 }
+<<<<<<< HEAD
     
     private Date newTime() throws ParseException
+=======
+
+private Date newTime() throws ParseException
+>>>>>>> 61afd9d5c0891a70ea44449fc8de0a4714c49bc1
     {
         java.util.Date utilDate = new java.util.Date();
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
         return sqlDate;
         
     }
+<<<<<<< HEAD
   
     
     
+=======
+
+>>>>>>> 61afd9d5c0891a70ea44449fc8de0a4714c49bc1
     @FXML
     private void handleAbout(ActionEvent event) {  //sets the "About Us"
              String contentText = "\t Hello, and welcome to our PrivateMovieCollection."
@@ -318,6 +320,14 @@ public class Controller implements Initializable
           movieListView.setItems(model.getAllMoviesByGenre(selectGenre.getSelectionModel().getSelectedItem()));
         }
 }
+<<<<<<< HEAD
+=======
+
+    @FXML
+    private void getSelectedPlaylist(MouseEvent event) {
+    }
+
+>>>>>>> 61afd9d5c0891a70ea44449fc8de0a4714c49bc1
 }
 
     

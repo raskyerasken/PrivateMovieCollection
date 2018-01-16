@@ -19,6 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import privatemoviecollection.BE.CatMovieBE;
 import privatemoviecollection.BE.CategoryID;
 import privatemoviecollection.BE.PrivateMovieCollection;
@@ -123,20 +124,15 @@ public class AddMovieController implements Initializable {
             titleError = true;
             for (PrivateMovieCollection pmc : model.getAllMovies()) 
             {   
-                System.out.println(movieTitle.getText());
-                if (pmc.getTitle().trim() == movieTitle.getText().trim()) 
+                if (pmc.getTitle().trim().equals(movieTitle.getText())) 
                 {
                     showErrorDialog("Naming error", null, "That name already exists");
                     titleError = false;
-                    System.out.println("inside the if");
-                }
-                
-            }
-            
+               }
+             }
             saveRating();
             java.util.Date utilDate = new java.util.Date();
             java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-            
             movie.setFilelink(URLAdressSong);
             movie.setTitle(movieTitle.getText());
             movie.setLastview(sqlDate);
@@ -144,13 +140,19 @@ public class AddMovieController implements Initializable {
             {
                 model.add(movie);
             }
-            
-            catMoviebe.setMovieName(movie.getTitle());
-            
+           setGenre();
+           Stage stage = (Stage) cancel.getScene().getWindow();
+            stage.close();
+        }
+    }
+    
+    private void setGenre()
+    {
+     catMoviebe.setMovieName(movie.getTitle());
            if(selectGenre1.getSelectionModel().getSelectedItem()!=null)
            {
                 catMoviebe.setCategoryName(selectGenre1.getSelectionModel().getSelectedItem());
-                model.addMovieGenre(catMoviebe);
+               model.addMovieGenre(catMoviebe);
            } 
            
            if(selectGenre2.getSelectionModel().getSelectedItem()!=null)
@@ -164,12 +166,9 @@ public class AddMovieController implements Initializable {
                 catMoviebe.setCategoryName(selectGenre3.getSelectionModel().getSelectedItem());
                 model.addMovieGenre(catMoviebe);
            }
-           
-            Stage stage = (Stage) cancel.getScene().getWindow();
-            stage.close();
-           
-        }
+    
     }
+  
 
     @FXML
     private void cancelBtn(ActionEvent event) 
@@ -183,6 +182,11 @@ public class AddMovieController implements Initializable {
     {
         JFileChooser chooser = new JFileChooser();
         chooser.setCurrentDirectory(new java.io.File("."));
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("mp4", "mp4");
+        FileNameExtensionFilter filter2 = new FileNameExtensionFilter("mpe4","mpeg4");
+       chooser.setFileFilter(filter);
+       chooser.setFileFilter(filter2);
+       chooser.setAcceptAllFileFilterUsed(false);
         chooser.setDialogTitle("choosertitle");
         
         if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) 

@@ -5,37 +5,75 @@
  */
 package privatemoviecollection.GUI;
 
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
+import privatemoviecollection.BE.PrivateMovieCollection;
 
 /**
+ * FXML Controller class
  *
- * @author kasper
+ * @author jacob
  */
-public class alertWindowController {
-
+public class alertWindowController implements Initializable {
+private ObservableList<PrivateMovieCollection> badMovies
+            = FXCollections.observableArrayList();
     @FXML
     private Button saveGenre;
     @FXML
     private Button removeMovie;
     @FXML
-    private ListView<?> genreListView;
-    private Model model;
-
+    private ListView<String> genreListView;
+private Model model;
+      
+    /**
+     * Initializes the controller class.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+         
+  
+        // TODO
+    }    
 
     @FXML
     private void saveBtn(ActionEvent event) {
+       badMovies.remove(genreListView.getSelectionModel().getSelectedIndex());
+        
+        genreListView.getItems().remove(genreListView.getSelectionModel().getSelectedIndex());
+        if(genreListView.getItems().isEmpty())
+        {
+            Stage stage =(Stage) removeMovie.getScene().getWindow();
+            stage.close();
+        }
     }
 
     @FXML
-    private void removeMovie(ActionEvent event) {
+    private void removeMovie(ActionEvent event) throws SQLException {
+        model.removeMovie(badMovies.get(genreListView.getSelectionModel().getSelectedIndex()));
+        badMovies.remove(genreListView.getSelectionModel().getSelectedIndex());
+        
+        genreListView.getItems().remove(genreListView.getSelectionModel().getSelectedIndex());
     }
-    
-     void setModel(Model model) {
+      void setModel(Model model) {
         this.model=model;
-    
+    }
+
+    void setBadMovies(ObservableList<PrivateMovieCollection> badMovie) {
+        badMovies.setAll(badMovie);
+        for (PrivateMovieCollection privateMovieCollection : badMovie) {
+            
+            genreListView.getItems().add(privateMovieCollection.getTitle());
+        }
+  
     }
     
 }
