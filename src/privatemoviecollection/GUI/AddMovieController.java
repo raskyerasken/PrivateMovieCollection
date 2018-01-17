@@ -5,14 +5,11 @@
  */
 package privatemoviecollection.GUI;
 
-import java.net.URL;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -33,7 +30,12 @@ import privatemoviecollection.BLL.BLLManager;
  *
  * @author kasper
  */
+<<<<<<< HEAD
 public class AddMovieController {
+=======
+public class AddMovieController 
+{
+>>>>>>> 219c7c6c568a16deb1fba7535872cf6bee8703a2
     
     @FXML
     private Button cancel;
@@ -68,9 +70,14 @@ public class AddMovieController {
     private ComboBox<String> selectGenre3;
     private Model model;
     boolean titleError = false;
- int maxRating= 10; 
+    int maxRating= 10; 
     
+<<<<<<< HEAD
     
+=======
+
+    //Sets the options for the combobox from CategoryID class
+>>>>>>> 219c7c6c568a16deb1fba7535872cf6bee8703a2
     private void setComboBox()
     {  
         selectGenre1.getItems().clear();
@@ -89,8 +96,6 @@ public class AddMovieController {
         {
             selectGenre3.getItems().add(id.getCategory());
         }
-        
-    
     }
     
     //allows us to create error messages
@@ -103,7 +108,10 @@ public class AddMovieController {
         alert.showAndWait();
     }
     
-    //Saves our shit to another shit
+    /**
+     * Saves to the database and you cannot have two movies with the same title
+     * Error messages instead of writing errors to the console
+     */
     @FXML
     private void saveBtn(ActionEvent event) 
     {
@@ -164,6 +172,7 @@ public class AddMovieController {
         }
     }
     
+    //Allows us to set the genre three times from the CatMovieBE class
     private void setGenre()
     {
         catMoviebe.setMovieName(movie.getTitle());
@@ -186,7 +195,7 @@ public class AddMovieController {
         }
     }
   
-
+    //Allows us to exit the current window that is open
     @FXML
     private void cancelBtn(ActionEvent event) 
     {
@@ -194,6 +203,9 @@ public class AddMovieController {
         stage.close();
     }
 
+    /*Allows us to select only MP4 files from the harddrive
+        and makes the window stay in front until completion
+    */
     @FXML
     private void btnSelectMovie(ActionEvent event) 
     {
@@ -212,24 +224,26 @@ public class AddMovieController {
         } 
         URLAdressSong=""+chooser.getSelectedFile();
         stageToFront();
-     }
+    }
     
+    //A method to keep the window in front
     void stageToFront()
     {
-     Stage stage = (Stage) selectMovie.getScene().getWindow();
-     stage.toFront();
+        Stage stage = (Stage) selectMovie.getScene().getWindow();
+        stage.toFront();
     }
 
+    //Saving the rating 
     private void saveRating()
     {
         String title = movieTitle.getText();
         System.out.println(genreMovie.getCategory());
     }
 
+    //Gets the model from our controller so we use the same model
     void setModel(Model model) 
     {
         this.model=model;
         setComboBox();
     }
-    
 }

@@ -5,6 +5,10 @@
  */
 package privatemoviecollection.GUI;
 
+<<<<<<< HEAD
+=======
+import java.net.URL;
+>>>>>>> 219c7c6c568a16deb1fba7535872cf6bee8703a2
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,7 +29,12 @@ import privatemoviecollection.BLL.BLLManager;
  *
  * @author jacob
  */
+<<<<<<< HEAD
 public class AddGenreController {
+=======
+public class AddGenreController
+{
+>>>>>>> 219c7c6c568a16deb1fba7535872cf6bee8703a2
 
     @FXML
     private TextField txtAddGenre;
@@ -44,8 +53,13 @@ public class AddGenreController {
     private Model model;
     @FXML
     private Button cancelButton;
+<<<<<<< HEAD
     
    
+=======
+ 
+    //Event handler for the remove genre button
+>>>>>>> 219c7c6c568a16deb1fba7535872cf6bee8703a2
     @FXML
     private void removeGenre(ActionEvent event) 
     {
@@ -60,6 +74,7 @@ public class AddGenreController {
         }
     }
     
+    //Event handler for the adding genre button
     @FXML
     private void addGenre(ActionEvent event) 
     {
@@ -75,6 +90,7 @@ public class AddGenreController {
         }
     }
     
+    //A method to set the genre, it helps cleaning up the code
     void setGenre()
     {
         genreListView.getItems().clear();
@@ -84,13 +100,15 @@ public class AddGenreController {
         }
         genreListView.setItems(genrelist);
     }
-
+    
+    //Gets the model from our controller so we use the same model
     void setModel(Model model) 
     {
         this.model=model;
         setGenre();
     }
 
+    //We want the program to close ones user is done/finished
     @FXML
     private void cancelGenre(ActionEvent event) 
     {
