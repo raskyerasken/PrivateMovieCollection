@@ -69,7 +69,8 @@ public class Controller implements Initializable
     BLLManager BLL = new BLLManager();
     int daysForBadMovie= 730;
     int badMovieRating=3;
-    
+    /*Makes the combobox with gerne, and tablecolums with privateMovieCollections, 
+    and run badmovies if their is a bad movie*/
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
@@ -143,7 +144,7 @@ public class Controller implements Initializable
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    //addmovie window show
     void newAddMovieView() throws IOException
     {
         Stage newStage = new Stage();
@@ -155,7 +156,7 @@ public class Controller implements Initializable
         newStage.setScene(scene);
         newStage.show();
     }
-    
+    //EditRating window show
     void newEditRatingView() throws IOException
     {
         Stage newStage = new Stage();
@@ -168,7 +169,7 @@ public class Controller implements Initializable
         newStage.setScene(scene);
         newStage.show();
     }
-    
+    //addgenre window show
     void newAddGenreView() throws IOException
     {
         Stage newStage = new Stage();
@@ -181,8 +182,7 @@ public class Controller implements Initializable
         newStage.show();
     }
     
-    
-    
+    //remove a movie if anyone is selectet, go down to the database.
     @FXML
     private void removeMovie(ActionEvent event) throws SQLException
     {
@@ -202,7 +202,7 @@ public class Controller implements Initializable
         }
     }
     
-    
+   
     private void showErrorDialog(String title, String header, String message)
     {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -256,7 +256,7 @@ public class Controller implements Initializable
         }
     }
     
-
+    // today day
     private Date newTime() throws ParseException
     {
         java.util.Date utilDate = new java.util.Date();
@@ -355,7 +355,7 @@ public class Controller implements Initializable
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         } 
     }
-
+    
     @FXML
     private void genreFilter(ActionEvent event) 
     {
