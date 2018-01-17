@@ -5,14 +5,11 @@
  */
 package privatemoviecollection.GUI;
 
-import java.net.URL;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -32,7 +29,8 @@ import privatemoviecollection.BLL.BLLManager;
  *
  * @author kasper
  */
-public class AddMovieController implements Initializable {
+public class AddMovieController 
+{
     
     @FXML
     private Button cancel;
@@ -67,13 +65,10 @@ public class AddMovieController implements Initializable {
     private ComboBox<String> selectGenre3;
     private Model model;
     boolean titleError = false;
- int maxRating= 10; 
+    int maxRating= 10; 
     
-    @Override
-    public void initialize(URL url, ResourceBundle rb) 
-    {
-       
-    }   
+
+    //Sets the options for the combobox from CategoryID class
     private void setComboBox()
     {  
         selectGenre1.getItems().clear();
@@ -92,8 +87,6 @@ public class AddMovieController implements Initializable {
         {
             selectGenre3.getItems().add(id.getCategory());
         }
-        
-    
     }
     
     //allows us to create error messages
@@ -106,7 +99,10 @@ public class AddMovieController implements Initializable {
         alert.showAndWait();
     }
     
-    //Saves our shit to another shit
+    /**
+     * Saves to the database and you cannot have two movies with the same title
+     * Error messages instead of writing errors to the console
+     */
     @FXML
     private void saveBtn(ActionEvent event) 
     {
@@ -160,6 +156,7 @@ public class AddMovieController implements Initializable {
         }
     }
     
+    //Allows us to set the genre three times from the CatMovieBE class
     private void setGenre()
     {
         catMoviebe.setMovieName(movie.getTitle());
@@ -182,7 +179,7 @@ public class AddMovieController implements Initializable {
         }
     }
   
-
+    //Allows us to exit the current window that is open
     @FXML
     private void cancelBtn(ActionEvent event) 
     {
@@ -190,6 +187,9 @@ public class AddMovieController implements Initializable {
         stage.close();
     }
 
+    /*Allows us to select only MP4 files from the harddrive
+        and makes the window stay in front until completion
+    */
     @FXML
     private void btnSelectMovie(ActionEvent event) 
     {
@@ -209,24 +209,26 @@ public class AddMovieController implements Initializable {
         } 
         URLAdressSong=""+chooser.getSelectedFile();
         stageToFront();
-     }
+    }
     
+    //A method to keep the window in front
     void stageToFront()
     {
-     Stage stage = (Stage) selectMovie.getScene().getWindow();
-     stage.toFront();
+        Stage stage = (Stage) selectMovie.getScene().getWindow();
+        stage.toFront();
     }
 
+    //Saving the rating 
     private void saveRating()
     {
         String title = movieTitle.getText();
         System.out.println(genreMovie.getCategory());
     }
 
+    //Gets the model from our controller so we use the same model
     void setModel(Model model) 
     {
         this.model=model;
         setComboBox();
     }
-    
 }

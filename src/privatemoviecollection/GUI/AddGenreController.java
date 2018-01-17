@@ -5,7 +5,6 @@
  */
 package privatemoviecollection.GUI;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -21,7 +20,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import privatemoviecollection.BE.CategoryID;
-import privatemoviecollection.BE.PrivateMovieCollection;
 import privatemoviecollection.BLL.BLLManager;
 
 /**
@@ -29,7 +27,8 @@ import privatemoviecollection.BLL.BLLManager;
  *
  * @author jacob
  */
-public class AddGenreController implements Initializable {
+public class AddGenreController
+{
 
     @FXML
     private TextField txtAddGenre;
@@ -48,16 +47,8 @@ public class AddGenreController implements Initializable {
     private Model model;
     @FXML
     private Button cancelButton;
-    
-    
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) 
-    {
-        // TODO   
-    }    
-
-
+ 
+    //Event handler for the remove genre button
     @FXML
     private void removeGenre(ActionEvent event) 
     {
@@ -72,6 +63,7 @@ public class AddGenreController implements Initializable {
         }
     }
     
+    //Event handler for the adding genre button
     @FXML
     private void addGenre(ActionEvent event) 
     {
@@ -87,6 +79,7 @@ public class AddGenreController implements Initializable {
         }
     }
     
+    //A method to set the genre, it helps cleaning up the code
     void setGenre()
     {
         genreListView.getItems().clear();
@@ -96,13 +89,15 @@ public class AddGenreController implements Initializable {
         }
         genreListView.setItems(genrelist);
     }
-
+    
+    //Gets the model from our controller so we use the same model
     void setModel(Model model) 
     {
         this.model=model;
         setGenre();
     }
 
+    //We want the program to close ones user is done/finished
     @FXML
     private void cancelGenre(ActionEvent event) 
     {

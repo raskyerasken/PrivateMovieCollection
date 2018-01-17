@@ -24,8 +24,8 @@ import privatemoviecollection.BE.PrivateMovieCollection;
  *
  * @author mr.Andersen
  */
-public class EditRatingController implements Initializable {
-
+public class EditRatingController 
+{
     @FXML
     private Button saveRating;
     @FXML
@@ -34,17 +34,9 @@ public class EditRatingController implements Initializable {
     @FXML
     private TextField ratingEdit;
     private PrivateMovieCollection movie;
-    int maxRating=10;
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) 
-    {
-        // TODO
-    }    
+    int maxRating=10; 
 
-
+    //Saving the rating and user cannot add higher rating then 10
     @FXML
     private void SaveRating(ActionEvent event)
     {
@@ -80,22 +72,25 @@ public class EditRatingController implements Initializable {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
+    
+    //closes the window user is currently using
     @FXML
     private void cancelButton(ActionEvent event) 
     {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
-
+    
+    //Gets the model from our controller so we use the same model
     void setModel(Model model)
     {
         this.model = model;
     }
     
+    //Getting the movie for the controller 
     void getMovie(PrivateMovieCollection movie)
     {
-        this.movie= movie;
+        this.movie = movie;
         ratingEdit.setText(""+movie.getRating());
     }
     
