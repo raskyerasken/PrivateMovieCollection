@@ -24,13 +24,18 @@ import privatemoviecollection.BE.CategoryID;
 import privatemoviecollection.BE.PrivateMovieCollection;
 import privatemoviecollection.BLL.BLLManager;
 
+
 /**
  * FXML Controller class
  *
  * @author kasper
  */
+<<<<<<< HEAD
+public class AddMovieController {
+=======
 public class AddMovieController 
 {
+>>>>>>> 219c7c6c568a16deb1fba7535872cf6bee8703a2
     
     @FXML
     private Button cancel;
@@ -67,8 +72,12 @@ public class AddMovieController
     boolean titleError = false;
     int maxRating= 10; 
     
+<<<<<<< HEAD
+    
+=======
 
     //Sets the options for the combobox from CategoryID class
+>>>>>>> 219c7c6c568a16deb1fba7535872cf6bee8703a2
     private void setComboBox()
     {  
         selectGenre1.getItems().clear();
@@ -114,8 +123,10 @@ public class AddMovieController
                         null, " Please Select Movie and give it a title");
             }
             else
-            { 
+            {  
+                try{
                 int rate = Integer.parseInt(movieRating.getText());
+               
                 if (rate > maxRating)
                 {
                     showErrorDialog("Please input rating from 1 - 10 only",
@@ -148,8 +159,13 @@ public class AddMovieController
                         stage.close();
                     }
                 }
+                } catch (NumberFormatException e) {
+                    showErrorDialog("Input error rating", null, "Input a rating as int from 1-10");
+                }
             }
+                
         }
+            
         catch (SQLException ex) 
         {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
@@ -204,7 +220,6 @@ public class AddMovieController
         
         if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) 
         { 
-            System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
             stageToFront();
         } 
         URLAdressSong=""+chooser.getSelectedFile();

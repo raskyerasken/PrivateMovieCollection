@@ -5,16 +5,13 @@
  */
 package privatemoviecollection.GUI;
 
-import java.net.URL;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -26,7 +23,7 @@ import privatemoviecollection.BE.PrivateMovieCollection;
  *
  * @author jacob
  */
-public class alertWindowController implements Initializable {
+public class alertWindowController  {
 private ObservableList<PrivateMovieCollection> badMovies
             = FXCollections.observableArrayList();
     @FXML
@@ -36,12 +33,6 @@ private ObservableList<PrivateMovieCollection> badMovies
     @FXML
     private ListView<String> genreListView;
     private Model model;
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) 
-    {
-        //Raske was here
-    }    
 
     private void showErrorDialog(String title, String header, String message)
     {
