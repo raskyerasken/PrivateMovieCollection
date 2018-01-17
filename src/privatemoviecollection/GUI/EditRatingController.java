@@ -36,7 +36,7 @@ public class EditRatingController
     private PrivateMovieCollection movie;
     int maxRating=10; 
 
-    //Saving the rating and user cannot add higher rating then 10
+    //Saving the rating and user cannot add higher rating then 10 and no special characters or letters
     @FXML
     private void SaveRating(ActionEvent event)
     {
@@ -60,6 +60,12 @@ public class EditRatingController
         catch (SQLException ex) 
         {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                catch(NumberFormatException b)
+        {
+            showErrorDialog("Input error", null, "Please input rating from 1 - 10"
+                    + "\nDo not add special characters or letters"
+                    + "\nOtherwise it won't work.");
         }
     }
     
@@ -87,7 +93,7 @@ public class EditRatingController
         this.model = model;
     }
     
-    //Getting the movie for the controller 
+    //Getting the movie for the controller from PrivateMovieCollections
     void getMovie(PrivateMovieCollection movie)
     {
         this.movie = movie;

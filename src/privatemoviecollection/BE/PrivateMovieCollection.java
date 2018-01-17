@@ -107,7 +107,8 @@ public class PrivateMovieCollection
     }
 
     @Override
-    public String toString() {
+    public String toString() 
+    {
         return "PrivateMovieCollection{" + "id=" + id + ", title=" + title + ", filelink=" + filelink + ", rating=" + rating + ", lastview=" + lastview + ", allMovies=" +  '}';
     }
     
