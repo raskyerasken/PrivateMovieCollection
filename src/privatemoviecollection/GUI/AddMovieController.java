@@ -92,6 +92,7 @@ public class AddMovieController implements Initializable {
         {
             selectGenre3.getItems().add(id.getCategory());
         }
+        
     
     }
     
@@ -204,16 +205,16 @@ public class AddMovieController implements Initializable {
         if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) 
         { 
             System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
+            stageToFront();
         } 
-        else 
-        {
-            System.out.println("No Selection ");
-        }
-        
         URLAdressSong=""+chooser.getSelectedFile();
-        System.out.println(URLAdressSong);
-        Stage stage = (Stage) selectMovie.getScene().getWindow();
-        stage.toFront();
+        stageToFront();
+     }
+    
+    void stageToFront()
+    {
+     Stage stage = (Stage) selectMovie.getScene().getWindow();
+     stage.toFront();
     }
 
     private void saveRating()
