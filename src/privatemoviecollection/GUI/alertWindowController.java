@@ -23,8 +23,9 @@ import privatemoviecollection.BE.PrivateMovieCollection;
  *
  * @author jacob
  */
-public class alertWindowController  {
-private ObservableList<PrivateMovieCollection> badMovies
+public class alertWindowController  
+{
+    private ObservableList<PrivateMovieCollection> badMovies
             = FXCollections.observableArrayList();
     @FXML
     private Button saveGenre;
@@ -34,6 +35,7 @@ private ObservableList<PrivateMovieCollection> badMovies
     private ListView<String> genreListView;
     private Model model;
 
+    //Allows us to create error
     private void showErrorDialog(String title, String header, String message)
     {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -43,6 +45,7 @@ private ObservableList<PrivateMovieCollection> badMovies
         alert.showAndWait();
     }
     
+    //An error if nothing is selected
     void selectionInputError()
     {
         if(genreListView.getItems().isEmpty())
@@ -52,6 +55,7 @@ private ObservableList<PrivateMovieCollection> badMovies
         }
     }
     
+    //It saves your selection
     @FXML
     private void saveBtn(ActionEvent event) 
     {
@@ -64,7 +68,8 @@ private ObservableList<PrivateMovieCollection> badMovies
         else
             showErrorDialog("Selection Error", null, "You need to select a movie in order to save it."); 
     }
-
+    
+    //Removes the movie from the database, don't forget to select something from the list as well
     @FXML
     private void removeMovie(ActionEvent event)  
     {
@@ -86,11 +91,13 @@ private ObservableList<PrivateMovieCollection> badMovies
         }
     }
     
+    //Gets the model from our controller so we use the same model
     void setModel(Model model)
     {
         this.model=model;
     }
-
+    
+    
     void setBadMovies(ObservableList<PrivateMovieCollection> badMovie) 
     {
         badMovies.setAll(badMovie);

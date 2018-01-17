@@ -34,13 +34,13 @@ public class Model
             = FXCollections.observableArrayList();
     PrivateMovieCollection PMC = new PrivateMovieCollection();
     
+    //Gets the movies from PrivateMovieCollection class
     List<PrivateMovieCollection> getAllMovies() throws SQLException
     {
-       
         genreToMovies();
-       return movieList;
-       
+        return movieList;
     }
+    
     
     void genreToMovies() throws SQLException
     { 
