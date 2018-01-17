@@ -27,12 +27,13 @@ import privatemoviecollection.BE.CategoryID;
 import privatemoviecollection.BE.PrivateMovieCollection;
 import privatemoviecollection.BLL.BLLManager;
 
+
 /**
  * FXML Controller class
  *
  * @author kasper
  */
-public class AddMovieController implements Initializable {
+public class AddMovieController {
     
     @FXML
     private Button cancel;
@@ -69,11 +70,7 @@ public class AddMovieController implements Initializable {
     boolean titleError = false;
  int maxRating= 10; 
     
-    @Override
-    public void initialize(URL url, ResourceBundle rb) 
-    {
-       
-    }   
+    
     private void setComboBox()
     {  
         selectGenre1.getItems().clear();
@@ -118,8 +115,10 @@ public class AddMovieController implements Initializable {
                         null, " Please Select Movie and give it a title");
             }
             else
-            { 
+            {  
+                try{
                 int rate = Integer.parseInt(movieRating.getText());
+               
                 if (rate > maxRating)
                 {
                     showErrorDialog("Please input rating from 1 - 10 only",
@@ -152,8 +151,13 @@ public class AddMovieController implements Initializable {
                         stage.close();
                     }
                 }
+                } catch (NumberFormatException e) {
+                    showErrorDialog("Input error rating", null, "Input a rating as int from 1-10");
+                }
             }
+                
         }
+            
         catch (SQLException ex) 
         {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
@@ -204,7 +208,6 @@ public class AddMovieController implements Initializable {
         
         if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) 
         { 
-            System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
             stageToFront();
         } 
         URLAdressSong=""+chooser.getSelectedFile();

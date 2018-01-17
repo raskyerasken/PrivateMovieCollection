@@ -5,10 +5,7 @@
  */
 package privatemoviecollection.GUI;
 
-import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -21,7 +18,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import privatemoviecollection.BE.CategoryID;
-import privatemoviecollection.BE.PrivateMovieCollection;
 import privatemoviecollection.BLL.BLLManager;
 
 /**
@@ -29,7 +25,7 @@ import privatemoviecollection.BLL.BLLManager;
  *
  * @author jacob
  */
-public class AddGenreController implements Initializable {
+public class AddGenreController {
 
     @FXML
     private TextField txtAddGenre;
@@ -49,15 +45,7 @@ public class AddGenreController implements Initializable {
     @FXML
     private Button cancelButton;
     
-    
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) 
-    {
-        // TODO   
-    }    
-
-
+   
     @FXML
     private void removeGenre(ActionEvent event) 
     {

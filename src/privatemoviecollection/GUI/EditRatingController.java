@@ -5,14 +5,11 @@
  */
 package privatemoviecollection.GUI;
 
-import java.net.URL;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -24,7 +21,7 @@ import privatemoviecollection.BE.PrivateMovieCollection;
  *
  * @author mr.Andersen
  */
-public class EditRatingController implements Initializable {
+public class EditRatingController {
 
     @FXML
     private Button saveRating;
@@ -35,16 +32,7 @@ public class EditRatingController implements Initializable {
     private TextField ratingEdit;
     private PrivateMovieCollection movie;
     int maxRating=10;
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) 
-    {
-        // TODO
-    }    
-
-
+    
     @FXML
     private void SaveRating(ActionEvent event)
     {
