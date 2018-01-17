@@ -37,20 +37,19 @@ public class PrivateMovieCollectionDAL
         
         try (Connection con = cm.getConnection())
         {
-            
             PreparedStatement stmt
                     = con.prepareStatement("SELECT * FROM Movie");
             ResultSet rs = stmt.executeQuery();
-                while (rs.next())
-                {
-                    PrivateMovieCollection s = new PrivateMovieCollection();
-                    s.setTitle(rs.getString("Name"));
-                    s.setId(rs.getInt("id"));
-                    s.setRating(rs.getInt("Rating"));
-                    s.setFilelink(rs.getString("Filelink"));
-                    s.setLastview(rs.getDate("lastview"));
-                    allMovies.add(s);
-                }
+            while (rs.next())
+            {
+                PrivateMovieCollection s = new PrivateMovieCollection();
+                s.setTitle(rs.getString("Name"));
+                s.setId(rs.getInt("id"));
+                s.setRating(rs.getInt("Rating"));
+                s.setFilelink(rs.getString("Filelink"));
+                s.setLastview(rs.getDate("lastview"));
+                allMovies.add(s);
+            }
         }
         
         catch (SQLException ex)
@@ -154,8 +153,6 @@ public class PrivateMovieCollectionDAL
             
             PreparedStatement pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, genre.getCategory());
-            
-           
             
             int affected = pstmt.executeUpdate();
             if (affected<1)
@@ -296,8 +293,9 @@ public class PrivateMovieCollectionDAL
         } 
         return s;}
 
-    public void removeConnection(PrivateMovieCollection selectPrivateMovieCollection) {
-    try (Connection con = cm.getConnection()) 
+    public void removeConnection(PrivateMovieCollection selectPrivateMovieCollection) 
+    {
+        try (Connection con = cm.getConnection()) 
         {
             String sql = "DELETE FROM movieCategory WHERE movieName=?";
             PreparedStatement pstmt = con.prepareStatement(sql);
@@ -307,10 +305,11 @@ public class PrivateMovieCollectionDAL
         catch (SQLException ex) 
         {
             Logger.getLogger(PrivateMovieCollectionDAL.class.getName()).log(Level.SEVERE, null, ex);
-        }    }
+        }    
+    }
 
-    public void removeGenreConnection(String genre) {
-  
+    public void removeGenreConnection(String genre) 
+    {
         try (Connection con = cm.getConnection()) 
         {
             String sql = "DELETE FROM movieCategory "
@@ -328,7 +327,6 @@ public class PrivateMovieCollectionDAL
 
     public List<CatMovieBE> getGenreByMovue(String title) throws SQLServerException, SQLException    
     { 
-       
         List<CatMovieBE> allMovies = new ArrayList();
         try (Connection con = cm.getConnection())
         {
@@ -347,13 +345,10 @@ public class PrivateMovieCollectionDAL
                 s.setCategoryName(rs.getString("categoryName"));
                 s.setMovieName(rs.getString("movieName"));
                 allMovies.add(s);
-               
             }
         } 
         return allMovies;
-        
     }
-
 }
     
 

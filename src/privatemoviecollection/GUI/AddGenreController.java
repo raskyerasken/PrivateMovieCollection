@@ -52,17 +52,19 @@ public class AddGenreController implements Initializable {
     
     
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) 
+    {
         // TODO   
     }    
 
 
     @FXML
-    private void removeGenre(ActionEvent event) {
+    private void removeGenre(ActionEvent event) 
+    {
         try
         {
-       model.removeGenre( genreListView.getSelectionModel().getSelectedItem().trim());
-       setGenre();
+            model.removeGenre( genreListView.getSelectionModel().getSelectedItem().trim());
+            setGenre();
         }
         catch (SQLException ex) 
         {
@@ -71,12 +73,13 @@ public class AddGenreController implements Initializable {
     }
     
     @FXML
-    private void addGenre(ActionEvent event) {
+    private void addGenre(ActionEvent event) 
+    {
         try
         {    
-        category.setCategory(txtAddGenre.getText());
-        model.addGenre(category);
-        setGenre(); 
+            category.setCategory(txtAddGenre.getText());
+            model.addGenre(category);
+            setGenre(); 
         }
         catch (SQLException ex) 
         {
@@ -86,12 +89,12 @@ public class AddGenreController implements Initializable {
     
     void setGenre()
     {
-    genreListView.getItems().clear();
-    
-       for (CategoryID categoryID : model.allGenre()) {
+        genreListView.getItems().clear();
+        for (CategoryID categoryID : model.allGenre()) 
+        {
            genrelist.add(categoryID.getCategory());
-         }
-    genreListView.setItems(genrelist);
+        }
+        genreListView.setItems(genrelist);
     }
 
     void setModel(Model model) 

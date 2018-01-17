@@ -41,18 +41,19 @@ public class Model
        return movieList;
        
     }
+    
     void genreToMovies() throws SQLException
     { 
         movieList.clear();
-    for (PrivateMovieCollection privateMovieCollection : bllManager.getAllMovies()) {
+        for (PrivateMovieCollection privateMovieCollection : bllManager.getAllMovies()) 
+        {
             String genrer="";
-           for (CatMovieBE genre  : bllManager.getMoviesGenre(privateMovieCollection.getTitle())) {
-              
+            for (CatMovieBE genre  : bllManager.getMoviesGenre(privateMovieCollection.getTitle())) 
+            {
                 genrer=genrer+genre.getCategoryName()+",";
             }
             privateMovieCollection.setCategoryName(genrer);
             movieList.add(privateMovieCollection);
-        
         }
     }
     
@@ -87,27 +88,32 @@ public class Model
         return movieList;
     }
 
-    void removeGenre(String selectedItem) throws SQLException {
-    bllManager.removeGenre(selectedItem);
+    void removeGenre(String selectedItem) throws SQLException 
+    {
+        bllManager.removeGenre(selectedItem);
     }
 
-    void addMovieGenre(CatMovieBE categoryToMovie) {
-     bllManager.add(categoryToMovie);
+    void addMovieGenre(CatMovieBE categoryToMovie)
+    {
+        bllManager.add(categoryToMovie);
         movieCategory.add(categoryToMovie);
     }
 
-     ObservableList<PrivateMovieCollection> getAllMoviesByGenre(String selectedGenre) throws SQLException {
-      movieList.clear();
-      for (CatMovieBE catMovieBE : bllManager.getAllMovieByGenre(selectedGenre)) {
+     ObservableList<PrivateMovieCollection> getAllMoviesByGenre(String selectedGenre) throws SQLException 
+     {
+        movieList.clear();
+        for (CatMovieBE catMovieBE : bllManager.getAllMovieByGenre(selectedGenre)) 
+        {
             PMC=bllManager.getMovie(catMovieBE.getMovieName());
             PMC.setCategoryName(selectedGenre);
-             movieList.add(PMC);
-         } 
+            movieList.add(PMC);
+        } 
         return movieList; 
     }
-    void removeMovieRate(PrivateMovieCollection movie) throws SQLException {
-    bllManager.removeRate(movie);
+     
+    void removeMovieRate(PrivateMovieCollection movie) throws SQLException 
+    {
+        bllManager.removeRate(movie);
         movieList.remove(movie);
     }
-
 }

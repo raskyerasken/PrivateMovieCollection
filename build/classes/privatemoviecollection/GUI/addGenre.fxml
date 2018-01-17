@@ -10,8 +10,8 @@
    <children>
       <AnchorPane id="AnchorPane" layoutY="8.0" prefHeight="285.0" prefWidth="305.0">
          <children>
-            <Button fx:id="cancelButton" layoutX="165.0" layoutY="244.0" mnemonicParsing="false" onAction="#cancelGenre" style="-fx-background-radius: 30;" text="Cancel" />
-            <TextField fx:id="txtAddGenre" layoutX="99.0" layoutY="34.0" promptText="add genre" />
+            <Button fx:id="cancelButton" layoutX="95.0" layoutY="243.0" mnemonicParsing="false" onAction="#cancelGenre" prefHeight="31.0" prefWidth="200.0" style="-fx-background-radius: 30;" text="Save and close" />
+            <TextField fx:id="txtAddGenre" layoutX="99.0" layoutY="34.0" prefHeight="31.0" prefWidth="200.0" promptText="add genre" />
             <Button fx:id="addGenre" layoutX="28.0" layoutY="34.0" mnemonicParsing="false" onAction="#addGenre" style="-fx-background-radius: 30;" text="Add" />
             <Button fx:id="removeGenre" layoutX="15.0" layoutY="134.0" mnemonicParsing="false" onAction="#removeGenre" style="-fx-background-radius: 30;" text="Remove" />
             <ListView fx:id="genreListView" layoutX="96.0" layoutY="79.0" prefHeight="164.0" prefWidth="200.0" />

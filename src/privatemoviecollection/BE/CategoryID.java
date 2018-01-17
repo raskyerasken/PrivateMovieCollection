@@ -32,7 +32,8 @@ public class CategoryID
     }
 
     @Override
-    public String toString() {
+    public String toString() 
+    {
         return ""  + category +"";
     }
     
@@ -41,7 +42,7 @@ public class CategoryID
         return category;
     }
     
-        public int getId()
+    public int getId()
     {
         return id.get();
     }

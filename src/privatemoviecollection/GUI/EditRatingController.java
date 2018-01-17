@@ -46,8 +46,10 @@ public class EditRatingController implements Initializable {
 
 
     @FXML
-    private void SaveRating(ActionEvent event){
-        try{
+    private void SaveRating(ActionEvent event)
+    {
+        try
+        {
             int rate = Integer.parseInt(ratingEdit.getText());
             if (rate > maxRating)
             {
@@ -67,10 +69,11 @@ public class EditRatingController implements Initializable {
         {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
-                }
-     private void showErrorDialog(String title, String header, String message)
+    }
+    
+    //Allows  us to create allert windows 
+    private void showErrorDialog(String title, String header, String message)
     {
-       
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(header);
@@ -79,8 +82,9 @@ public class EditRatingController implements Initializable {
     }
 
     @FXML
-    private void cancelButton(ActionEvent event) {
-           Stage stage = (Stage) cancelButton.getScene().getWindow();
+    private void cancelButton(ActionEvent event) 
+    {
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
 
@@ -88,10 +92,11 @@ public class EditRatingController implements Initializable {
     {
         this.model = model;
     }
+    
     void getMovie(PrivateMovieCollection movie)
     {
-    this.movie= movie;
-    ratingEdit.setText(""+movie.getRating());
-   }
+        this.movie= movie;
+        ratingEdit.setText(""+movie.getRating());
+    }
     
 }

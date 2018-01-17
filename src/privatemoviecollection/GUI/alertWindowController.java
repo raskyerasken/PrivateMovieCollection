@@ -77,16 +77,17 @@ private ObservableList<PrivateMovieCollection> badMovies
     @FXML
     private void removeMovie(ActionEvent event)  
     {
-        try{
-        if (!genreListView.getSelectionModel().isEmpty()) 
+        try
         {
-            model.removeMovie(badMovies.get(genreListView.getSelectionModel().getSelectedIndex()));
-            badMovies.remove(genreListView.getSelectionModel().getSelectedIndex());
-            genreListView.getItems().remove(genreListView.getSelectionModel().getSelectedIndex());
-            selectionInputError();
-        }
-        else
-            showErrorDialog("Selection Error", null, "You need to select a movie in order to remove it.");
+            if (!genreListView.getSelectionModel().isEmpty()) 
+            {
+                model.removeMovie(badMovies.get(genreListView.getSelectionModel().getSelectedIndex()));
+                badMovies.remove(genreListView.getSelectionModel().getSelectedIndex());
+                genreListView.getItems().remove(genreListView.getSelectionModel().getSelectedIndex());
+                selectionInputError();
+            }
+            else
+                showErrorDialog("Selection Error", null, "You need to select a movie in order to remove it.");
         }
         catch (SQLException ex) 
         {
@@ -99,13 +100,13 @@ private ObservableList<PrivateMovieCollection> badMovies
         this.model=model;
     }
 
-    void setBadMovies(ObservableList<PrivateMovieCollection> badMovie) {
+    void setBadMovies(ObservableList<PrivateMovieCollection> badMovie) 
+    {
         badMovies.setAll(badMovie);
-        for (PrivateMovieCollection privateMovieCollection : badMovie) {
-            
+        for (PrivateMovieCollection privateMovieCollection : badMovie) 
+        {    
             genreListView.getItems().add(privateMovieCollection.getTitle());
         }
-  
     }
     
 }

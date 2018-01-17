@@ -19,25 +19,29 @@ import javafx.beans.property.StringProperty;
  */
 public class PrivateMovieCollection 
 {
-
-    private final StringProperty categoryName = new SimpleStringProperty();
-
-    public String getCategoryName() {
-        return categoryName.get();
-    }
-
-    public void setCategoryName(String value) {
-        categoryName.set(value);
-    }
-
-    public StringProperty categoryNameProperty() {
-        return categoryName;
-    }
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty title =  new SimpleStringProperty();
     private final StringProperty filelink =  new SimpleStringProperty();
     private final IntegerProperty rating= new SimpleIntegerProperty();
     Date lastview;
+    
+    private final StringProperty categoryName = new SimpleStringProperty();
+
+    public String getCategoryName() 
+    {
+        return categoryName.get();
+    }
+
+    public void setCategoryName(String value) 
+    {
+        categoryName.set(value);
+    }
+
+    public StringProperty categoryNameProperty() 
+    {
+        return categoryName;
+    }
+
     
     public int getId()
     {

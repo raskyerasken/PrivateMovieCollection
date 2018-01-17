@@ -35,12 +35,14 @@ public class CatMovieBE {
     }
     
     @Override
-    public String toString() {
+    public String toString() 
+    {
         return "CatMovieBE{" + "movieName=" + movieName + ", categoryName=" + categoryName + '}';
     }
 
 
-    public String getCategoryName() {
+    public String getCategoryName() 
+    {
         return categoryName.get();
     }
 

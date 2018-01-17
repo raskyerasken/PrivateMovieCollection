@@ -46,9 +46,8 @@ import privatemoviecollection.BLL.BLLManager;
  */
 public class Controller implements Initializable 
 {    
-     private ObservableList<PrivateMovieCollection> badMovie
+    private ObservableList<PrivateMovieCollection> badMovie
             = FXCollections.observableArrayList();
-     
     boolean badMovies=false;
     @FXML
     private TableColumn<PrivateMovieCollection, String> genre;
@@ -62,17 +61,17 @@ public class Controller implements Initializable
     private TextField txtSearch;
     @FXML
     private Button searchBtn;
-    
     Model model= new Model();
     int dayCount = 0;
     boolean search = false;
-     @FXML
+    @FXML
     private ComboBox<String> selectGenre;
     private Stage primaryStage;
     private Button addMovieBtn;
     BLLManager BLL = new BLLManager();
     int daysForBadMovie= 730;
     int badMovieRating=3;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
@@ -80,7 +79,7 @@ public class Controller implements Initializable
         selectGenre.getItems().add("All movies");
         for (CategoryID  id : model.allGenre()) 
         {
-        selectGenre.getItems().add(id.getCategory());
+            selectGenre.getItems().add(id.getCategory());
         }
       
         Title.setCellValueFactory(
@@ -127,18 +126,19 @@ public class Controller implements Initializable
     @FXML
     private void playMovie(ActionEvent event) throws IOException 
     {
-        try{
-        if (movieListView.getSelectionModel().getSelectedItem() != null ) 
+        try
         {
-            File file = new File("");
-            Desktop desktop = Desktop.getDesktop();
-            file = new File(movieListView.getSelectionModel().getSelectedItem().getFilelink());
-            desktop.open(file);
-        }
-        else
-            showErrorDialog("Selection Error", null, 
-                    "Check if you selected a movie from the list\n "
-                            + "If the list is empty then please add a movie");
+            if (movieListView.getSelectionModel().getSelectedItem() != null ) 
+            {
+                File file = new File("");
+                Desktop desktop = Desktop.getDesktop();
+                file = new File(movieListView.getSelectionModel().getSelectedItem().getFilelink());
+                desktop.open(file);
+            }
+            else
+                showErrorDialog("Selection Error", null, 
+                        "Check if you selected a movie from the list\n "
+                                + "If the list is empty then please add a movie");
         }
         catch (IOException ex) 
         {
@@ -268,9 +268,10 @@ public class Controller implements Initializable
   
     
     
-
+    //sets the "About Us"
     @FXML
-    private void handleAbout(ActionEvent event) {  //sets the "About Us"
+    private void handleAbout(ActionEvent event) 
+    {  
              String contentText = "\t Hello, and welcome to our PrivateMovieCollection."
                 +"\n\t In the file menu you can find:\n"
                 +"\t * How to add a new movie\n"
@@ -299,8 +300,9 @@ public class Controller implements Initializable
     @FXML
     private void addGenre(ActionEvent event) 
     {
-         try{
-         newAddGenreView();
+         try
+         {
+            newAddGenreView();
          }
          catch (IOException ex) 
          {
@@ -311,8 +313,9 @@ public class Controller implements Initializable
     @FXML
     private void addMovie(ActionEvent event)  
     {
-        try{
-        newAddMovieView();
+        try
+        {
+            newAddMovieView();
         }
         catch (IOException ex) 
         {
@@ -323,67 +326,73 @@ public class Controller implements Initializable
     @FXML
     private void searchMovie(ActionEvent event) 
     {
-        try{
-        if(!txtSearch.getText().isEmpty())
+        try
         {
-        if (search) 
-        {
-            search = false;
-            searchBtn.setText("Search");
-            movieListView.setItems
-                ((ObservableList<PrivateMovieCollection>) 
-                    model.getAllMovies());
+            if(!txtSearch.getText().isEmpty())
+            {
+                if (search) 
+                {
+                    search = false;
+                    searchBtn.setText("Search");
+                    movieListView.setItems
+                        ((ObservableList<PrivateMovieCollection>) 
+                            model.getAllMovies());
+                }
+                else
+                {
+                    String a = txtSearch.getText();
+                    movieListView.setItems((ObservableList<PrivateMovieCollection>)
+                            model.getAllMoviesList(a));
+                    search = true;
+                    searchBtn.setText("All Movies");
+                }
+            }
+            else
+            {
+                showErrorDialog("Input error", null, "Please input search term");
+            }
         }
-        else
-        {
-            String a = txtSearch.getText();
-            movieListView.setItems((ObservableList<PrivateMovieCollection>)
-                    model.getAllMoviesList(a));
-            search = true;
-            searchBtn.setText("All Movies");
-        }
-        }
-        else
-        {
-            showErrorDialog("Input error", null, "Please input search term");}
-        }
-         catch (SQLException ex) 
+        catch (SQLException ex) 
         {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         } 
     }
 
     @FXML
-    private void genreFilter(ActionEvent event) {
-        try{
-        if(selectGenre.getSelectionModel().getSelectedItem()=="All movies")
+    private void genreFilter(ActionEvent event) 
+    {
+        try
         {
-            movieListView.setItems
-                ((ObservableList<PrivateMovieCollection>) 
-                    model.getAllMovies());
+            if(selectGenre.getSelectionModel().getSelectedItem()=="All movies")
+            {
+                movieListView.setItems
+                    ((ObservableList<PrivateMovieCollection>) 
+                        model.getAllMovies());
+            }
+            else
+            {
+                movieListView.setItems(model.getAllMoviesByGenre(selectGenre.getSelectionModel().getSelectedItem()));
+            }
         }
-        else
-        {
-          movieListView.setItems(model.getAllMoviesByGenre(selectGenre.getSelectionModel().getSelectedItem()));
-        }}
-         catch (SQLException ex) 
+        catch (SQLException ex) 
         {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         } 
-    
     }
 
     @FXML
-    private void editRating(ActionEvent event) {  
-        try{
-        if(!movieListView.getSelectionModel().isEmpty())
+    private void editRating(ActionEvent event) 
+    {  
+        try
         {
-        newEditRatingView();
-        }
-        else
-        {
-            showErrorDialog("Selecet a movie", null,"Select a movie");
-        }
+            if(!movieListView.getSelectionModel().isEmpty())
+            {
+                newEditRatingView();
+            }
+            else
+            {
+                showErrorDialog("Selecet a movie", null,"Select a movie");
+            }
         }
         catch (IOException ex) 
         {

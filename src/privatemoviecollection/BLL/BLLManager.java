@@ -32,7 +32,6 @@ public class BLLManager
     
     public void add(PrivateMovieCollection allMovies) throws SQLException
     {
-        
         pmcdal.add(allMovies);
     }
     
@@ -49,8 +48,7 @@ public class BLLManager
     
     public List getAllMovie() 
     {
-        return pmcdal.getAllMovies();
-        
+        return pmcdal.getAllMovies();  
     }
     
     public List<PrivateMovieCollection> getAllMoviesList(String movie) throws SQLException
@@ -121,11 +119,8 @@ public class BLLManager
         return pmcdal.getMovie(movieName);
     }
 
-    public List<CatMovieBE> getMoviesGenre(String title) throws SQLException {
-    return pmcdal.getGenreByMovue(title);
+    public List<CatMovieBE> getMoviesGenre(String title) throws SQLException 
+    {
+        return pmcdal.getGenreByMovue(title);
     }
-
-
-
-    
 }
