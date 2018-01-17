@@ -30,12 +30,9 @@ import privatemoviecollection.BLL.BLLManager;
  *
  * @author kasper
  */
-<<<<<<< HEAD
-public class AddMovieController {
-=======
+
 public class AddMovieController 
 {
->>>>>>> 219c7c6c568a16deb1fba7535872cf6bee8703a2
     
     @FXML
     private Button cancel;
@@ -71,13 +68,8 @@ public class AddMovieController
     private Model model;
     boolean titleError = false;
     int maxRating= 10; 
-    
-<<<<<<< HEAD
-    
-=======
 
     //Sets the options for the combobox from CategoryID class
->>>>>>> 219c7c6c568a16deb1fba7535872cf6bee8703a2
     private void setComboBox()
     {  
         selectGenre1.getItems().clear();

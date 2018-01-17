@@ -8,15 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-<<<<<<< HEAD
-    <jar href="PrivateMovieCollection.jar" size="34545" download="eager" />
-=======
-<<<<<<< HEAD
-    <jar href="PrivateMovieCollection.jar" size="34379" download="eager" />
-=======
-    <jar href="PrivateMovieCollection.jar" size="34463" download="eager" />
->>>>>>> 219c7c6c568a16deb1fba7535872cf6bee8703a2
->>>>>>> 1786217b452b3ca364d303bbd2172b348e89b8d4
+    <jar href="PrivateMovieCollection.jar" size="34507" download="eager" />
     <jar href="lib\sqljdbc42.jar" size="891490" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="PrivateMovieCollection" >

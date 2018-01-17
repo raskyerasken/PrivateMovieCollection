@@ -16,18 +16,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import privatemoviecollection.BE.PrivateMovieCollection;
 
-/**
- * FXML Controller class
- *
- * @author mr.Andersen
- */
-<<<<<<< HEAD
-public class EditRatingController {
 
-=======
 public class EditRatingController 
 {
->>>>>>> 219c7c6c568a16deb1fba7535872cf6bee8703a2
     @FXML
     private Button saveRating;
     @FXML
@@ -36,18 +27,9 @@ public class EditRatingController
     @FXML
     private TextField ratingEdit;
     private PrivateMovieCollection movie;
-<<<<<<< HEAD
-    int maxRating=10;
-    
-=======
     int maxRating=10; 
-
-<<<<<<< HEAD
+    
     //Saving the rating and user cannot add higher rating then 10 and no special characters or letters
-=======
-    //Saving the rating and user cannot add higher rating then 10
->>>>>>> 219c7c6c568a16deb1fba7535872cf6bee8703a2
->>>>>>> 1786217b452b3ca364d303bbd2172b348e89b8d4
     @FXML
     private void SaveRating(ActionEvent event)
     {
