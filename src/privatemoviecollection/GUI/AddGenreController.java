@@ -5,7 +5,6 @@
  */
 package privatemoviecollection.GUI;
 
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,7 +12,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -39,7 +37,7 @@ public class AddGenreController
     @FXML
     private ListView<String> genreListView;
     
-    private ObservableList<String> genrelist
+    private final ObservableList<String> genrelist
             = FXCollections.observableArrayList();
  
     BLLManager Bll = new BLLManager();
@@ -83,10 +81,9 @@ public class AddGenreController
     void setGenre()
     {
         genreListView.getItems().clear();
-        for (CategoryID categoryID : model.allGenre()) 
-        {
-           genrelist.add(categoryID.getCategory());
-        }
+        model.allGenre().forEach((categoryID) -> {
+            genrelist.add(categoryID.getCategory());
+        });
         genreListView.setItems(genrelist);
     }
     

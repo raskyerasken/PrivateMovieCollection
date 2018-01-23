@@ -17,13 +17,18 @@ import javafx.beans.property.StringProperty;
  */
 public class PrivateMovieCollection 
 {
-    private final IntegerProperty id = new SimpleIntegerProperty();
+    private final IntegerProperty id;
     private final StringProperty title =  new SimpleStringProperty();
     private final StringProperty filelink =  new SimpleStringProperty();
     private final IntegerProperty rating= new SimpleIntegerProperty();
     Date lastview;
     
     private final StringProperty categoryName = new SimpleStringProperty();
+
+    public PrivateMovieCollection() 
+    {
+        this.id = new SimpleIntegerProperty();
+    }
 
     public String getCategoryName() 
     {

@@ -21,10 +21,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -33,10 +30,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 import privatemoviecollection.BE.CategoryID;
 import privatemoviecollection.BE.PrivateMovieCollection;
 import privatemoviecollection.BLL.BLLManager;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  *
@@ -44,7 +44,7 @@ import privatemoviecollection.BLL.BLLManager;
  */
 public class Controller implements Initializable 
 {    
-    private ObservableList<PrivateMovieCollection> badMovie
+    private final ObservableList<PrivateMovieCollection> badMovie
             = FXCollections.observableArrayList();
     boolean badMovies=false;
     @FXML
@@ -76,10 +76,9 @@ public class Controller implements Initializable
     {
         selectGenre.getItems().clear();
         selectGenre.getItems().add("All movies");
-        for (CategoryID  id : model.allGenre()) 
-        {
+        model.allGenre().forEach((id) -> {
             selectGenre.getItems().add(id.getCategory());
-        }
+        });
       
         Title.setCellValueFactory(
         new PropertyValueFactory("title"));
@@ -103,15 +102,7 @@ public class Controller implements Initializable
             badMovieAlert();
         } 
         
-        catch (ParseException ex) 
-        {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        catch (IOException ex) 
-        {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        catch (SQLException ex) 
+        catch (ParseException | IOException | SQLException ex) 
         {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -189,14 +180,14 @@ public class Controller implements Initializable
         try{
         PrivateMovieCollection selectedMovie = movieListView.getSelectionModel()
                 .getSelectedItem();
-        if (selectedMovie == null)
+        if (selectedMovie != null)
         {
-            showErrorDialog("Nothing Selected", null, "Cannot delete nothing");
-        }
-        else
             model.removeMovie(selectedMovie);
         }
-       catch (SQLException ex) 
+        else
+        showErrorDialog("Nothing Selected", null, "Cannot delete nothing");  
+        }
+        catch (SQLException ex) 
         {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -234,7 +225,7 @@ public class Controller implements Initializable
     {
        for (PrivateMovieCollection allMovy : model.getAllMovies()) 
        {
-            if (BLL.daysBetween(allMovy.getLastview(), newTime())>daysForBadMovie ||allMovy.getRating()<badMovieRating)
+            if (BLL.daysBetween(allMovy.getLastview(), newTime())>daysForBadMovie || allMovy.getRating()<badMovieRating)
             {
                 badMovies=true;
                 badMovie.add(allMovy);

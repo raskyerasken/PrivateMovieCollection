@@ -35,7 +35,7 @@ public class PrivateMovieCollectionDAL
         List<PrivateMovieCollection> allMovies 
                 = new ArrayList<>();
         
-        try (Connection con = cm.getConnection())
+        try (Connection con = cm.getConnection())                                         
         {
             PreparedStatement stmt
                     = con.prepareStatement("SELECT * FROM Movie");
@@ -134,6 +134,21 @@ public class PrivateMovieCollectionDAL
             String sql = "DELETE FROM Movie WHERE name=?";
             PreparedStatement pstmt = con.prepareStatement(sql);
             pstmt.setString(1, selectedPrivateMovieCollection.getTitle());
+            pstmt.execute();
+        }
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(PrivateMovieCollectionDAL.class.getName()).log(Level.SEVERE, null, ex);
+        }    
+    }
+    
+        public void removeConnection(PrivateMovieCollection selectPrivateMovieCollection) 
+    {
+        try (Connection con = cm.getConnection()) 
+        {
+            String sql = "DELETE FROM movieCategory WHERE movieName=?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, selectPrivateMovieCollection.getTitle());
             pstmt.execute();
         }
         catch (SQLException ex) 
@@ -292,21 +307,6 @@ public class PrivateMovieCollectionDAL
             }
         } 
         return s;}
-
-    public void removeConnection(PrivateMovieCollection selectPrivateMovieCollection) 
-    {
-        try (Connection con = cm.getConnection()) 
-        {
-            String sql = "DELETE FROM movieCategory WHERE movieName=?";
-            PreparedStatement pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, selectPrivateMovieCollection.getTitle());
-            pstmt.execute();
-        }
-        catch (SQLException ex) 
-        {
-            Logger.getLogger(PrivateMovieCollectionDAL.class.getName()).log(Level.SEVERE, null, ex);
-        }    
-    }
 
     public void removeGenreConnection(String genre) 
     {

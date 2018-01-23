@@ -14,7 +14,6 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javafx.collections.ObservableList;
-import static jdk.nashorn.internal.objects.NativeString.search;
 import privatemoviecollection.BE.CatMovieBE;
 import privatemoviecollection.BE.CategoryID;
 import privatemoviecollection.BE.PrivateMovieCollection;
@@ -37,8 +36,9 @@ public class BLLManager
     
     public void remove(PrivateMovieCollection selectPrivateMovieCollection) throws SQLException
     {
-        pmcdal.remove(selectPrivateMovieCollection);
+        
         pmcdal.removeConnection(selectPrivateMovieCollection);
+        pmcdal.remove(selectPrivateMovieCollection);
     }
     public void removeRate(PrivateMovieCollection selectPrivateMovieCollection) throws SQLException
     {

@@ -22,15 +22,15 @@ public class Model
 {
 
     
-    private BLLManager bllManager = new BLLManager();
+    private final BLLManager bllManager = new BLLManager();
     
-    private ObservableList<PrivateMovieCollection> movieList
+    private final ObservableList<PrivateMovieCollection> movieList
             = FXCollections.observableArrayList();
     
-    private ObservableList<CategoryID> genreList
+    private final ObservableList<CategoryID> genreList
             = FXCollections.observableArrayList();
     
-    private ObservableList<CatMovieBE> movieCategory
+    private final ObservableList<CatMovieBE> movieCategory
             = FXCollections.observableArrayList();
     PrivateMovieCollection PMC = new PrivateMovieCollection();
     
